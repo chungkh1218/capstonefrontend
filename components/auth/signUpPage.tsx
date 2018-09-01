@@ -8,6 +8,7 @@ import t = require("tcomb-form-native");
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import {
+  signUpUser,
   authAction,
   SWITCH_AUTHSTATUS
 } from "../../components/auth/authAction";
@@ -16,22 +17,26 @@ import { IRootState } from "../../redux/store";
 const Form = t.form.Form;
 
 const User = t.struct({
+  name: t.String,
   email: t.String,
-  username: t.String,
+  phone: t.String,
   password: t.String,
+  special_user: t.Boolean,
   terms: t.Boolean
 });
 
 const options = {
-  order: ["email", "username", "password", "terms"],
+  order: ["name", "email", "phone", "password", "special_user", "terms"],
   fields: {
+    name: { placeholder: "Your name" },
     email: {
       placeholder: "email@email.com",
       error:
         "Without and email address how are you going to reset your password when you ..."
     },
-    username: { placeholder: "Your name" },
+    phone: { placeholder: "98765432" },
     password: { placeholder: "12345678" },
+    special_user: { placeholder: "false" },
     terms: { label: "Agree to Terms" }
   },
   StyleSheet: "formStyles"
@@ -40,21 +45,29 @@ const options = {
 interface ISignUpPageProps {
   navigator: Navigator;
   isAuthenticated: boolean;
-  signup: () => void;
+  signup: (
+    name: string,
+    email: string,
+    phone: string,
+    password: string,
+    special_user: boolean
+  ) => Promise<void>;
 }
 
 class SignUpPage extends Component<ISignUpPageProps> {
   handleSubmit = () => {
     const value = this.refs.form.getValue();
-    this.props.signup();
+    if (value) {
+      this.props.signup(
+        value.name,
+        value.email,
+        value.phone,
+        value.password,
+        value.special_user
+      );
+    }
     console.log("value: ", value);
     console.log("It is you auth status: ", this.props.isAuthenticated);
-    if (this.props.isAuthenticated) {
-      this.props.navigator.popToRoot({
-        animated: true,
-        animationType: "fade"
-      });
-    }
   };
 
   changeInputValue = (value: string) => {
@@ -62,6 +75,12 @@ class SignUpPage extends Component<ISignUpPageProps> {
   };
 
   render() {
+    if (this.props.isAuthenticated) {
+      this.props.navigator.popToRoot({
+        animated: true,
+        animationType: "fade"
+      });
+    }
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>This is a sign-up page!</Text>
@@ -84,12 +103,15 @@ const mapStateToProps = (state: IRootState) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch<authAction>) => {
+const mapDispatchToProps = (dispatch: any) => {
   return {
-    signup: () =>
-      dispatch({
-        type: SWITCH_AUTHSTATUS
-      })
+    signup: (
+      name: string,
+      email: string,
+      phone: string,
+      password: string,
+      special_user: boolean
+    ) => dispatch(signUpUser(name, email, phone, password, special_user))
   };
 };
 

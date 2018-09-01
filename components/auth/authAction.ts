@@ -53,6 +53,48 @@ function logOutAction(): LogOutAction {
   };
 }
 
+export function signUpUser(
+  name: string,
+  email: string,
+  phone: string,
+  password: string,
+  special_user: boolean
+) {
+  console.log("Username: " + name);
+  console.log("Email: " + email);
+  console.log("Phone: " + phone);
+  console.log("Password: " + password);
+  console.log("Special_User: " + special_user);
+  return (dispatch: Dispatch<any>) => {
+    return axios
+      .post<{ token: string; message?: string }>(
+        `${Config.API_URL}/api/register`,
+        {
+          // email: email,
+          // username: username,
+          // password: password
+          name: name,
+          email: email,
+          phone: phone,
+          password: password,
+          special_user: special_user
+        }
+      )
+      .then(response => {
+        if (response.data == null) {
+          dispatch(loginFailure("Unknown Error"));
+        } else if (!response.data.token) {
+          dispatch(loginFailure(response.data.message || ""));
+        } else {
+          AsyncStorage.setItem("token", response.data.token);
+          console.log("loginSuccess");
+          dispatch(loginSuccess());
+        }
+      })
+      .catch(err => console.log("Error: ", err));
+  };
+}
+
 export function loginUser(email: string, password: string) {
   console.log("Email: " + email);
   console.log("Password: " + password);

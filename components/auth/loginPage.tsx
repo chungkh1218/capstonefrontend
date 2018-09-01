@@ -31,14 +31,14 @@ const options = {
 interface ILoginPageProps {
   navigator: Navigator;
   isAuthenticated: boolean;
-  loginUser: (email: string, password: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
 }
 
 class LoginPage extends Component<ILoginPageProps> {
   handleSubmit = () => {
     const value = this.refs.form.getValue();
     if (value) {
-      this.props.loginUser(value.email, value.password);
+      this.props.login(value.email, value.password);
     }
     // setTimeout(() => {
     //   console.log("Login. Your auth status is: " + this.props.isAuthenticated);
@@ -80,7 +80,7 @@ const mapStateToProps = (state: IRootState) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    loginUser: (email: string, password: string) =>
+    login: (email: string, password: string) =>
       dispatch(loginUser(email, password))
   };
 };
