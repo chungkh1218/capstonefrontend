@@ -54,11 +54,12 @@ function logOutAction(): LogOutAction {
 }
 
 export function loginUser(email: string, password: string) {
-  console.log(email, password);
+  console.log("Email: " + email);
+  console.log("Password: " + password);
   return (dispatch: Dispatch<any>) => {
     return axios
       .post<{ token: string; message?: string }>(
-        `http://localhost:8080/api/login`,
+        `${Config.API_URL}/api/login`,
         {
           email: email,
           password: password
@@ -68,14 +69,9 @@ export function loginUser(email: string, password: string) {
         if (response.data == null) {
           dispatch(loginFailure("Unknown Error"));
         } else if (!response.data.token) {
-          // If there was a problem, we want to
-          // dispatch the error condition
           dispatch(loginFailure(response.data.message || ""));
         } else {
-          // If login was successful, set the token in local storage
-          // localStorage.setItem("token", response.data.token);
           AsyncStorage.setItem("token", response.data.token);
-          // Dispatch the success action
           console.log("loginSuccess");
           dispatch(loginSuccess());
         }

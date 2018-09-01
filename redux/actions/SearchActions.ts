@@ -27,7 +27,7 @@ export function SearchPropertyAction(
 export function SearchPropFromAPIAction(search: string) {
   return (dispatch: Dispatch<ISearchPropAction>) => {
     axios
-      .get(`http://localhost:8080/api/estate/district/${search}`)
+      .get(`${Config.API_URL}/api/estate/district/${search}`)
       .then(res => {
         dispatch(SearchPropertyAction(res.data));
       })

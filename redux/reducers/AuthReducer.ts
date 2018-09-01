@@ -17,7 +17,6 @@ export function authReducer(
   state: AuthState = initialState,
   action: authAction
 ) {
-  console.log("switching........");
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {

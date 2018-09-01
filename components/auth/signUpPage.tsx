@@ -39,7 +39,7 @@ const options = {
 
 interface ISignUpPageProps {
   navigator: Navigator;
-  isAuthenicated: boolean;
+  isAuthenticated: boolean;
   signup: () => void;
 }
 
@@ -48,8 +48,8 @@ class SignUpPage extends Component<ISignUpPageProps> {
     const value = this.refs.form.getValue();
     this.props.signup();
     console.log("value: ", value);
-    console.log("It is you auth status: ", this.props.isAuthenicated);
-    if (this.props.isAuthenicated) {
+    console.log("It is you auth status: ", this.props.isAuthenticated);
+    if (this.props.isAuthenticated) {
       this.props.navigator.popToRoot({
         animated: true,
         animationType: "fade"
@@ -68,11 +68,7 @@ class SignUpPage extends Component<ISignUpPageProps> {
         <Text style={styles.instructions}>
           Please sign-up with your email or facebook account
         </Text>
-        <Form
-          ref="form" // assign a ref
-          type={User}
-          options={options}
-        />
+        <Form ref="form" type={User} options={options} />
         <Button title="Sign Up!" onPress={this.handleSubmit} />
         <TouchableOpacity>
           <FbIcon name="facebook" size={30} />
@@ -84,7 +80,7 @@ class SignUpPage extends Component<ISignUpPageProps> {
 
 const mapStateToProps = (state: IRootState) => {
   return {
-    isAuthenicated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated
   };
 };
 
@@ -93,7 +89,6 @@ const mapDispatchToProps = (dispatch: Dispatch<authAction>) => {
     signup: () =>
       dispatch({
         type: SWITCH_AUTHSTATUS
-        // isAuthenicated: true
       })
   };
 };

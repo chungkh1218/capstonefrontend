@@ -30,23 +30,19 @@ const options = {
 
 interface ILoginPageProps {
   navigator: Navigator;
-  isAuthenicated: boolean;
+  isAuthenticated: boolean;
   loginUser: (email: string, password: string) => Promise<void>;
-  // loginUser: () => void;
 }
 
 class LoginPage extends Component<ILoginPageProps> {
   handleSubmit = () => {
-    // do the things
-    const value = this.refs.form.getValue(); // use that ref to get the form value
-    this.props.loginUser(value.email, value.password);
-    console.log("value: ", value);
-    if (this.props.isAuthenicated) {
-      this.props.navigator.popToRoot({
-        animated: true,
-        animationType: "fade"
-      });
+    const value = this.refs.form.getValue();
+    if (value) {
+      this.props.loginUser(value.email, value.password);
     }
+    // setTimeout(() => {
+    //   console.log("Login. Your auth status is: " + this.props.isAuthenticated);
+    // }, 500);
   };
 
   changeInputValue = (value: string) => {
@@ -54,6 +50,12 @@ class LoginPage extends Component<ILoginPageProps> {
   };
 
   render() {
+    if (this.props.isAuthenticated) {
+      this.props.navigator.popToRoot({
+        animated: true,
+        animationType: "fade"
+      });
+    }
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>This is a login page!</Text>
@@ -72,7 +74,7 @@ class LoginPage extends Component<ILoginPageProps> {
 }
 const mapStateToProps = (state: IRootState) => {
   return {
-    isAuthenicated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated
   };
 };
 
