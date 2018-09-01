@@ -1,30 +1,40 @@
 import {
   authAction,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  SWITCH_AUTHSTATUS
 } from "../../components/auth/authAction";
 
 export interface AuthState {
-  auth: string;
+  isAuthenticated: boolean;
 }
 
 const initialState = {
-  auth: "Press me the print greet messgae ~ :D"
+  isAuthenticated: false
 };
 
 export function authReducer(
   state: AuthState = initialState,
   action: authAction
 ) {
+  console.log("switching........");
   switch (action.type) {
     case LOGIN_SUCCESS:
       return {
-        auth: "new hello world"
+        ...state,
+        isAuthenticated: true
       };
     case LOGIN_FAILURE:
       return {
-        auth: "new hello world"
+        ...state,
+        isAuthenticated: false
       };
+    case SWITCH_AUTHSTATUS:
+      console.log("Sign up. Your auth status is: " + state.isAuthenticated);
+
+      if (state.isAuthenticated === false) return { isAuthenticated: true };
+      else if (state.isAuthenticated === true)
+        return { isAuthenticated: false };
     default:
       return state;
   }

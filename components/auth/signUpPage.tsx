@@ -1,9 +1,18 @@
 // Login Page
 import * as React from "react";
 import { Component } from "react";
+import { Navigator } from "react-native-navigation";
 import { Text, View, StyleSheet, Button, TouchableOpacity } from "react-native";
 import FbIcon from "react-native-vector-icons/FontAwesome";
-import t from "tcomb-form-native";
+import t = require("tcomb-form-native");
+import { connect } from "react-redux";
+import { Dispatch } from "redux";
+import {
+  authAction,
+  SWITCH_AUTHSTATUS
+} from "../../components/auth/authAction";
+import { IRootState } from "../../redux/store";
+
 const Form = t.form.Form;
 
 const User = t.struct({
@@ -13,16 +22,43 @@ const User = t.struct({
   terms: t.Boolean
 });
 
-export default class SignUpPage extends Component {
+const options = {
+  order: ["email", "username", "password", "terms"],
+  fields: {
+    email: {
+      placeholder: "email@email.com",
+      error:
+        "Without and email address how are you going to reset your password when you ..."
+    },
+    username: { placeholder: "Your name" },
+    password: { placeholder: "12345678" },
+    terms: { label: "Agree to Terms" }
+  },
+  StyleSheet: "formStyles"
+};
+
+interface ISignUpPageProps {
+  navigator: Navigator;
+  isAuthenicated: boolean;
+  signup: () => void;
+}
+
+class SignUpPage extends Component<ISignUpPageProps> {
   handleSubmit = () => {
-    // do the things
-    // const value = this._form.getValue(); // use that ref to get the form value
-    // console.log("value: ", value);
-    this.props.navigator.showInAppNotification({
-      screen: "example.app", // unique ID registered with Navigation.registerScreen
-      passProps: {}, // simple serializable object that will pass as props to the in-app notification (optional)
-      autoDismissTimerSec: 1 // auto dismiss notification in seconds
-    });
+    const value = this.refs.form.getValue();
+    this.props.signup();
+    console.log("value: ", value);
+    console.log("It is you auth status: ", this.props.isAuthenicated);
+    if (this.props.isAuthenicated) {
+      this.props.navigator.popToRoot({
+        animated: true,
+        animationType: "fade"
+      });
+    }
+  };
+
+  changeInputValue = (value: string) => {
+    console.log("Value: " + value);
   };
 
   render() {
@@ -33,8 +69,9 @@ export default class SignUpPage extends Component {
           Please sign-up with your email or facebook account
         </Text>
         <Form
-          // ref={c => (this._form = c)} // assign a ref
+          ref="form" // assign a ref
           type={User}
+          options={options}
         />
         <Button title="Sign Up!" onPress={this.handleSubmit} />
         <TouchableOpacity>
@@ -44,6 +81,28 @@ export default class SignUpPage extends Component {
     );
   }
 }
+
+const mapStateToProps = (state: IRootState) => {
+  return {
+    isAuthenicated: state.auth.isAuthenticated
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch<authAction>) => {
+  return {
+    signup: () =>
+      dispatch({
+        type: SWITCH_AUTHSTATUS
+        // isAuthenicated: true
+      })
+  };
+};
+
+// Connect to store
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUpPage);
 
 const styles = StyleSheet.create({
   container: {

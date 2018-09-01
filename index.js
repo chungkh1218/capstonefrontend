@@ -16,23 +16,58 @@ import Auth from "./screens/Auth";
 import LoginPage from "./components/auth/loginPage";
 import SignUpPage from "./components/auth/signUpPage";
 import { Provider } from "react-redux";
-import PropertyList from './components/home/propertylist'
-import SearchBar from './components/home/searchbar'
-import {createReduxStore} from'./redux/store'
+import PropertyList from "./components/home/propertylist";
+import SearchBar from "./components/home/searchbar";
+import { createReduxStore } from "./redux/store";
 
 const store = createReduxStore();
 
 Navigation.registerComponent("example.app", () => App, store, Provider);
 Navigation.registerComponent("example.home", () => Home, store, Provider);
-Navigation.registerComponent("example.valuation", () => Valuation, store, Provider);
-Navigation.registerComponent("example.watchlist", () => WatchList, store, Provider);
+Navigation.registerComponent(
+  "example.valuation",
+  () => Valuation,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.watchlist",
+  () => WatchList,
+  store,
+  Provider
+);
 Navigation.registerComponent("example.user", () => User);
 Navigation.registerComponent("example.auth", () => Auth);
-Navigation.registerComponent("example.loginPage", () => LoginPage);
-Navigation.registerComponent("example.signUpPage", () => SignUpPage, store, Provider);
-Navigation.registerComponent("example.propertylist", () => PropertyList, store,Provider);
-Navigation.registerComponent("example.searchbar", () => SearchBar, store,Provider)
-Navigation.registerComponent('example.store',()=>createReduxStore,store,Provider)
+Navigation.registerComponent(
+  "example.loginPage",
+  () => LoginPage,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.signUpPage",
+  () => SignUpPage,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.propertylist",
+  () => PropertyList,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.searchbar",
+  () => SearchBar,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.store",
+  () => createReduxStore,
+  store,
+  Provider
+);
 
 Navigation.startTabBasedApp({
   tabs: [

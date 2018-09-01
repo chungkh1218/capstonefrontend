@@ -16,7 +16,9 @@ import {
   View,
   AlertIOS,
   Alert,
-  Image
+  Image,
+  TouchableOpacity,
+  Linking
 } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
@@ -86,14 +88,18 @@ export default class Valuation extends Component<Props> {
   }
   render() {
     return (
-      
       <View style={styles.container}>
-        <Image
-          style={{ width: 66, height: 58 }}
-          source={{ uri: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg==' }}
-        />
         <Text style={styles.welcome}>Valuation</Text>
         <Text style={styles.instructions}>{instructions}</Text>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL(
+              "https://www.hsbc.com.hk/personal/mortgages/property-valuation-tool.html"
+            ).catch(err => console.error("An error occurred", err))
+          }
+        >
+          <Text>HSBC</Text>
+        </TouchableOpacity>
       </View>
     );
   }
