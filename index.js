@@ -8,6 +8,7 @@
 import { Navigation } from "react-native-navigation";
 
 import App from "./App";
+import LandingPage from "./screens/LandingPage";
 import Home from "./screens/HomeTab";
 import Valuation from "./screens/ValuationTab";
 import WatchList from "./screens/WatchListTab";
@@ -23,6 +24,12 @@ import { createReduxStore } from "./redux/store";
 const store = createReduxStore();
 
 Navigation.registerComponent("example.app", () => App, store, Provider);
+Navigation.registerComponent(
+  "example.landingpage",
+  () => LandingPage,
+  store,
+  Provider
+);
 Navigation.registerComponent("example.home", () => Home, store, Provider);
 Navigation.registerComponent(
   "example.valuation",
@@ -36,7 +43,7 @@ Navigation.registerComponent(
   store,
   Provider
 );
-Navigation.registerComponent("example.user", () => User);
+Navigation.registerComponent("example.user", () => User, store, Provider);
 Navigation.registerComponent("example.auth", () => Auth);
 Navigation.registerComponent(
   "example.loginPage",

@@ -2,8 +2,9 @@ import {
   authAction,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT,
   SWITCH_AUTHSTATUS
-} from "../../components/auth/authAction";
+} from "../actions/AuthAction";
 
 export interface AuthState {
   isAuthenticated: boolean;
@@ -24,6 +25,11 @@ export function authReducer(
         isAuthenticated: true
       };
     case LOGIN_FAILURE:
+      return {
+        ...state,
+        isAuthenticated: false
+      };
+    case LOGOUT:
       return {
         ...state,
         isAuthenticated: false

@@ -2,7 +2,14 @@
 import * as React from "react";
 import { Component } from "react";
 import { Navigator } from "react-native-navigation";
-import { Text, View, StyleSheet, Button, TouchableOpacity } from "react-native";
+import {
+  Text,
+  View,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+  Alert
+} from "react-native";
 import FbIcon from "react-native-vector-icons/FontAwesome";
 import t = require("tcomb-form-native");
 import { connect } from "react-redux";
@@ -11,7 +18,7 @@ import {
   signUpUser,
   authAction,
   SWITCH_AUTHSTATUS
-} from "../../components/auth/authAction";
+} from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
 
 const Form = t.form.Form;
@@ -21,12 +28,11 @@ const User = t.struct({
   email: t.String,
   phone: t.String,
   password: t.String,
-  special_user: t.Boolean,
-  terms: t.Boolean
+  special_user: t.Boolean
 });
 
 const options = {
-  order: ["name", "email", "phone", "password", "special_user", "terms"],
+  order: ["name", "email", "phone", "password", "special_user"],
   fields: {
     name: { placeholder: "Your name" },
     email: {
@@ -36,8 +42,7 @@ const options = {
     },
     phone: { placeholder: "98765432" },
     password: { placeholder: "12345678" },
-    special_user: { placeholder: "false" },
-    terms: { label: "Agree to Terms" }
+    special_user: { placeholder: "false" }
   },
   StyleSheet: "formStyles"
 };
@@ -80,6 +85,7 @@ class SignUpPage extends Component<ISignUpPageProps> {
         animated: true,
         animationType: "fade"
       });
+      Alert.alert("Authenication", "You are signed up");
     }
     return (
       <View style={styles.container}>

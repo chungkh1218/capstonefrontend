@@ -15,17 +15,33 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Button,
+  Alert
 } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
 
 import Icon from "react-native-vector-icons/FontAwesome";
+import { IRootState } from "../redux/store";
+import { logoutUser } from "../redux/actions/AuthAction";
+import { connect } from "react-redux";
 
-interface Props extends NavigationComponentProps {}
+interface IUserTapProps extends NavigationComponentProps {
+  isAuthenticated: boolean;
+  logout: () => void;
+}
 
-// type Props = {};
-export default class User extends Component<Props> {
+class User extends Component<IUserTapProps> {
+  handleLogout = () => {
+    this.props.logout();
+    if (this.props.isAuthenticated) {
+      Alert.alert("Authenication", "You are signed out");
+    }
+    this.props.navigator.switchToTab({
+      tabIndex: 0
+    });
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -64,10 +80,30 @@ export default class User extends Component<Props> {
           </TouchableOpacity>
         </View>
         <View style={styles.userDetail} />
+        <Button title="Logout!" onPress={this.handleLogout} />
       </View>
     );
   }
 }
+
+const mapStateToProps = (state: IRootState) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    logout: () => {
+      dispatch(logoutUser());
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(User);
 
 const styles = StyleSheet.create({
   container: {

@@ -24,20 +24,20 @@ import {
 } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
-import ModalExample from '../components/home/districtbotton'
-import SearchBar from '../components/home/searchbar'
-import PropertyList from'../components/home/propertylist'
+import ModalExample from "../components/home/districtbotton";
+import SearchBar from "../components/home/searchbar";
+import PropertyList from "../components/home/propertylist";
 import styles from "../src/styles/style";
 import { IUser } from "../models/models";
-import {IProperty} from'../models/models'
+import { IProperty } from "../models/models";
 import { IRootState } from "../redux/store";
-import {SearchPropFromAPIAction} from '../redux/actions/SearchActions'
+import { SearchPropFromAPIAction } from "../redux/actions/SearchActions";
 import { connect } from "react-redux";
-
+import { Navigation } from "react-native-navigation";
 
 interface IHomeProps extends NavigationComponentProps {
-  properties:IProperty[]
-  loadProperties:(search?:string)=>void
+  properties: IProperty[];
+  loadProperties: (search?: string) => void;
 }
 
 /*  interface IHomeStates {
@@ -52,13 +52,11 @@ interface IHomeProps extends NavigationComponentProps {
 }
 */
 // type Props = {};
- class Home extends Component<IHomeProps> {
- 
+class Home extends Component<IHomeProps> {
   constructor(props: IHomeProps) {
-   
     super(props);
   }
-/*
+  /*
     this.state = {
       loading: false,
       error: null,
@@ -72,9 +70,17 @@ interface IHomeProps extends NavigationComponentProps {
   }
 */
   componentWillMount() {
+    Navigation.showModal({
+      screen: "example.landingpage",
+      title: "landing",
+      passProps: {},
+      navigatorStyle: {},
+      navigatorButton: {},
+      animationType: "none"
+    });
     this.props.loadProperties();
   }
-/*
+  /*
   makeRemoteRequest = () => {
     const { page, seed } = this.state;
     const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=10`;
@@ -138,17 +144,15 @@ interface IHomeProps extends NavigationComponentProps {
 */
 
   render() {
-    
     return (
       <View style={styles.container}>
-      <View style={styles.searchbar}>
-      <SearchBar onSearchChange={this.onSearchBarChanged}/>
-          </View>
+        <View style={styles.searchbar}>
+          <SearchBar onSearchChange={this.onSearchBarChanged} />
+        </View>
         <ModalExample />
         <ScrollView>
-        <PropertyList
-          properties={this.props.properties} /> 
-          </ScrollView>
+          <PropertyList properties={this.props.properties} />
+        </ScrollView>
         {/*     <View style={styles.homePanel} />
          
         <FlatList
@@ -186,27 +190,27 @@ interface IHomeProps extends NavigationComponentProps {
           
         />*/}
       </View>
-
-      
     );
   }
   private onSearchBarChanged = (search: string) => {
     this.props.loadProperties(search);
-  }
-
+  };
 }
 const mapStateToProps = (state: IRootState) => {
   return {
     properties: state.properties.propertylist
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
     loadProperties: (search?: string) => {
-      dispatch(SearchPropFromAPIAction(search || ''))
+      dispatch(SearchPropFromAPIAction(search || ""));
     }
   };
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

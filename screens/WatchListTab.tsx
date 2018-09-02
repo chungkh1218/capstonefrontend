@@ -32,7 +32,7 @@ export default class WatchList extends React.Component<
     super(props);
 
     this.state = {
-      loginMsg: "Please sign up / login to use this feature!!!!!!!!!!"
+      loginMsg: "Please sign up / login"
     };
   }
 
@@ -69,7 +69,7 @@ export default class WatchList extends React.Component<
             })
           }
         >
-          <Text>{this.state.loginMsg}</Text>
+          <Text style={styles.welcome}>{this.state.loginMsg}</Text>
         </TouchableOpacity>
       </View>
     );
@@ -83,11 +83,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#F5FCFF"
   },
-  item: {
+  welcome: {
     fontSize: 20,
-    textAlign: "left",
-    padding: 20,
-    backgroundColor: "azure",
-    width: Dimensions.get("window").width
+    textAlign: "center",
+    margin: 10
+  },
+  instructions: {
+    textAlign: "center",
+    color: "#333333",
+    marginBottom: 5
   }
 });
