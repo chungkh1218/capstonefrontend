@@ -16,9 +16,10 @@ import {
   View,
   Alert,
   TouchableOpacity,
-  Linking
+  Linking,
+  Dimensions
 } from "react-native";
-
+import { List, ListItem } from "react-native-elements";
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
 import Auth from "../components/auth/Auth";
@@ -31,6 +32,25 @@ const instructions = Platform.select({
   android: "Please fill in the valuation form."
 });
 
+const list = [
+  {
+    name: "HSBC",
+    url:
+      "https://www.hsbc.com.hk/personal/mortgages/property-valuation-tool.html"
+  },
+  {
+    name: "Hang Seng Bank",
+    url: "https://www.hangseng.com/en-hk/e-valuation/address-search/#"
+  },
+  {
+    name: "Standard Charterd",
+    url: "https://www.sc.com/hk/borrow/mortgage-planner/property-valuation/"
+  },
+  {
+    name: "Bank of China",
+    url: "https://www.bochk.com/en/mortgage/tools/freevaluation.html"
+  }
+];
 // type Props = {};
 export default class Valuation extends Component<Props> {
   static navigatorButtons = {
@@ -87,44 +107,24 @@ export default class Valuation extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Valuation</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-        <TouchableOpacity
-          onPress={() =>
-            Linking.openURL(
-              "https://www.hsbc.com.hk/personal/mortgages/property-valuation-tool.html"
-            ).catch(err => console.error("An error occurred", err))
-          }
+        <List
+          containerStyle={{
+            width: Dimensions.get("window").width
+          }}
         >
-          <Text>HSBC</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() =>
-            Linking.openURL(
-              "https://www.hangseng.com/en-hk/e-valuation/address-search/#"
-            ).catch(err => console.error("An error occurred", err))
-          }
-        >
-          <Text>Hang Seng Bank</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() =>
-            Linking.openURL(
-              "https://www.sc.com/hk/borrow/mortgage-planner/property-valuation/"
-            ).catch(err => console.error("An error occurred", err))
-          }
-        >
-          <Text>Standard Chartered</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() =>
-            Linking.openURL(
-              "https://www.bochk.com/en/mortgage/tools/freevaluation.html"
-            ).catch(err => console.error("An error occurred", err))
-          }
-        >
-          <Text>Bank of China</Text>
-        </TouchableOpacity>
+          {list.map(l => (
+            <TouchableOpacity
+              key={l.name}
+              onPress={() =>
+                Linking.openURL(l.url).catch(err =>
+                  console.error("An error occurred", err)
+                )
+              }
+            >
+              <ListItem roundAvatar key={l.name} title={l.name} />
+            </TouchableOpacity>
+          ))}
+        </List>
       </View>
     );
   }
@@ -133,8 +133,8 @@ export default class Valuation extends Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    // justifyContent: "center",
+    // alignItems: "center",
     backgroundColor: "#F5FCFF"
   },
   welcome: {
