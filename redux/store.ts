@@ -3,15 +3,20 @@ import { authReducer as AuthReducer, IAuthState } from "./reducers/AuthReducer";
 import { IPropListState, SearchReducer} from './reducers/SearchReducer'
 
 import thunk from 'redux-thunk'
+import { IHistory } from "../models/models";
+import { ListHistReducer, IListHistState } from "./reducers/ListHistReducer";
 
 export interface IRootState {
   auth: IAuthState;
-  properties: IPropListState
+  properties: IPropListState,
+  histories:IListHistState
 }
 
 const rootReducer = combineReducers({
   auth: AuthReducer,
-  properties: SearchReducer
+  properties: SearchReducer,
+  histories: ListHistReducer
+
 });
 declare global {
   interface Window {

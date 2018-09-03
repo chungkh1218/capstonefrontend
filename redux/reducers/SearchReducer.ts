@@ -1,6 +1,6 @@
 import { IProperty } from "../../models/models";
 
-import { SEARCH_PROP, ISearchPropAction, SERACH_PROP } from "../actions/SearchActions";
+import { ISearchPropAction, SERACH_PROP } from "../actions/SearchActions";
 
 export interface IPropListState {
     propertylist: IProperty[];

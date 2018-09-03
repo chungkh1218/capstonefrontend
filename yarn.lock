@@ -4197,9 +4197,15 @@ react-native-modal-dropdown@^0.6.2:
   dependencies:
     prop-types "^15.6.0"
 
-react-native-navigation@*, react-native-navigation@^1.1.480:
+react-native-navigation@*:
   version "1.1.480"
   resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.480.tgz#7090a2adbc0399f223d8be906df33fbe12f6c272"
+  dependencies:
+    lodash "4.x.x"
+
+react-native-navigation@^1.1.484:
+  version "1.1.484"
+  resolved "https://registry.yarnpkg.com/react-native-navigation/-/react-native-navigation-1.1.484.tgz#e3fc86b8833178b2972e0af608d4c90260e6ec32"
   dependencies:
     lodash "4.x.x"
 

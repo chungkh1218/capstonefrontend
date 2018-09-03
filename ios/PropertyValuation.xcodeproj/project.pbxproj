@@ -98,6 +98,7 @@
 		5B0622CF212C2F04000520A1 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B062298212C2F03000520A1 /* MaterialIcons.ttf */; };
 		5B0622D0212C2F04000520A1 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B062298212C2F03000520A1 /* MaterialIcons.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
+		62938861213C22FD0074D015 /* ios in Resources */ = {isa = PBXBuildFile; fileRef = 62938838213C22FC0074D015 /* ios */; };
 		6300CE24970D4ABEA9CCB8E1 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1D5B021469174A44B2390782 /* Ionicons.ttf */; };
 		742F262A0C594F9C930C857B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 054C3FEAD9274577B45AD655 /* FontAwesome.ttf */; };
 		74D188C9FD1C40F493AD2017 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B66894CD945E4A0A8274B140 /* FontAwesome5_Brands.ttf */; };
@@ -458,6 +459,7 @@
 		5BCC5A4CD4F347659DCA85D9 /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		5C3DD1843A5349B79E453C3B /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
+		62938838213C22FC0074D015 /* ios */ = {isa = PBXFileReference; lastKnownFileType = folder; name = ios; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		83CEB76D8ABB4562BCB066D7 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				62938838213C22FC0074D015 /* ios */,
 				5B062286212C2AB1000520A1 /* PropertyValuation.xcodeproj */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -1343,6 +1346,7 @@
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				5B0622BD212C2F04000520A1 /* FontAwesome.ttf in Resources */,
 				102DC0D51DC84A3EADF64C60 /* Entypo.ttf in Resources */,
+				62938861213C22FD0074D015 /* ios in Resources */,
 				D7535F8A60954EABBA57D339 /* EvilIcons.ttf in Resources */,
 				5A56653219B2498EA1F82DEA /* Feather.ttf in Resources */,
 				742F262A0C594F9C930C857B /* FontAwesome.ttf in Resources */,

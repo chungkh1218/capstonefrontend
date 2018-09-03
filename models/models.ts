@@ -63,9 +63,27 @@ export interface IAuthUser {
 
 
 export interface IProperty{
-  re_id:number
-  addr: string,
+  avWinloss:number,
+  avPrice_sq: number,
   catname:string,
   
   //price:number
+
+
+}
+
+export interface IHistory{
+  re_id:number,
+  addr:string,
+  catfathername:string,
+  transactions:{
+     re_id:number,
+     price_value:number,
+     date:any,
+     winloss:number,
+     img_url:null|string,
+     id:number,
+     ht_id:number
+  }
+
 }
