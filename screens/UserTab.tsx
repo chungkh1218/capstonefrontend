@@ -14,11 +14,10 @@ import {
   View,
   TouchableOpacity,
   Dimensions,
-  Button,
   Alert,
   Text
 } from "react-native";
-
+import { Button } from "react-native-elements";
 import { NavigationComponentProps } from "react-native-navigation";
 
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -81,7 +80,17 @@ class User extends Component<IUserTapProps> {
           <Text>Please signup or login</Text>
         </View>
         {this.props.isAuthenticated ? (
-          <Button title="Logout!" onPress={this.handleLogout} />
+          <Button
+            title="Logout!"
+            onPress={this.handleLogout}
+            icon={{ name: "diff-added", type: "octicon" }}
+            buttonStyle={{
+              backgroundColor: "blue",
+              marginHorizontal: 0,
+              width: Dimensions.get("window").width,
+              padding: 22
+            }}
+          />
         ) : null}
       </View>
     );

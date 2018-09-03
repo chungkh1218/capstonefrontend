@@ -48,14 +48,23 @@ export default class WatchListItem extends Component<IWatchListItemProps> {
     return (
       <View style={styles.container}>
         <Card
-          title={this.props.catname}
           image={{
             uri: this.props.imageUrl
           }}
         >
-          <Text style={{ marginBottom: 200 }}>
+          <Text style={{ marginBottom: 180 }}>
             The idea with React Native Elements is more about component
             structure than actual design.
+            {"\n"}
+            {this.props.catname}
+            {"\n"}
+            {this.props.catfathername}
+            {"\n"}
+            {this.props.addr}
+            {"\n"}
+            {this.props.area}
+            {"\n"}
+            {this.props.my_target_price}
           </Text>
           <Button
             icon={{ name: "code" }}
