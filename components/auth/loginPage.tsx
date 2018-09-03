@@ -25,8 +25,8 @@ const options = {
     },
     password: {
       placeholder: "12345678",
-      autoCapitalize: "none"
-      // secureTextEntry: true
+      autoCapitalize: "none",
+      secureTextEntry: true
     }
   },
   StyleSheet: "formStyles"

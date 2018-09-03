@@ -15,7 +15,8 @@ import {
   TouchableOpacity,
   Dimensions,
   Button,
-  Alert
+  Alert,
+  Text
 } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
@@ -77,6 +78,7 @@ class User extends Component<IUserTapProps> {
           >
             <Icon name="user-circle" size={144} />
           </TouchableOpacity>
+          <Text>Please signup or login</Text>
         </View>
         {this.props.isAuthenticated ? (
           <Button title="Logout!" onPress={this.handleLogout} />

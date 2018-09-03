@@ -29,14 +29,22 @@ const User = t.struct({
 const options = {
   order: ["name", "email", "phone", "password", "special_user"],
   fields: {
-    name: { placeholder: "Your name" },
+    name: {
+      placeholder: "Your name",
+      autoCapitalize: "none"
+    },
     email: {
       placeholder: "email@email.com",
+      autoCapitalize: "none",
       error:
         "Without and email address how are you going to reset your password when you ..."
     },
     phone: { placeholder: "98765432" },
-    password: { placeholder: "12345678" },
+    password: {
+      placeholder: "12345678",
+      autoCapitalize: "none",
+      secureTextEntry: true
+    },
     special_user: { placeholder: "false" }
   },
   StyleSheet: "formStyles"
@@ -90,9 +98,9 @@ class SignUpPage extends Component<ISignUpPageProps> {
         </Text>
         <Form ref="form" type={User} options={options} />
         <Button title="Sign Up!" onPress={this.handleSubmit} />
-        <TouchableOpacity>
+        {/* <TouchableOpacity>
           <FbIcon name="facebook" size={30} />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     );
   }

@@ -18,10 +18,10 @@ import SignUpPage from "./components/auth/SignUpPage";
 import WatchList from "./screens/WatchListTab";
 import WatchListItem from "./components/watchlist/WatchListItem";
 import { Provider } from "react-redux";
-import PropertyList from './components/home/propertylist'
-import SearchBar from './components/home/searchbar'
-import {createReduxStore} from'./redux/store'
-import HistoryList from './components/tshistory/historylist'
+import PropertyList from "./components/home/propertylist";
+import SearchBar from "./components/home/searchbar";
+import { createReduxStore } from "./redux/store";
+import HistoryList from "./components/tshistory/historylist";
 
 const store = createReduxStore();
 
