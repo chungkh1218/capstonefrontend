@@ -16,8 +16,7 @@ import {
   View,
   Alert,
   TouchableOpacity,
-  Linking,
-  ListView
+  Linking
 } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
@@ -126,8 +125,6 @@ export default class Valuation extends Component<Props> {
         >
           <Text>Bank of China</Text>
         </TouchableOpacity>
-
-        {/* <ListView dataSource={this.state.dataSource} renderRow={} /> */}
       </View>
     );
   }
