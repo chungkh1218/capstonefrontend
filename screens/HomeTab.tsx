@@ -52,11 +52,11 @@ interface IHomeProps extends NavigationComponentProps {
 }
 */
 // type Props = {};
-class Home extends Component<IHomeProps> {
-  constructor(props: IHomeProps) {
-    super(props);
-  }
-  /*
+ class Home extends Component<IHomeProps> {
+   constructor(props: IHomeProps) {
+     super(props);
+   }
+   /*
     this.state = {
       loading: false,
       error: null,
@@ -69,18 +69,37 @@ class Home extends Component<IHomeProps> {
     };
   }
 */
-  componentWillMount() {
-    Navigation.showModal({
-      screen: "example.landingpage",
-      title: "landing",
-      passProps: {},
-      navigatorStyle: {},
-      navigatorButton: {},
-      animationType: "none"
+   componentWillMount() {
+     this.props.loadProperties();
+   }
+
+   itemsOnPressed = (catname: string) => {
+    this.props.navigator.push({
+      screen: "example.valuation", // unique ID registered with Navigation.registerScreen
+      title: undefined, // navigation bar title of the pushed screen (optional)
+      passProps: { catname: catname }, // Object that will be passed as props to the pushed screen (optional)
+      animated: true, // does the push have transition animation or does it happen immediately (optional)
+      animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
+      backButtonTitle: undefined, // override the back button title (optional)
+      backButtonHidden: false, // hide the back button altogether (optional)
+      navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
+      navigatorButtons: {}, // override the nav buttons for the pushed screen (optional)
+      // enable peek and pop - commited screen will have `isPreview` prop set as true.
+      previewView: undefined, // react ref or node id (optional)
+      previewHeight: undefined, // set preview height, defaults to full height (optional)
+      previewCommit: true, // commit to push preview controller to the navigation stack (optional)
+      previewActions: [
+        {
+          // action presses can be detected with the `PreviewActionPress` event on the commited screen.
+          id: "", // action id (required)
+          title: "", // action title (required)
+          style: undefined, // 'selected' or 'destructive' (optional)
+          actions: [] // list of sub-actions
+        }
+      ]
     });
-    this.props.loadProperties();
-  }
-  /*
+   }
+   /*
   makeRemoteRequest = () => {
     const { page, seed } = this.state;
     const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=10`;
@@ -143,17 +162,16 @@ class Home extends Component<IHomeProps> {
   };
 */
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.searchbar}>
-          <SearchBar onSearchChange={this.onSearchBarChanged} />
-        </View>
-        <ModalExample />
-        <ScrollView>
-          <PropertyList properties={this.props.properties} />
-        </ScrollView>
-        {/*     <View style={styles.homePanel} />
+   render() {
+     return <View style={styles.container}>
+         <View style={styles.searchbar}>
+           <SearchBar onSearchChange={this.onSearchBarChanged} />
+         </View>
+         <ModalExample />
+         <ScrollView>
+           <PropertyList navigator={this.props.navigator} properties={this.props.properties} />
+         </ScrollView>
+         {/*     <View style={styles.homePanel} />
          
         <FlatList
           data={this.state.data}
@@ -189,13 +207,12 @@ class Home extends Component<IHomeProps> {
           onEndReachedThreshold={50}
           
         />*/}
-      </View>
-    );
-  }
-  private onSearchBarChanged = (search: string) => {
-    this.props.loadProperties(search);
-  };
-}
+       </View>;
+   }
+   private onSearchBarChanged = (search: string) => {
+     this.props.loadProperties(search);
+   };
+ }
 const mapStateToProps = (state: IRootState) => {
   return {
     properties: state.properties.propertylist

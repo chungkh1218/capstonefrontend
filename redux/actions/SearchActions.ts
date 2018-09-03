@@ -24,13 +24,12 @@ export function SearchPropertyAction(
 
 //thunk action creator
 
-export function SearchPropFromAPIAction(search: string) {
-  return (dispatch: Dispatch<ISearchPropAction>) => {
-    axios
-      .get(`${Config.API_URL}/api/estate/district/${search}`)
-      .then(res => {
-        dispatch(SearchPropertyAction(res.data));
-      })
-      .catch(err => console.log("uh oh error", err));
-  };
+export function SearchPropFromAPIAction(search:string){
+    return (dispatch:Dispatch<ISearchPropAction>) =>{
+        axios.get(`http://localhost:8080/api/estate/infoA/${search}`)
+            .then(res =>{
+                dispatch(SearchPropertyAction(res.data));    
+            })
+            .catch((err) => console.log('uh oh error', err))
+    }
 }
