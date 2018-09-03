@@ -2,19 +2,11 @@
 import * as React from "react";
 import { Component } from "react";
 import { Navigator } from "react-native-navigation";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-  Alert
-} from "react-native";
+import { Text, View, StyleSheet, Button, Alert } from "react-native";
 import t from "tcomb-form-native";
 import { connect } from "react-redux";
 import { loginUser, authAction } from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
-import { Dispatch } from "redux";
 const Form = t.form.Form;
 
 const User = t.struct({

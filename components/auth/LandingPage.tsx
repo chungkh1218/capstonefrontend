@@ -12,7 +12,7 @@ import { Component } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
-import { IRootState } from "../redux/store";
+import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
 import { Navigation } from "react-native-navigation";
 
@@ -46,7 +46,7 @@ class LandingPage extends Component<ILandingPageProps> {
               screen: "example.signUpPage", // unique ID registered with Navigation.registerScreen
               title: undefined, // navigation bar title of the pushed screen (optional)
               subtitle: undefined, // navigation bar subtitle of the pushed screen (optional)
-              titleImage: require("../src/icons/IC-Remove-Red-Eye-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
+              titleImage: require("../../src/icons/IC-Remove-Red-Eye-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
               passProps: {}, // Object that will be passed as props to the pushed screen (optional)
               animated: true, // does the push have transition animation or does it happen immediately (optional)
               animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
@@ -79,7 +79,7 @@ class LandingPage extends Component<ILandingPageProps> {
               screen: "example.loginPage", // unique ID registered with Navigation.registerScreen
               title: undefined, // navigation bar title of the pushed screen (optional)
               subtitle: undefined, // navigation bar subtitle of the pushed screen (optional)
-              titleImage: require("../src/icons/IC-Remove-Red-Eye-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
+              titleImage: require("../../src/icons/IC-Remove-Red-Eye-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
               passProps: {}, // Object that will be passed as props to the pushed screen (optional)
               animated: true, // does the push have transition animation or does it happen immediately (optional)
               animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)

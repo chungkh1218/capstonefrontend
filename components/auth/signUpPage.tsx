@@ -13,12 +13,7 @@ import {
 import FbIcon from "react-native-vector-icons/FontAwesome";
 import t = require("tcomb-form-native");
 import { connect } from "react-redux";
-import { Dispatch } from "redux";
-import {
-  signUpUser,
-  authAction,
-  SWITCH_AUTHSTATUS
-} from "../../redux/actions/AuthAction";
+import { signUpUser } from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
 
 const Form = t.form.Form;

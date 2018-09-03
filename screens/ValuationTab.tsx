@@ -14,16 +14,15 @@ import {
   StyleSheet,
   Text,
   View,
-  AlertIOS,
   Alert,
-  Image,
   TouchableOpacity,
-  Linking
+  Linking,
+  ListView
 } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
-import Auth from "./Auth";
+import Auth from "../components/auth/Auth";
 Navigation.registerComponent("example.auth", () => Auth);
 
 interface Props extends NavigationComponentProps {}
@@ -100,6 +99,35 @@ export default class Valuation extends Component<Props> {
         >
           <Text>HSBC</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL(
+              "https://www.hangseng.com/en-hk/e-valuation/address-search/#"
+            ).catch(err => console.error("An error occurred", err))
+          }
+        >
+          <Text>Hang Seng Bank</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL(
+              "https://www.sc.com/hk/borrow/mortgage-planner/property-valuation/"
+            ).catch(err => console.error("An error occurred", err))
+          }
+        >
+          <Text>Standard Chartered</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() =>
+            Linking.openURL(
+              "https://www.bochk.com/en/mortgage/tools/freevaluation.html"
+            ).catch(err => console.error("An error occurred", err))
+          }
+        >
+          <Text>Bank of China</Text>
+        </TouchableOpacity>
+
+        {/* <ListView dataSource={this.state.dataSource} renderRow={} /> */}
       </View>
     );
   }

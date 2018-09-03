@@ -10,9 +10,7 @@
 import * as React from "react";
 import { Component } from "react";
 import {
-  Platform,
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
   Dimensions,
@@ -38,8 +36,9 @@ class User extends Component<IUserTapProps> {
     if (this.props.isAuthenticated) {
       Alert.alert("Authenication", "You are signed out");
     }
-    this.props.navigator.switchToTab({
-      tabIndex: 0
+    this.props.navigator.popToRoot({
+      animated: true,
+      animationType: "fade"
     });
   };
   render() {
@@ -49,7 +48,7 @@ class User extends Component<IUserTapProps> {
           <TouchableOpacity
             onPress={() =>
               this.props.navigator.push({
-                screen: "example.app", // unique ID registered with Navigation.registerScreen
+                screen: "example.auth", // unique ID registered with Navigation.registerScreen
                 title: undefined, // navigation bar title of the pushed screen (optional)
                 subtitle: undefined, // navigation bar subtitle of the pushed screen (optional)
                 titleImage: require("../src/icons/IC-Verified-User-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
@@ -79,8 +78,9 @@ class User extends Component<IUserTapProps> {
             <Icon name="user-circle" size={144} />
           </TouchableOpacity>
         </View>
-        <View style={styles.userDetail} />
-        <Button title="Logout!" onPress={this.handleLogout} />
+        {this.props.isAuthenticated ? (
+          <Button title="Logout!" onPress={this.handleLogout} />
+        ) : null}
       </View>
     );
   }
@@ -119,13 +119,5 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     height: 100,
     backgroundColor: "beige"
-  },
-  userDetail: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: Dimensions.get("window").width,
-    height: 100,
-    backgroundColor: "red"
   }
 });
