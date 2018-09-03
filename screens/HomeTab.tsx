@@ -24,20 +24,20 @@ import {
 } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
-import ModalExample from '../components/home/districtbotton'
-import SearchBar from '../components/home/searchbar'
-import PropertyList from'../components/home/propertylist'
+import ModalExample from "../components/home/districtbotton";
+import SearchBar from "../components/home/searchbar";
+import PropertyList from "../components/home/propertylist";
 import styles from "../src/styles/style";
 import { IUser } from "../models/models";
-import {IProperty} from'../models/models'
+import { IProperty } from "../models/models";
 import { IRootState } from "../redux/store";
-import {SearchPropFromAPIAction} from '../redux/actions/SearchActions'
+import { SearchPropFromAPIAction } from "../redux/actions/SearchActions";
 import { connect } from "react-redux";
-
+import { Navigation } from "react-native-navigation";
 
 interface IHomeProps extends NavigationComponentProps {
-  properties:IProperty[]
-  loadProperties:(search?:string)=>void
+  properties: IProperty[];
+  loadProperties: (search?: string) => void;
 }
 
 /*  interface IHomeStates {
@@ -216,15 +216,18 @@ interface IHomeProps extends NavigationComponentProps {
 const mapStateToProps = (state: IRootState) => {
   return {
     properties: state.properties.propertylist
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
     loadProperties: (search?: string) => {
-      dispatch(SearchPropFromAPIAction(search || ''))
+      dispatch(SearchPropFromAPIAction(search || ""));
     }
   };
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

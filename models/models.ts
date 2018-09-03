@@ -66,8 +66,6 @@ export interface IProperty{
   avWinloss:number,
   avPrice_sq: number,
   catname:string,
-  
-  //price:number
 
 
 }

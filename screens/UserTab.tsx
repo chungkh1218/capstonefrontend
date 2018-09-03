@@ -10,22 +10,37 @@
 import * as React from "react";
 import { Component } from "react";
 import {
-  Platform,
   StyleSheet,
-  Text,
   View,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Button,
+  Alert
 } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
 
 import Icon from "react-native-vector-icons/FontAwesome";
+import { IRootState } from "../redux/store";
+import { logoutUser } from "../redux/actions/AuthAction";
+import { connect } from "react-redux";
 
-interface Props extends NavigationComponentProps {}
+interface IUserTapProps extends NavigationComponentProps {
+  isAuthenticated: boolean;
+  logout: () => void;
+}
 
-// type Props = {};
-export default class User extends Component<Props> {
+class User extends Component<IUserTapProps> {
+  handleLogout = () => {
+    this.props.logout();
+    if (this.props.isAuthenticated) {
+      Alert.alert("Authenication", "You are signed out");
+    }
+    this.props.navigator.popToRoot({
+      animated: true,
+      animationType: "fade"
+    });
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -33,7 +48,7 @@ export default class User extends Component<Props> {
           <TouchableOpacity
             onPress={() =>
               this.props.navigator.push({
-                screen: "example.app", // unique ID registered with Navigation.registerScreen
+                screen: "example.auth", // unique ID registered with Navigation.registerScreen
                 title: undefined, // navigation bar title of the pushed screen (optional)
                 subtitle: undefined, // navigation bar subtitle of the pushed screen (optional)
                 titleImage: require("../src/icons/IC-Verified-User-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
@@ -63,11 +78,32 @@ export default class User extends Component<Props> {
             <Icon name="user-circle" size={144} />
           </TouchableOpacity>
         </View>
-        <View style={styles.userDetail} />
+        {this.props.isAuthenticated ? (
+          <Button title="Logout!" onPress={this.handleLogout} />
+        ) : null}
       </View>
     );
   }
 }
+
+const mapStateToProps = (state: IRootState) => {
+  return {
+    isAuthenticated: state.auth.isAuthenticated
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    logout: () => {
+      dispatch(logoutUser());
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(User);
 
 const styles = StyleSheet.create({
   container: {
@@ -83,13 +119,5 @@ const styles = StyleSheet.create({
     width: Dimensions.get("window").width,
     height: 100,
     backgroundColor: "beige"
-  },
-  userDetail: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: Dimensions.get("window").width,
-    height: 100,
-    backgroundColor: "red"
   }
 });

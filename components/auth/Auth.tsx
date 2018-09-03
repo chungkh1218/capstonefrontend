@@ -9,14 +9,7 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Button,
-  Alert
-} from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 type Props = {};
 export default class Auth extends Component<Props> {
@@ -26,23 +19,24 @@ export default class Auth extends Component<Props> {
         <Text style={styles.welcome}>Welcome to Property Valuation!</Text>
         <Text style={styles.instructions}>Please login or signup!</Text>
         <Button
+          title="Continue"
           onPress={() =>
             this.props.navigator.pop({
               animated: true, // does the pop have transition animation or does it happen immediately (optional)
               animationType: "fade" // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
             })
           }
-          title="Continue without registration"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
         <Button
+          title="Login"
           onPress={() =>
             this.props.navigator.push({
               screen: "example.loginPage", // unique ID registered with Navigation.registerScreen
               title: undefined, // navigation bar title of the pushed screen (optional)
               subtitle: undefined, // navigation bar subtitle of the pushed screen (optional)
-              titleImage: require("../src/icons/IC-Remove-Red-Eye-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
+              titleImage: require("../../src/icons/IC-Remove-Red-Eye-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
               passProps: {}, // Object that will be passed as props to the pushed screen (optional)
               animated: true, // does the push have transition animation or does it happen immediately (optional)
               animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
@@ -65,17 +59,17 @@ export default class Auth extends Component<Props> {
               ]
             })
           }
-          title="Login"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />
         <Button
+          title="Sign Up"
           onPress={() =>
             this.props.navigator.push({
               screen: "example.signUpPage", // unique ID registered with Navigation.registerScreen
               title: undefined, // navigation bar title of the pushed screen (optional)
               subtitle: undefined, // navigation bar subtitle of the pushed screen (optional)
-              titleImage: require("../src/icons/IC-Remove-Red-Eye-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
+              titleImage: require("../../src/icons/IC-Remove-Red-Eye-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
               passProps: {}, // Object that will be passed as props to the pushed screen (optional)
               animated: true, // does the push have transition animation or does it happen immediately (optional)
               animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
@@ -98,7 +92,6 @@ export default class Auth extends Component<Props> {
               ]
             })
           }
-          title="Sign Up"
           color="#841584"
           accessibilityLabel="Learn more about this purple button"
         />

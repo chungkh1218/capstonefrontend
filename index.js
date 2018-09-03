@@ -8,13 +8,15 @@
 import { Navigation } from "react-native-navigation";
 
 import App from "./App";
+import LandingPage from "./components/auth/LandingPage";
 import Home from "./screens/HomeTab";
 import Valuation from "./screens/ValuationTab";
-import WatchList from "./screens/WatchListTab";
 import User from "./screens/UserTab";
-import Auth from "./screens/Auth";
-import LoginPage from "./components/auth/loginPage";
-import SignUpPage from "./components/auth/signUpPage";
+import Auth from "./components/auth/Auth";
+import LoginPage from "./components/auth/LoginPage";
+import SignUpPage from "./components/auth/SignUpPage";
+import WatchList from "./screens/WatchListTab";
+import WatchListItem from "./components/watchlist/WatchListItem";
 import { Provider } from "react-redux";
 import PropertyList from './components/home/propertylist'
 import SearchBar from './components/home/searchbar'
@@ -23,19 +25,59 @@ import HistoryList from './components/tshistory/historylist'
 
 const store = createReduxStore();
 
+Navigation.registerComponent("example.watchlistitem", () => WatchListItem);
 Navigation.registerComponent("example.app", () => App, store, Provider);
+Navigation.registerComponent(
+  "example.landingpage",
+  () => LandingPage,
+  store,
+  Provider
+);
 Navigation.registerComponent("example.home", () => Home, store, Provider);
-Navigation.registerComponent("example.valuation", () => Valuation, store, Provider);
-Navigation.registerComponent("example.watchlist", () => WatchList, store, Provider);
-Navigation.registerComponent("example.user", () => User);
+Navigation.registerComponent(
+  "example.watchlist",
+  () => WatchList,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.valuation",
+  () => Valuation,
+  store,
+  Provider
+);
+Navigation.registerComponent("example.user", () => User, store, Provider);
 Navigation.registerComponent("example.auth", () => Auth);
-Navigation.registerComponent("example.loginPage", () => LoginPage);
-Navigation.registerComponent("example.signUpPage", () => SignUpPage, store, Provider);
-Navigation.registerComponent("example.propertylist", () => PropertyList, store,Provider);
-Navigation.registerComponent("example.searchbar", () => SearchBar, store,Provider)
-Navigation.registerComponent('example.store',()=>createReduxStore,store,Provider)
-Navigation.registerComponent("example.historylist", () => HistoryList, store,Provider);
-
+Navigation.registerComponent(
+  "example.loginPage",
+  () => LoginPage,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.signUpPage",
+  () => SignUpPage,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.propertylist",
+  () => PropertyList,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.searchbar",
+  () => SearchBar,
+  store,
+  Provider
+);
+Navigation.registerComponent(
+  "example.store",
+  () => createReduxStore,
+  store,
+  Provider
+);
 
 Navigation.startTabBasedApp({
   tabs: [

@@ -17,7 +17,7 @@ export default class PropertyList extends Component<IPropertyListProp> {
     return (
       <FlatList
         data={this.props.properties}
-        renderItem={({ item }) => (
+        renderItem={({ item ,index }) => (
           <PropertyItem
             navigator={this.props.navigator}
             avWinloss={item.avWinloss}
@@ -25,7 +25,7 @@ export default class PropertyList extends Component<IPropertyListProp> {
             avPrice_sq={item.avPrice_sq}
           />
         )}
-        keyExtractor={(item, index) => index}
+        
       />
     );
   }
