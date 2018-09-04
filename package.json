@@ -9,6 +9,9 @@
   "dependencies": {
     "@types/react-native-vector-icons": "^4.6.3",
     "@types/react-redux": "^6.0.6",
+    "appcenter": "^1.8.0",
+    "appcenter-analytics": "^1.8.0",
+    "appcenter-crashes": "^1.8.0",
     "axios": "^0.18.0",
     "react": "16.4.1",
     "react-native": "0.56.0",
@@ -35,6 +38,11 @@
     "typescript": "^3.0.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": [
+      "<rootDir>/node_modules/appcenter/test/AppCenterMock.js",
+      "<rootDir>/node_modules/appcenter-crashes/test/AppCenterCrashesMock.js",
+      "<rootDir>/node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js"
+    ]
   }
 }
