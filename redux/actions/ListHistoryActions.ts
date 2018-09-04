@@ -21,7 +21,7 @@ export function ListHistAction(histories:IHistory[]):IListHistAction{
 
 export function ListHistFromAPIAction(param: string) {
     return (dispatch: Dispatch<IListHistAction>) => {
-        axios.get(`http://localhost:8080/api/estate/estate/Century Gateway`)
+        axios.get(`http://localhost:8080/api/estate/estate/${param}`)
             .then(res => {
                 dispatch(ListHistAction(res.data));
             })
