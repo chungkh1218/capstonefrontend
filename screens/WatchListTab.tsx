@@ -211,7 +211,8 @@ const styles = StyleSheet.create({
   },
   homeListItem: {
     fontSize: 16,
-    textAlign: "right"
+    textAlign: "right",
+    color: "dimgray"
     // backgroundColor: "red"
   }
 });

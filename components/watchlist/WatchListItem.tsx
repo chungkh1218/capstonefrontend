@@ -9,15 +9,8 @@
 import * as React from "react";
 import { Component } from "react";
 // import React, { Component } from "react";
-import {
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-  Dimensions,
-  Image
-} from "react-native";
-import { Card, ListItem, Button } from "react-native-elements";
+import { Platform, StyleSheet, View, Dimensions, Image } from "react-native";
+import { Card, Button, Text } from "react-native-elements";
 
 const instructions = Platform.select({
   ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
@@ -52,19 +45,30 @@ export default class WatchListItem extends Component<IWatchListItemProps> {
             uri: this.props.imageUrl
           }}
         >
-          <Text style={{ marginBottom: 180 }}>
-            The idea with React Native Elements is more about component
-            structure than actual design.
-            {"\n"}
-            {this.props.catname}
-            {"\n"}
-            {this.props.catfathername}
-            {"\n"}
-            {this.props.addr}
-            {"\n"}
-            {this.props.area}
-            {"\n"}
-            {this.props.my_target_price}
+          <Text
+            style={{
+              width: Dimensions.get("window").width * 0.85,
+              marginBottom: 180
+            }}
+          >
+            {/* The idea with React Native Elements is more about component */}
+            {/* structure than actual design. */}
+
+            <Text h3 style={{ fontWeight: "bold" }}>
+              {this.props.my_target_price}
+              {"\n"}
+            </Text>
+            <Text h4>
+              {this.props.catname}
+              {"\n"}
+            </Text>
+            <Text style={{ fontSize: 16, color: "dimgray" }}>
+              {this.props.addr} {this.props.catfathername}
+            </Text>
+            <Text style={{ fontSize: 16, color: "dimgray" }}>
+              {"\n"}
+              {this.props.area}
+            </Text>
           </Text>
           <Button
             icon={{ name: "code" }}

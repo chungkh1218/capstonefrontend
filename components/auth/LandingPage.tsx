@@ -134,6 +134,14 @@ class LandingPage extends Component<ILandingPageProps> {
               padding: 12
             }}
           />
+
+          <FacebookLogin
+            appId={process.env.REACT_APP_FACEBOOK_APP_ID || ""}
+            autoLoad={true}
+            fields="name,email,picture"
+            onClick={this.componentClicked}
+            callback={this.responseFacebook}
+          />
         </View>
       </View>
     );
