@@ -16,7 +16,28 @@ import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
 import { Navigation } from "react-native-navigation";
 import { Button } from "react-native-elements";
+import FBLoginButton from "./FBLoginButton";
+const FBSDK = require("react-native-fbsdk");
+const { LoginManager } = FBSDK;
+// ...
 
+// Attempt a login using the Facebook login dialog,
+// asking for default permissions.
+LoginManager.logInWithReadPermissions(["public_profile"]).then(
+  function(result: any) {
+    if (result.isCancelled) {
+      alert("Login was cancelled");
+    } else {
+      alert(
+        "Login was successful with permissions: " +
+          result.grantedPermissions.toString()
+      );
+    }
+  },
+  function(error: any) {
+    alert("Login failed with error: " + error);
+  }
+);
 interface ILandingPageProps extends NavigationComponentProps {}
 
 class LandingPage extends Component<ILandingPageProps> {
@@ -134,14 +155,7 @@ class LandingPage extends Component<ILandingPageProps> {
               padding: 12
             }}
           />
-
-          <FacebookLogin
-            appId={process.env.REACT_APP_FACEBOOK_APP_ID || ""}
-            autoLoad={true}
-            fields="name,email,picture"
-            onClick={this.componentClicked}
-            callback={this.responseFacebook}
-          />
+          {/* <FBLoginButton /> */}
         </View>
       </View>
     );
