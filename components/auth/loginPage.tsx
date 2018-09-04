@@ -19,10 +19,15 @@ const options = {
   fields: {
     email: {
       placeholder: "email@email.com",
+      autoCapitalize: "none",
       error:
         "Without and email address how are you going to reset your password when you ..."
     },
-    password: { placeholder: "12345678" }
+    password: {
+      placeholder: "12345678",
+      autoCapitalize: "none",
+      secureTextEntry: true
+    }
   },
   StyleSheet: "formStyles"
 };

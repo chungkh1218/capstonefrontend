@@ -19,7 +19,7 @@ import {
   Image,
   Button
 } from "react-native";
-
+import { List, ListItem } from "react-native-elements";
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
 import HistoryList from '../components/tshistory/historylist'

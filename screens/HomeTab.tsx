@@ -52,11 +52,11 @@ interface IHomeProps extends NavigationComponentProps {
 }
 */
 // type Props = {};
- class Home extends Component<IHomeProps> {
-   constructor(props: IHomeProps) {
-     super(props);
-   }
-   /*
+class Home extends Component<IHomeProps> {
+  constructor(props: IHomeProps) {
+    super(props);
+  }
+  /*
     this.state = {
       loading: false,
       error: null,
@@ -69,11 +69,14 @@ interface IHomeProps extends NavigationComponentProps {
     };
   }
 */
-   componentWillMount() {
-     this.props.loadProperties();
-   }
+  componentWillMount() {
+    this.props.navigator.showModal({
+      screen: "example.landingpage" // unique ID registered with Navigation.registerScreen
+    });
+    this.props.loadProperties();
+  }
 
-   itemsOnPressed = (catname: string) => {
+  itemsOnPressed = (catname: string) => {
     this.props.navigator.push({
       screen: "example.valuation", // unique ID registered with Navigation.registerScreen
       title: undefined, // navigation bar title of the pushed screen (optional)
@@ -98,8 +101,8 @@ interface IHomeProps extends NavigationComponentProps {
         }
       ]
     });
-   }
-   /*
+  };
+  /*
   makeRemoteRequest = () => {
     const { page, seed } = this.state;
     const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=10`;
@@ -162,16 +165,20 @@ interface IHomeProps extends NavigationComponentProps {
   };
 */
 
-   render() {
-     return <View style={styles.container}>
-         <View style={styles.searchbar}>
-           <SearchBar onSearchChange={this.onSearchBarChanged} />
-         </View>
-         <ModalExample />
-         <ScrollView>
-           <PropertyList navigator={this.props.navigator} properties={this.props.properties} />
-         </ScrollView>
-         {/*     <View style={styles.homePanel} />
+  render() {
+    return (
+      <View style={styles.container}>
+        <View style={styles.searchbar}>
+          <SearchBar onSearchChange={this.onSearchBarChanged} />
+        </View>
+        <ModalExample />
+        <ScrollView>
+          <PropertyList
+            navigator={this.props.navigator}
+            properties={this.props.properties}
+          />
+        </ScrollView>
+        {/*     <View style={styles.homePanel} />
          
         <FlatList
           data={this.state.data}
@@ -207,12 +214,13 @@ interface IHomeProps extends NavigationComponentProps {
           onEndReachedThreshold={50}
           
         />*/}
-       </View>;
-   }
-   private onSearchBarChanged = (search: string) => {
-     this.props.loadProperties(search);
-   };
- }
+      </View>
+    );
+  }
+  private onSearchBarChanged = (search: string) => {
+    this.props.loadProperties(search);
+  };
+}
 const mapStateToProps = (state: IRootState) => {
   return {
     properties: state.properties.propertylist
