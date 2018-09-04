@@ -34,6 +34,7 @@ import { IRootState } from "../redux/store";
 import { SearchPropFromAPIAction } from "../redux/actions/SearchActions";
 import { connect } from "react-redux";
 import { Navigation } from "react-native-navigation";
+import SplashScreen from "react-native-splash-screen";
 
 interface IHomeProps extends NavigationComponentProps {
   properties: IProperty[];
@@ -69,6 +70,9 @@ class Home extends Component<IHomeProps> {
     };
   }
 */
+  componentDidMount() {
+    SplashScreen.hide();
+  }
   componentWillMount() {
     this.props.navigator.showModal({
       screen: "example.landingpage" // unique ID registered with Navigation.registerScreen

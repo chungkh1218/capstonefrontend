@@ -13,6 +13,7 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 
 #import "RCCManager.h"
+#import "SplashScreen.h"
 
 #import <React/RCTRootView.h>
 
@@ -38,6 +39,7 @@
   [[RCCManager sharedInstance] initBridgeWithBundleURL:jsCodeLocation launchOptions:launchOptions];
   [[FBSDKApplicationDelegate sharedInstance] application:application
                            didFinishLaunchingWithOptions:launchOptions];
+  [SplashScreen show];
   return YES;
 }
 - (void)applicationDidBecomeActive:(UIApplication *)application {
