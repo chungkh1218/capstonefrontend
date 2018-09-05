@@ -32,13 +32,15 @@ import { IUser } from "../models/models";
 import { IProperty } from "../models/models";
 import { IRootState } from "../redux/store";
 import { SearchPropFromAPIAction } from "../redux/actions/SearchActions";
+import {ModalSearchPropFromAPIAction} from '../redux/actions/SearchActions'
 import { connect } from "react-redux";
 import { Navigation } from "react-native-navigation";
 import SplashScreen from "react-native-splash-screen";
-
 interface IHomeProps extends NavigationComponentProps {
   properties: IProperty[];
-  loadProperties: (search?: string) => void;
+  catname:string;
+  loadProperties: (search?: string, condition?: string) => void;
+  // onButtonLoadProperties:(value?:string)=>void
 }
 
 /*  interface IHomeStates {
@@ -77,7 +79,8 @@ class Home extends Component<IHomeProps> {
     this.props.navigator.showModal({
       screen: "example.landingpage" // unique ID registered with Navigation.registerScreen
     });
-    this.props.loadProperties();
+    this.props.loadProperties('Central', 'district');
+    // this.props.onButtonLoadProperties();
   }
 
   itemsOnPressed = (catname: string) => {
@@ -86,7 +89,7 @@ class Home extends Component<IHomeProps> {
       title: undefined, // navigation bar title of the pushed screen (optional)
       passProps: { catname: catname }, // Object that will be passed as props to the pushed screen (optional)
       animated: true, // does the push have transition animation or does it happen immediately (optional)
-      animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
+      animationType: "slide-horizontal", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
       backButtonTitle: undefined, // override the back button title (optional)
       backButtonHidden: false, // hide the back button altogether (optional)
       navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
@@ -175,7 +178,11 @@ class Home extends Component<IHomeProps> {
         <View style={styles.searchbar}>
           <SearchBar onSearchChange={this.onSearchBarChanged} />
         </View>
-        <ModalExample />
+        <ModalExample
+          onModalPressed={value => {
+            this.props.loadProperties(value, 'district');
+          }}
+        />
         <ScrollView>
           <PropertyList
             navigator={this.props.navigator}
@@ -221,8 +228,13 @@ class Home extends Component<IHomeProps> {
       </View>
     );
   }
-  private onSearchBarChanged = (search: string) => {
-    this.props.loadProperties(search);
+
+  // private onModalLoadProperties =(value:string)=>{
+  // this.props.onButtonLoadProperties(value);
+  // ;
+  // }
+  private onSearchBarChanged = (search: string, condition: string) => {
+    this.props.loadProperties(search, condition);
   };
 }
 const mapStateToProps = (state: IRootState) => {
@@ -233,13 +245,17 @@ const mapStateToProps = (state: IRootState) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    loadProperties: (search?: string) => {
-      dispatch(SearchPropFromAPIAction(search || ""));
+    loadProperties: (search?: string, condition?: string) => {
+      dispatch(SearchPropFromAPIAction(search, condition))
     }
   };
 };
+
+
+
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Home);
+

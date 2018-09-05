@@ -18,9 +18,9 @@ import {Navigator} from 'react-native-navigation'
 
 interface IPropertyProps extends IProperty{
     navigator : Navigator
-    // avWinloss: any
-    // catname: any
-    // avPrice_sq: any
+    avWinloss: number
+    catname: string
+    avPrice_sq: number
 }
 
 export default class PropertyItem extends React.Component< IPropertyProps>{
@@ -51,7 +51,7 @@ export default class PropertyItem extends React.Component< IPropertyProps>{
     }
 
     render(){
-        console.log(this.props.avWinloss)
+        console.log(this.props.catname)
         return(
             <TouchableOpacity
                 onPress={this.itemsOnPressed.bind(this)}    >   

@@ -23,21 +23,21 @@ const { LoginManager } = FBSDK;
 
 // Attempt a login using the Facebook login dialog,
 // asking for default permissions.
-LoginManager.logInWithReadPermissions(["public_profile"]).then(
-  function(result: any) {
-    if (result.isCancelled) {
-      alert("Login was cancelled");
-    } else {
-      alert(
-        "Login was successful with permissions: " +
-          result.grantedPermissions.toString()
-      );
-    }
-  },
-  function(error: any) {
-    alert("Login failed with error: " + error);
-  }
-);
+// LoginManager.logInWithReadPermissions(["public_profile"]).then(
+//   function(result: any) {
+//     if (result.isCancelled) {
+//       alert("Login was cancelled");
+//     } else {
+//       alert(
+//         "Login was successful with permissions: " +
+//           result.grantedPermissions.toString()
+//       );
+//     }
+//   },
+//   function(error: any) {
+//     alert("Login failed with error: " + error);
+//   }
+// );
 interface ILandingPageProps extends NavigationComponentProps {}
 
 class LandingPage extends Component<ILandingPageProps> {

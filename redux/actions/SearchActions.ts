@@ -24,13 +24,46 @@ export function SearchPropertyAction(
 
 //thunk action creator
 
-export function SearchPropFromAPIAction(search: string) {
+export function SearchPropFromAPIAction(search?: string, condition?: string ) {
   return (dispatch: Dispatch<ISearchPropAction>) => {
-    axios
-      .get(`http://localhost:8080/api/estate/infoA/${search}`)
-      .then(res => {
-        dispatch(SearchPropertyAction(res.data));
-      })
-      .catch(err => console.log("uh oh error", err));
+    console.log(search)
+    if(condition === 'estate') {
+      axios
+        .get(`${Config.API_URL}/api/estate/infoP/${search}?page=1&numberOfResults=30`)
+        .then(res => {
+          console.log(res);
+          dispatch(SearchPropertyAction(res.data));
+        })
+        .catch(err => console.log("uh oh error", err));
+    } else {
+      axios
+        .get(`${Config.API_URL}/api/estate/infoA/${search}?page=1&numberOfResults=30`)
+        .then(res => {
+          dispatch(ModalSearchPropertyAction(res.data));
+        })
+        .catch(err => console.log("uh oh error", err));
+    }
   };
 }
+
+export function ModalSearchPropertyAction(
+  properties: IProperty[]
+): ISearchPropAction {
+  console.log();
+  return {
+    properties,
+    type: SERACH_PROP
+  };
+}
+
+// export function ModalSearchPropFromAPIAction(search: string, condition: string) {
+//   return (dispatch: Dispatch<ISearchPropAction>) => {
+//     axios
+//       .get(`http://localhost:8080/api/estate/infoP/${search}`)
+//       .then(res => console.log(res))
+//       //   {
+//       //   dispatch(ModalSearchPropertyAction(res.data));
+//       // })
+//       .catch(err => console.log("uh oh error", err));
+//   };
+// }

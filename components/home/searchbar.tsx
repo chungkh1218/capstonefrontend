@@ -12,7 +12,7 @@ import homeStyles from '../../src/styles/style'
 
 
 interface ISearchProp{
-    onSearchChange: (search: string) => void;
+    onSearchChange: (search: string, condition: string) => void;
 }
 
 interface ISearchState{
@@ -34,16 +34,17 @@ export default class SearchBar extends Component<ISearchProp,ISearchState>{
     }
     onSearchTextChange = (event: any) => {
         const searchValue = event.nativeEvent.text
-        this.setState({ search: searchValue });
+        this.setState({ value: searchValue });
 
         // this.props.onSearchChange(event.currentTarget.value);
     }
 
     onSearchPressed = () => {
         //const query = urlForQueryAndPage('place_name', this.state.searchString, 1);
+        console.log("button pressed")
         const search = this.state.search
         this.setState({ isLoading: true });
-        this.props.onSearchChange(this.state.search);
+        this.props.onSearchChange(this.state.value, 'estate');
        console.log(this.state.search)
     };
 
@@ -58,7 +59,7 @@ export default class SearchBar extends Component<ISearchProp,ISearchState>{
                     placeholder={this.state.search}
                     onChange={this.onSearchTextChange}
                 />
-                <Button  title='Go' onPress={this.onSearchPressed}></Button>
+                <Button  title='Go' disabled={this.state.value.trim().length === 0} onPress={this.onSearchPressed}></Button>
             {spinner}
             </View>
           

@@ -1796,12 +1796,12 @@
 			baseConfigurationReference = 0383258FF347451BB8627D6C /* Pods-PropertyValuationTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = 99R72KB3KG;
+				DEVELOPMENT_TEAM = R76VL7C8TZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					/Users/siuhang/Documents/FacebookSDK,
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1847,12 +1847,12 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				DEVELOPMENT_TEAM = 99R72KB3KG;
+				DEVELOPMENT_TEAM = R76VL7C8TZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					/Users/siuhang/Documents/FacebookSDK,
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1895,12 +1895,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 99R72KB3KG;
+				DEVELOPMENT_TEAM = R76VL7C8TZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					/Users/siuhang/Documents/FacebookSDK,
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1935,12 +1935,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 99R72KB3KG;
+				DEVELOPMENT_TEAM = R76VL7C8TZ;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					/Users/siuhang/Documents/FacebookSDK,
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
