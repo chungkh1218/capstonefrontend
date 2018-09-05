@@ -85,38 +85,50 @@ Navigation.startTabBasedApp({
       label: "Home",
       screen: "example.home",
       icon: require("./src/icons/IC-Home-24px.png"),
-      title: "Home"
+      title: "Home",
+      titleImage: require("./src/icons/IC-Home-24px.png"),
+      navigatorStyle: {
+        screenBackgroundColor: "#97A9D4"
+      }
     },
     {
       label: "Valuation",
       screen: "example.valuation",
       icon: require("./src/icons/IC-Attach-Money-24px.png"),
-      title: "Valuation"
+      title: "Valuation",
+      navigatorStyle: {
+        screenBackgroundColor: "#97A9D4"
+      }
     },
     {
       label: "WatchList",
       screen: "example.watchlist",
       icon: require("./src/icons/IC-Remove-Red-Eye-24px.png"),
-      title: "WatchList"
+      title: "WatchList",
+      navigatorStyle: {
+        screenBackgroundColor: "#97A9D4"
+      }
     },
     {
       label: "User",
       screen: "example.user",
       icon: require("./src/icons/IC-Verified-User-24px.png"),
-      title: "User"
+      title: "User",
+      navigatorStyle: {
+        screenBackgroundColor: "#97A9D4"
+      }
     }
   ],
   tabsStyle: {
-    tabBarButtonColor: "#ffff00",
-    tabBarSelectedButtonColor: "#ff9900",
-    tabBarBackgroundColor: "#551A8B",
+    tabBarButtonColor: "#7AAA57",
+    tabBarSelectedButtonColor: "#4B7A29",
+    tabBarBackgroundColor: "#B6DA9C",
     initialTabIndex: 0
   },
   appStyle: {
     orientation: "portrait",
     bottomTabBadgeTextColor: "red",
-    bottomTabBadgeBackgroundColor: "green",
-    backButtonImage: require("./src/icons/IC-Account-Circle-18px.png")
+    bottomTabBadgeBackgroundColor: "green"
   },
 
   passProps: {},

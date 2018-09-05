@@ -150,11 +150,6 @@ class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
                 <View style={styles.homeListContent}>
                   <Text style={styles.homeListHeader}>{item.catname}</Text>
                   <Text style={styles.homeListItem}>{item.catfathername}</Text>
-                  <Text style={styles.homeListItem}>
-                    {item.my_target_price}
-                  </Text>
-                  <Text style={styles.homeListItem}>{item.addr}</Text>
-                  <Text style={styles.homeListItem}>{item.area}</Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -202,12 +197,14 @@ const styles = StyleSheet.create({
   },
   homeListContent: {
     position: "absolute",
-    right: 20
+    right: 20,
+    letterSpacing: 10
   },
   homeListHeader: {
     fontSize: 20,
-    fontWeight: "bold"
-    // backgroundColor: "green"
+    fontWeight: "bold",
+    textAlign: "right",
+    letterSpacing: 1
   },
   homeListItem: {
     fontSize: 16,

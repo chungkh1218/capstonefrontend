@@ -2,19 +2,13 @@
 import * as React from "react";
 import { Component } from "react";
 import { Navigator } from "react-native-navigation";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Button,
-  TouchableOpacity,
-  Alert
-} from "react-native";
+import { Text, View, StyleSheet, Alert, Dimensions } from "react-native";
 import FbIcon from "react-native-vector-icons/FontAwesome";
 import t = require("tcomb-form-native");
 import { connect } from "react-redux";
 import { signUpUser } from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
+import { Button } from "react-native-elements";
 
 const Form = t.form.Form;
 
@@ -97,7 +91,18 @@ class SignUpPage extends Component<ISignUpPageProps> {
           Please sign-up with your email or facebook account
         </Text>
         <Form ref="form" type={User} options={options} />
-        <Button title="Sign Up!" onPress={this.handleSubmit} />
+        <Button
+          title="Sign Up!"
+          onPress={this.handleSubmit}
+          buttonStyle={{
+            borderRadius: 24,
+            backgroundColor: "#F9BA32",
+            marginHorizontal: 0,
+            width: Dimensions.get("window").width * 0.85,
+            margin: 8,
+            padding: 12
+          }}
+        />
         {/* <TouchableOpacity>
           <FbIcon name="facebook" size={30} />
         </TouchableOpacity> */}

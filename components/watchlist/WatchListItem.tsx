@@ -72,7 +72,7 @@ export default class WatchListItem extends Component<IWatchListItemProps> {
           </Text>
           <Button
             icon={{ name: "code" }}
-            backgroundColor="#03A9F4"
+            backgroundColor="#304A8B"
             buttonStyle={{
               borderRadius: 24,
               marginLeft: 0,
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "#97A9D4"
   },
   welcome: {
     fontSize: 20,
@@ -140,6 +140,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     width: Dimensions.get("window").width,
     height: 100,
-    backgroundColor: "beige"
+    backgroundColor: "#304A8B"
   }
 });

@@ -1082,11 +1082,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = R76VL7C8TZ;
+						DevelopmentTeam = 99R72KB3KG;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = R76VL7C8TZ;
+						DevelopmentTeam = 99R72KB3KG;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1923,7 +1923,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = chungkh1218.PropertyValuation;
+				PRODUCT_BUNDLE_IDENTIFIER = siuhangw.PropertyValuation;
 				PRODUCT_NAME = PropertyValuation;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1963,7 +1963,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = chungkh1218.PropertyValuation;
+				PRODUCT_BUNDLE_IDENTIFIER = siuhangw.PropertyValuation;
 				PRODUCT_NAME = PropertyValuation;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

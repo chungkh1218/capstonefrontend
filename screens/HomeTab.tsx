@@ -39,6 +39,7 @@ import SplashScreen from "react-native-splash-screen";
 interface IHomeProps extends NavigationComponentProps {
   properties: IProperty[];
   loadProperties: (search?: string) => void;
+  isAuthenticated: boolean;
 }
 
 /*  interface IHomeStates {
@@ -74,10 +75,15 @@ class Home extends Component<IHomeProps> {
     SplashScreen.hide();
   }
   componentWillMount() {
-    this.props.navigator.showModal({
-      screen: "example.landingpage" // unique ID registered with Navigation.registerScreen
-    });
-    this.props.loadProperties();
+    if (!this.props.isAuthenticated) {
+      this.props.navigator.showModal({
+        screen: "example.landingpage", // unique ID registered with Navigation.registerScreen
+        navigatorStyle: {
+          screenBackgroundColor: "#304A8B"
+        }
+      });
+    }
+    // this.props.loadProperties();
   }
 
   itemsOnPressed = (catname: string) => {
@@ -170,6 +176,11 @@ class Home extends Component<IHomeProps> {
 */
 
   render() {
+    if (this.props.isAuthenticated) {
+      this.props.navigator.dismissModal({
+        screen: "example.landingpage" // unique ID registered with Navigation.registerScreen
+      });
+    }
     return (
       <View style={styles.container}>
         <View style={styles.searchbar}>
@@ -227,7 +238,8 @@ class Home extends Component<IHomeProps> {
 }
 const mapStateToProps = (state: IRootState) => {
   return {
-    properties: state.properties.propertylist
+    properties: state.properties.propertylist,
+    isAuthenticated: state.auth.isAuthenticated
   };
 };
 

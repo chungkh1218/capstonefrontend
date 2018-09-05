@@ -23,28 +23,28 @@ const { LoginManager } = FBSDK;
 
 // Attempt a login using the Facebook login dialog,
 // asking for default permissions.
-LoginManager.logInWithReadPermissions(["public_profile"]).then(
-  function(result: any) {
-    if (result.isCancelled) {
-      alert("Login was cancelled");
-    } else {
-      alert(
-        "Login was successful with permissions: " +
-          result.grantedPermissions.toString()
-      );
-    }
-  },
-  function(error: any) {
-    alert("Login failed with error: " + error);
-  }
-);
+// LoginManager.logInWithReadPermissions(["public_profile"]).then(
+//   function(result: any) {
+//     if (result.isCancelled) {
+//       alert("Login was cancelled");
+//     } else {
+//       alert(
+//         "Login was successful with permissions: " +
+//           result.grantedPermissions.toString()
+//       );
+//     }
+//   },
+//   function(error: any) {
+//     alert("Login failed with error: " + error);
+//   }
+// );
 interface ILandingPageProps extends NavigationComponentProps {}
 
 class LandingPage extends Component<ILandingPageProps> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Welcome to Property Valuation</Text>
+        <Text style={styles.title}>Welcome to Property Prince</Text>
         <View style={styles.buttonPanel}>
           {/* Continue */}
           <Button
@@ -64,7 +64,7 @@ class LandingPage extends Component<ILandingPageProps> {
             }}
             buttonStyle={{
               borderRadius: 24,
-              backgroundColor: "#F9BA32",
+              backgroundColor: "#FFD55C",
               marginHorizontal: 0,
               width: Dimensions.get("window").width * 0.85,
               margin: 8,
@@ -106,7 +106,7 @@ class LandingPage extends Component<ILandingPageProps> {
             icon={{ name: "diff-added", type: "octicon" }}
             buttonStyle={{
               borderRadius: 24,
-              backgroundColor: "blue",
+              backgroundColor: "#FFB45C",
               marginHorizontal: 0,
               width: Dimensions.get("window").width * 0.85,
               margin: 8,
@@ -148,7 +148,7 @@ class LandingPage extends Component<ILandingPageProps> {
             icon={{ name: "diff-renamed", type: "octicon" }}
             buttonStyle={{
               borderRadius: 24,
-              backgroundColor: "green",
+              backgroundColor: "#FF8D5C",
               marginHorizontal: 0,
               width: Dimensions.get("window").width * 0.85,
               margin: 8,
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "#304A8B"
   },
   title: {
     flex: 1,

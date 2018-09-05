@@ -2,11 +2,13 @@
 import * as React from "react";
 import { Component } from "react";
 import { Navigator } from "react-native-navigation";
-import { Text, View, StyleSheet, Button, Alert } from "react-native";
+import { Text, View, StyleSheet, Alert, Dimensions } from "react-native";
 import t from "tcomb-form-native";
 import { connect } from "react-redux";
 import { loginUser, authAction } from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
+import { Button } from "react-native-elements";
+
 const Form = t.form.Form;
 
 const User = t.struct({
@@ -72,7 +74,18 @@ class LoginPage extends Component<ILoginPageProps> {
           type={User}
           options={options}
         />
-        <Button title="Login!" onPress={this.handleSubmit} />
+        <Button
+          title="Login!"
+          onPress={this.handleSubmit}
+          buttonStyle={{
+            borderRadius: 24,
+            backgroundColor: "#F9BA32",
+            marginHorizontal: 0,
+            width: Dimensions.get("window").width * 0.85,
+            margin: 8,
+            padding: 12
+          }}
+        />
       </View>
     );
   }

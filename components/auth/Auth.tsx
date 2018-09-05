@@ -17,19 +17,7 @@ export default class Auth extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Welcome to Property Valuation!</Text>
-        {/* <Text style={styles.instructions}>Please login or signup!</Text> */}
-        {/* <Button
-          title="Continue"
-          onPress={() =>
-            this.props.navigator.pop({
-              animated: true, // does the pop have transition animation or does it happen immediately (optional)
-              animationType: "fade" // 'fade' (for both) / 'slide-horizontal' (for android) does the pop have different transition animation (optional)
-            })
-          }
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        /> */}
+        <Text style={styles.title}>Welcome to Property Price!</Text>
         <View style={styles.buttonPanel}>
           <Button
             title="Login"
@@ -64,7 +52,7 @@ export default class Auth extends Component<Props> {
             icon={{ name: "diff-renamed", type: "octicon" }}
             buttonStyle={{
               borderRadius: 24,
-              backgroundColor: "green",
+              backgroundColor: "#FFB45C",
               marginHorizontal: 0,
               width: Dimensions.get("window").width * 0.85,
               margin: 8,
@@ -104,7 +92,7 @@ export default class Auth extends Component<Props> {
             icon={{ name: "diff-added", type: "octicon" }}
             buttonStyle={{
               borderRadius: 24,
-              backgroundColor: "blue",
+              backgroundColor: "#FF8D5C",
               marginHorizontal: 0,
               width: Dimensions.get("window").width * 0.85,
               margin: 8,
