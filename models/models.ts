@@ -74,7 +74,7 @@ export interface IHistory{
   re_id:number,
   addr:string,
   catfathername:string,
-  transactions:{
+  transactions:[{
      re_id:number,
      price_value:number,
      date:any,
@@ -82,6 +82,6 @@ export interface IHistory{
      img_url:null|string,
      id:number,
      ht_id:number
-  }
+  }]
 
 }

@@ -3,19 +3,22 @@ import { Component } from "react";
 import { Text,
         View} from 'react-native';
 import {IHistory} from '../../models/models'
+import homeStyles from'../../src/styles/style'
 
 export default class HistoryItem extends Component <IHistory>{
     render(){
-        return <View>
-            <Text>
-              {this.props.addr}
-              {"\n"}
-              {this.props.transactions[0].date}
-              {"\n"}
-              {this.props.transactions[0].price_value}
-              {"\n"}
-              {this.props.transactions[0].winloss}
-            </Text>
+        return <View style={homeStyles.item}>
+            <Text>{this.props.addr}</Text>
+            {this.props.transactions.map((item: any, index) => <View key={index.toString()}>
+                <Text>
+                  WINLOSS: {item.winloss}%{"\n"}
+                  Tran.price:$
+                  {item.price_value}
+                  {"\n"}
+                  Tran.date:
+                  {item.date}
+                </Text>
+              </View>)}
           </View>;
     }
 } 

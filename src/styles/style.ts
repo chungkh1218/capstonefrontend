@@ -71,7 +71,8 @@ const homeStyles = StyleSheet.create({
   propertylist:{
     backgroundColor:"white",
     borderWidth: 1,
-    borderColor: '#48BBEC',
+    borderColor: 'white',
+    fontSize:30
   }
 
 
