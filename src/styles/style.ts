@@ -8,7 +8,7 @@ const homeStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#FFFFFF",
   },
-  searchinput:{
+  searchinput: {
     height: 50,
     width: 300,
     // minWidth: 400,
@@ -19,7 +19,7 @@ const homeStyles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: '#48BBEC',
     // borderRadius: 8,
-    color: '#48BBEC',
+    color: 'white',
   },
   searchbar: {
     flexDirection: 'row',
@@ -41,8 +41,8 @@ const homeStyles = StyleSheet.create({
   item: {
     backgroundColor: "lightblue",
     borderWidth: 1,
-    borderColor:'white',
-    
+    borderColor: 'white',
+
     fontSize: 16,
     textAlign: "left",
     padding: 20,
@@ -68,11 +68,11 @@ const homeStyles = StyleSheet.create({
     borderRadius: 8,
     color: '#48BBEC',
   },
-  propertylist:{
-    backgroundColor:"white",
+  propertylist: {
+    backgroundColor: "white",
     borderWidth: 1,
     borderColor: 'white',
-    fontSize:30
+    fontSize: 30
   }
 
 

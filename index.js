@@ -22,10 +22,12 @@ import PropertyList from "./components/home/propertylist";
 import SearchBar from "./components/home/searchbar";
 import { createReduxStore } from "./redux/store";
 import HistoryList from "./components/tshistory/historylist";
+import BankValution from "./screens/BankValuation";
 
 const store = createReduxStore();
 
 Navigation.registerComponent("example.watchlistitem", () => WatchListItem);
+Navigation.registerComponent("example.bankvaluation", () => BankValution);
 Navigation.registerComponent("example.app", () => App, store, Provider);
 Navigation.registerComponent(
   "example.landingpage",

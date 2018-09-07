@@ -17,7 +17,7 @@ export default class Auth extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>Welcome to Property Price!</Text>
+        <Text style={styles.title}>Welcome to Property Prince!</Text>
         <View style={styles.buttonPanel}>
           <Button
             title="Login"

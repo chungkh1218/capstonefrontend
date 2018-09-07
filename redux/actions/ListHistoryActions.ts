@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 import { IHistory } from "../../models/models";
+import Config from 'react-native-config'
 
 export const LIST_HIST = "LIST_HIST";
 export type LIST_HIST = typeof LIST_HIST;
@@ -20,7 +21,7 @@ export function ListHistAction(histories: IHistory[]): IListHistAction {
 export function ListHistFromAPIAction(param: string) {
   return (dispatch: Dispatch<IListHistAction>) => {
     axios
-      .get(`http://localhost:8080/api/estate/estate/${param}`)
+      .get(`${Config.API_URL}/api/estate/estate/${param}`)
       .then(res => {
         dispatch(ListHistAction(res.data));
       })

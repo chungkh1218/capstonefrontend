@@ -7,7 +7,8 @@ import {
   TouchableHighlight,
   StyleSheet,
   Picker,
-  Modal
+  Modal,
+  ScrollView
 } from "react-native";
 
 import ModalDropdown from "react-native-modal-dropdown";
@@ -79,7 +80,7 @@ const hkoptions = [
   "Shau Kei Wan",
   "Heng Fa Chuen",
   "Chai Wan",
-  ",Shek O",
+  "Shek O",
   "Aberdeen",
   "Island South"
 ];
@@ -95,31 +96,45 @@ const lantauoptions = [
   "Other Islands"
 ];
 
-export default class ModalExample extends Component {
-  constructor(props) {
+const allLocations = ntoptions.concat(kloptions).concat(hkoptions).concat(lantauoptions)
+
+interface IDistrictbuttonProp {
+  onModalPressed: (value: string) => void;
+}
+
+interface IDistrictButtonState {
+  value: string;
+  modalVisible: boolean;
+}
+
+export default class ModalExample extends Component<
+  IDistrictbuttonProp,
+  IDistrictButtonState
+> {
+  constructor(props: IDistrictbuttonProp) {
     super(props);
     this.state = {
       modalVisible: false,
       value: ""
     };
-
     this.onSelectedItem = this.onSelectedItem.bind(this);
     this.setModalVisible = this.setModalVisible.bind(this);
   }
 
-  setModalVisible(visible) {
+  setModalVisible = (visible: any) => {
     this.setState({ modalVisible: visible });
-  }
+  };
 
-  onSelectedItem(index, value) {
+  onSelectedItem = (index: number, value: string) => {
+    //  const districtvalue = value;
     this.setState({ value: value });
+    this.props.onModalPressed(value);
     console.log(value);
-  }
+  };
 
-  render() {
-    return (
-      <View>
-        <TouchableHighlight>
+  public render() {
+    return <View>
+         <TouchableHighlight>
           <ModalDropdown
             style={styles.dropdown}
             options={ntoptions}
@@ -163,8 +178,7 @@ export default class ModalExample extends Component {
             onSelect={(index, value) => this.onSelectedItem(index, value)}
           />
         </TouchableHighlight>
-      </View>
-    );
+      </View>;
   }
 }
 

@@ -8,16 +8,14 @@ import { Navigator } from "react-native-navigation";
 interface IPropertyListProp {
   properties: IProperty[];
   navigator: Navigator;
-  
 }
-
 export default class PropertyList extends Component<IPropertyListProp> {
   render() {
-    console.log(this.props.properties);
+    // let items = Object.keys(this.props.properties)[0] === "0" ? this.props.properties : [this.props.properties]
     return (
       <FlatList
         data={this.props.properties}
-        renderItem={({ item ,index }) => (
+        renderItem={({ item }) => (
           <PropertyItem
             navigator={this.props.navigator}
             avWinloss={item.avWinloss}
@@ -25,7 +23,6 @@ export default class PropertyList extends Component<IPropertyListProp> {
             avPrice_sq={item.avPrice_sq}
           />
         )}
-        
       />
     );
   }
