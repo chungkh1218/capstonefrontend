@@ -1801,7 +1801,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					/Users/siuhang/Documents/FacebookSDK,
+					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1852,7 +1852,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					/Users/siuhang/Documents/FacebookSDK,
+					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1900,7 +1900,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					/Users/siuhang/Documents/FacebookSDK,
+					"\"~/Documents/FacebookSDK\"/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1940,7 +1940,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					/Users/siuhang/Documents/FacebookSDK,
+					"\"~/Documents/FacebookSDK\"/**",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
