@@ -5,9 +5,13 @@ import { Navigator } from "react-native-navigation";
 import { Text, View, StyleSheet, Alert, Dimensions } from "react-native";
 import t from "tcomb-form-native";
 import { connect } from "react-redux";
-import { loginUser, authAction } from "../../redux/actions/AuthAction";
+import { loginUser, loginFacebook } from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
 import { Button } from "react-native-elements";
+// import FBLoginButton from "./FBLoginButton";
+// const FBSDK = require("react-native-fbsdk");
+// const { LoginManager } = FBSDK;
+import { LoginManager, LoginButton, AccessToken } from "react-native-fbsdk";
 
 const Form = t.form.Form;
 
@@ -38,17 +42,33 @@ interface ILoginPageProps {
   navigator: Navigator;
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
+  fbLogin: (accessToken: string) => Promise<void>;
 }
 
 class LoginPage extends Component<ILoginPageProps> {
+  handleFBLogin = () => {
+    LoginManager.logInWithReadPermissions(["public_profile"]).then(
+      function(result: any) {
+        if (result.isCancelled) {
+          alert("Login was cancelled");
+        } else {
+          alert(
+            "Login was successful with permissions: " +
+              result.grantedPermissions.toString()
+          );
+          console.log("Result:" + result.grantedPermissions.toString());
+        }
+      },
+      function(error: any) {
+        alert("Login failed with error: " + error);
+      }
+    );
+  };
   handleSubmit = () => {
     const value = this.refs.form.getValue();
     if (value) {
       this.props.login(value.email, value.password);
     }
-    // setTimeout(() => {
-    //   console.log("Login. Your auth status is: " + this.props.isAuthenticated);
-    // }, 500);
   };
 
   changeInputValue = (value: string) => {
@@ -65,7 +85,6 @@ class LoginPage extends Component<ILoginPageProps> {
     }
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>This is a login page!</Text>
         <Text style={styles.instructions}>
           Please login with your email or facebook account
         </Text>
@@ -86,6 +105,20 @@ class LoginPage extends Component<ILoginPageProps> {
             padding: 12
           }}
         />
+        <LoginButton
+          onLoginFinished={(error, result) => {
+            if (error) {
+              console.log("login has error: " + result.error);
+            } else if (result.isCancelled) {
+              console.log("login is cancelled.");
+            } else {
+              AccessToken.getCurrentAccessToken().then(data => {
+                console.log(data.accessToken.toString());
+              });
+            }
+          }}
+          onLogoutFinished={() => console.log("logout.")}
+        />
       </View>
     );
   }
@@ -99,7 +132,9 @@ const mapStateToProps = (state: IRootState) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     login: (email: string, password: string) =>
-      dispatch(loginUser(email, password))
+      dispatch(loginUser(email, password)),
+
+    fbLogin: (accessToken: string) => dispatch(loginFacebook(accessToken))
   };
 };
 

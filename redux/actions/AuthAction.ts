@@ -122,6 +122,33 @@ export function loginUser(email: string, password: string) {
   };
 }
 
+export function loginFacebook(accessToken: string) {
+  return (dispatch: Dispatch<any>) => {
+    return axios
+      .post<{ token: string; message?: string }>(
+        `${Config.API_URL}/api/login/facebook`,
+        {
+          access_token: accessToken
+        }
+      )
+      .then(response => {
+        if (response.data == null) {
+          dispatch(loginFailure("Unknown Error"));
+        } else if (!response.data.token) {
+          // If there was a problem, we want to
+          // dispatch the error condition
+          dispatch(loginFailure(response.data.message || ""));
+        } else {
+          // If login was successful, set the token in local storage
+          localStorage.setItem("token", response.data.token);
+          // Dispatch the success action
+          dispatch(loginSuccess());
+        }
+      })
+      .catch(err => console.log("Error: ", err));
+  };
+}
+
 export function logoutUser() {
   return (dispatch: Dispatch) => {
     AsyncStorage.removeItem("token").then(() => {

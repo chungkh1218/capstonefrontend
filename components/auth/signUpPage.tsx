@@ -86,7 +86,6 @@ class SignUpPage extends Component<ISignUpPageProps> {
     }
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>This is a sign-up page!</Text>
         <Text style={styles.instructions}>
           Please sign-up with your email or facebook account
         </Text>

@@ -9,35 +9,24 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import { StyleSheet, View, Text, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  TouchableOpacity
+} from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
 import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
 import { Navigation } from "react-native-navigation";
 import { Button } from "react-native-elements";
-import FBLoginButton from "./FBLoginButton";
-const FBSDK = require("react-native-fbsdk");
-const { LoginManager } = FBSDK;
 // ...
 
 // Attempt a login using the Facebook login dialog,
 // asking for default permissions.
-// LoginManager.logInWithReadPermissions(["public_profile"]).then(
-//   function(result: any) {
-//     if (result.isCancelled) {
-//       alert("Login was cancelled");
-//     } else {
-//       alert(
-//         "Login was successful with permissions: " +
-//           result.grantedPermissions.toString()
-//       );
-//     }
-//   },
-//   function(error: any) {
-//     alert("Login failed with error: " + error);
-//   }
-// );
+
 interface ILandingPageProps extends NavigationComponentProps {}
 
 class LandingPage extends Component<ILandingPageProps> {
@@ -46,9 +35,8 @@ class LandingPage extends Component<ILandingPageProps> {
       <View style={styles.container}>
         <Text style={styles.title}>Welcome to Property Prince</Text>
         <View style={styles.buttonPanel}>
-          {/* Continue */}
           <Button
-            title="Continue"
+            title="Continue without Login"
             onPress={() =>
               Navigation.dismissModal({
                 screen: "example.landingpage",
@@ -74,7 +62,7 @@ class LandingPage extends Component<ILandingPageProps> {
 
           {/* Sign Up */}
           <Button
-            title="Sign Up"
+            title="Register a new Account"
             onPress={() =>
               this.props.navigator.push({
                 screen: "example.signUpPage", // unique ID registered with Navigation.registerScreen
@@ -155,7 +143,6 @@ class LandingPage extends Component<ILandingPageProps> {
               padding: 12
             }}
           />
-          {/* <FBLoginButton /> */}
         </View>
       </View>
     );
@@ -179,7 +166,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#304A8B"
+    backgroundColor: "#97A9D4"
   },
   title: {
     flex: 1,
@@ -187,17 +174,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     padding: 80,
     margin: 10
-    // backgroundColor: "yellow"
   },
-  // instructions: {
-  //   textAlign: "center",
-  //   color: "#333333",
-  //   marginBottom: 5
-  // },
   buttonPanel: {
     flex: 1,
     justifyContent: "center",
     marginBottom: 20
-    // backgroundColor: "red"
   }
 });
