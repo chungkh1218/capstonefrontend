@@ -7,23 +7,26 @@ import {
 } from "redux";
 import { authReducer as AuthReducer, AuthState } from "./reducers/AuthReducer";
 import { IPropListState, SearchReducer } from "./reducers/SearchReducer";
-
-import thunk from 'redux-thunk'
-import { IHistory } from "../models/models";
 import { ListHistReducer, IListHistState } from "./reducers/ListHistReducer";
+import { WatchListState, WatchListReducer } from "./reducers/WatchListReducer";
+
+import thunk from "redux-thunk";
+import { IHistory } from "../models/models";
 
 export interface IRootState {
   auth: AuthState;
-  properties: IPropListState,
-  histories:IListHistState
+  properties: IPropListState;
+  histories: IListHistState;
+  watchList: WatchListState;
 }
 
 const rootReducer = combineReducers({
   auth: AuthReducer,
   properties: SearchReducer,
-  histories: ListHistReducer
-
+  histories: ListHistReducer,
+  watchList: WatchListReducer
 });
+
 declare global {
   interface Window {
     __REDUX_DEVTOOLS_EXTENSION_COMPOSE__: any;

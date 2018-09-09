@@ -9,16 +9,7 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import {
-  Text,
-  View,
-  Button,
-  Alert,
-  StyleSheet,
-  Dimensions,
-  FlatList,
-  ScrollView
-} from "react-native";
+import { View, Button, Alert, StyleSheet, ScrollView } from "react-native";
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
 import HistoryList from "../tshistory/historylist";
@@ -27,14 +18,14 @@ import Auth from "../auth/Auth";
 import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
 import { ListHistFromAPIAction } from "../../redux/actions/ListHistoryActions";
-import HistoryItem from "../tshistory/historyitem";
-// import homeStyles from "../../src/styles/style";
+import { AddWatchItems } from "../../redux/actions/WatchListAction";
 Navigation.registerComponent("example.auth", () => Auth);
 
 interface IHistProps extends NavigationComponentProps {
   histories: IHistory[];
   catname: string;
   loadHistories: (param: string) => void;
+  addWatchItems: () => void;
 }
 
 class propertyitemdetails extends Component<IHistProps> {
@@ -76,6 +67,7 @@ class propertyitemdetails extends Component<IHistProps> {
 
   addUserFavourite = () => {
     console.log("Add User Favourite" + this.props.catname);
+    this.props.addWatchItems();
     Alert.alert(`${this.props.catname} is added as your favourite`);
   };
 
@@ -83,18 +75,6 @@ class propertyitemdetails extends Component<IHistProps> {
     return (
       <View style={styles.container}>
         <ScrollView>
-          {/* <FlatList
-            data={this.props.histories}
-            renderItem={({ item }) => (
-              <HistoryItem
-                re_id={item.re_id}
-                addr={item.addr}
-                catfathername={item.catfathername}
-                transactions={item.transactions}
-              />
-            )}
-            keyExtractor={item => item.re_id.toString()}
-          /> */}
           <HistoryList histories={this.props.histories} />
         </ScrollView>
         <View style={styles.buttonGroup}>
@@ -108,7 +88,8 @@ class propertyitemdetails extends Component<IHistProps> {
 
 const mapStateToProps = (state: IRootState) => {
   return {
-    histories: state.histories.historylist
+    histories: state.histories.historylist,
+    watchList: state.watchList.watchList
   };
 };
 
@@ -116,6 +97,9 @@ const mapDispatchToProps = (dispatch: any) => {
   return {
     loadHistories: (param: string) => {
       dispatch(ListHistFromAPIAction(param));
+    },
+    addWatchItems: () => {
+      dispatch(AddWatchItems());
     }
   };
 };
@@ -146,6 +130,5 @@ const styles = StyleSheet.create({
     position: "relative",
     flexDirection: "row",
     padding: 10
-    // backgroundColor: "red"
   }
 });

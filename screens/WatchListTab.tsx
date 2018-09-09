@@ -20,9 +20,11 @@ import {
 } from "react-native";
 import { connect } from "react-redux";
 import { IRootState } from "../redux/store";
+import { ListWatchItems } from "../redux/actions/WatchListAction";
 
 interface IWatchListProps {
   isAuthenticated: boolean;
+  ListItems: () => void;
 }
 
 interface IWatchListStates {
@@ -36,6 +38,10 @@ interface IWatchListStates {
     imageUrl: string;
   }>;
 }
+const photoreference =
+  "CmRaAAAAuZ36wzrMYCVNWM1smQkRKuQyXecPgRpcsMfrSqbJM0EUTXZ62j8Ljxtk8HsxohXbtAwZAwmj_F3HmDwLoQaH9qt2TZJhhA6EuXK41UFo0Ow750MJujtrr5hgHR2lF7EXEhCkWj_dZ4LefrYzLU1_5RF1GhTR7Ggem5IJ-v7V2U8fjKoU9tBUOg";
+const key = "AIzaSyAWhKz6APT6ExkjDLpvmvKfBNpSlx983yk";
+const imageLink = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoreference}&key=${key}`;
 
 class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
   constructor(props: IWatchListProps) {
@@ -70,12 +76,21 @@ class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
           my_target_price: "$4,300,000",
           addr: "BLOCK 6 3#/F Room F",
           area: "690ft",
-          imageUrl:
-            "https://www.squarefoot.com.hk/images/propertyblog/uploads/2767/Metro%20Harbour%20View.jpg"
+          imageUrl: imageLink
         }
       ]
     };
   }
+
+  componentWillMount() {
+    this.updateFavourite();
+  }
+
+  updateFavourite = () => {
+    console.log("Update favourite");
+    // Update State of WatchList
+    this.props.ListItems();
+  };
 
   public render() {
     if (!this.props.isAuthenticated) {
@@ -149,7 +164,9 @@ class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
                   />
                   <View style={styles.homeListContent}>
                     <Text style={styles.homeListHeader}>{item.catname}</Text>
-                    <Text style={styles.homeListItem}>{item.catfathername}</Text>
+                    <Text style={styles.homeListItem}>
+                      {item.catfathername}
+                    </Text>
                   </View>
                 </View>
               </TouchableOpacity>
@@ -164,12 +181,24 @@ class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
 
 const mapStateToProps = (state: IRootState) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    watchList: state.watchList.watchList
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    ListItems: () => {
+      dispatch(ListWatchItems());
+    }
   };
 };
 
 // Connect to store
-export default connect(mapStateToProps)(WatchList);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WatchList);
 
 const styles = StyleSheet.create({
   container: {

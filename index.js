@@ -26,7 +26,12 @@ import BankValution from "./screens/BankValuation";
 
 const store = createReduxStore();
 
-Navigation.registerComponent("example.watchlistitem", () => WatchListItem);
+Navigation.registerComponent(
+  "example.watchlistitem",
+  () => WatchListItem,
+  store,
+  Provider
+);
 Navigation.registerComponent("example.bankvaluation", () => BankValution);
 Navigation.registerComponent("example.app", () => App, store, Provider);
 Navigation.registerComponent(

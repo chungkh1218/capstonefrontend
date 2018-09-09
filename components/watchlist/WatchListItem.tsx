@@ -9,21 +9,12 @@
 import * as React from "react";
 import { Component } from "react";
 // import React, { Component } from "react";
-import { Platform, StyleSheet, View, Dimensions, Image } from "react-native";
+import { StyleSheet, View, Dimensions, Alert } from "react-native";
 import { Card, Button, Text } from "react-native-elements";
+import { RemoveWatchItems } from "../../redux/actions/WatchListAction";
+import { IRootState } from "../../redux/store";
+import { connect } from "react-redux";
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
-const users = [
-  {
-    name: "brynn",
-    avatar: "https://s3.amazonaws.com/uifaces/faces/twitter/brynn/128.jpg"
-  }
-];
 interface IWatchListItemProps {
   re_id: number;
   catfathername: string;
@@ -32,11 +23,24 @@ interface IWatchListItemProps {
   addr: string;
   area: string;
   imageUrl: string;
+
+  RemoveItems: () => void;
 }
-export default class WatchListItem extends Component<IWatchListItemProps> {
+class WatchListItem extends Component<IWatchListItemProps> {
   constructor(props: IWatchListItemProps) {
     super(props);
   }
+
+  removeFavourite = () => {
+    console.log("Remove favourite");
+    // Update State of WatchList
+
+    this.props.navigator.dismissModal({
+      animationType: "slide-down"
+    });
+    Alert.alert("Remove favourite");
+  };
+
   render() {
     return (
       <View style={styles.container}>
@@ -51,14 +55,7 @@ export default class WatchListItem extends Component<IWatchListItemProps> {
               marginBottom: 180
             }}
           >
-            {/* The idea with React Native Elements is more about component */}
-            {/* structure than actual design. */}
-
-            <Text h3 style={{ fontWeight: "bold" }}>
-              {this.props.my_target_price}
-              {"\n"}
-            </Text>
-            <Text h4>
+            <Text h4 style={{ fontWeight: "bold" }}>
               {this.props.catname}
               {"\n"}
             </Text>
@@ -70,6 +67,18 @@ export default class WatchListItem extends Component<IWatchListItemProps> {
               {this.props.area}
             </Text>
           </Text>
+          <Button
+            icon={{ name: "code" }}
+            backgroundColor="red"
+            buttonStyle={{
+              borderRadius: 24,
+              marginLeft: 0,
+              marginRight: 0,
+              marginBottom: 0
+            }}
+            title="Remove Favourite"
+            onPress={this.removeFavourite}
+          />
           <Button
             icon={{ name: "code" }}
             backgroundColor="#304A8B"
@@ -87,27 +96,30 @@ export default class WatchListItem extends Component<IWatchListItemProps> {
             }
           />
         </Card>
-        {/* <View style={styles.imagePanel}>
-          <Image
-            source={{
-              uri:
-                "https://images.okay.com/Building/Folder150/1208_634105534157968750.JPG"
-            }}
-            style={{ width: 256, height: 256 }}
-          />
-        </View>
-        <View style={styles.userPanel}>
-          <Text style={styles.instructions}>{this.props.re_id}</Text>
-          <Text style={styles.instructions}>{this.props.catname}</Text>
-          <Text style={styles.instructions}>{this.props.catfathername}</Text>
-          <Text style={styles.instructions}>{this.props.area}</Text>
-          <Text style={styles.instructions}>{this.props.addr}</Text>
-          <Text style={styles.instructions}>{this.props.my_target_price}</Text>
-        </View> */}
       </View>
     );
   }
 }
+
+const mapStateToProps = (state: IRootState) => {
+  return {
+    watchList: state.watchList.watchList
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    ListItems: () => {
+      dispatch(RemoveWatchItems());
+    }
+  };
+};
+
+// Connect to store
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WatchListItem);
 
 const styles = StyleSheet.create({
   container: {
