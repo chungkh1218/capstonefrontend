@@ -23,6 +23,7 @@ export default class PropertyList extends Component<IPropertyListProp> {
             avPrice_sq={item.avPrice_sq}
           />
         )}
+        keyExtractor={item => item.catname}
       />
     );
   }

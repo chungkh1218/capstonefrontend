@@ -10,21 +10,20 @@ interface IHistoryListProp {
 }
 
 export default class HistoryList extends Component<IHistoryListProp> {
-private keyExtractor=(item:any,index:number) => item.id
+  // private keyExtractor = (item: any, index: number) => item.id;
   render() {
     return (
       <FlatList
         data={this.props.histories}
-        renderItem={({ item,index }) => (
+        renderItem={({ item }) => (
           <HistoryItem
             re_id={item.re_id}
             addr={item.addr}
             catfathername={item.catfathername}
             transactions={item.transactions}
-            keyExtractor={this.keyExtractor}
           />
         )}
-        
+        keyExtractor={item => item.re_id.toString()}
       />
     );
   }
