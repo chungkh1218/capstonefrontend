@@ -10,7 +10,7 @@ import { Navigation } from "react-native-navigation";
 import App from "./App";
 import LandingPage from "./components/auth/LandingPage";
 import Home from "./screens/HomeTab";
-import Valuation from "./screens/ValuationTab";
+import Valuation from "./components/home/propertyitemdetails";
 import User from "./screens/UserTab";
 import Auth from "./components/auth/Auth";
 import LoginPage from "./components/auth/LoginPage";
@@ -43,7 +43,7 @@ Navigation.registerComponent(
   Provider
 );
 Navigation.registerComponent(
-  "example.valuation",
+  "example.propertyitemdetails",
   () => Valuation,
   store,
   Provider
@@ -93,15 +93,15 @@ Navigation.startTabBasedApp({
         screenBackgroundColor: "#97A9D4"
       }
     },
-    {
-      label: "Valuation",
-      screen: "example.valuation",
-      icon: require("./src/icons/IC-Attach-Money-24px.png"),
-      title: "Valuation",
-      navigatorStyle: {
-        screenBackgroundColor: "#97A9D4"
-      }
-    },
+    // {
+    //   label: "Valuation",
+    //   screen: "example.valuation",
+    //   icon: require("./src/icons/IC-Attach-Money-24px.png"),
+    //   title: "Valuation",
+    //   navigatorStyle: {
+    //     screenBackgroundColor: "#97A9D4"
+    //   }
+    // },
     {
       label: "WatchList",
       screen: "example.watchlist",

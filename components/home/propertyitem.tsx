@@ -8,8 +8,6 @@ import {
   Dimensions
 } from "react-native";
 import { IProperty } from "../../models/models";
-// import homeStyles from "../../src/styles/style";
-import Valuation from "../../screens/ValuationTab";
 import { Navigator } from "react-native-navigation";
 
 interface IPropertyProps extends IProperty {
@@ -23,11 +21,11 @@ export default class PropertyItem extends React.Component<IPropertyProps> {
   private itemsOnPressed = () => {
     console.log(this.props);
     this.props.navigator.push({
-      screen: "example.valuation", // unique ID registered with Navigation.registerScreen
-      title: undefined, // navigation bar title of the pushed screen (optional)
+      screen: "example.propertyitemdetails", // unique ID registered with Navigation.registerScreen
+      title: this.props.catname, // navigation bar title of the pushed screen (optional)
       passProps: { catname: this.props.catname }, // Object that will be passed as props to the pushed screen (optional)
       animated: true, // does the push have transition animation or does it happen immediately (optional)
-      animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
+      animationType: "slide-horizontal", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
       backButtonTitle: undefined, // override the back button title (optional)
       backButtonHidden: false, // hide the back button altogether (optional)
       navigatorStyle: {}, // override the navigator style for the pushed screen (optional)

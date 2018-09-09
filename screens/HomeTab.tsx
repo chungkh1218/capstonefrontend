@@ -28,7 +28,7 @@ interface IHomeProps extends NavigationComponentProps {
   properties: IProperty[];
   // loadProperties: (search?: string) => void;
   isAuthenticated: boolean;
-  catname: string;
+  // catname: string;
   loadProperties: (search?: string, condition?: string) => void;
   // onButtonLoadProperties:(value?:string)=>void
 }
@@ -40,8 +40,6 @@ interface IHomeProps extends NavigationComponentProps {
   page: number;
   seed: number;
   data: Array<IUser>;
-  
-
 }
 */
 // type Props = {};
@@ -78,32 +76,32 @@ class Home extends Component<IHomeProps> {
     // this.props.onButtonLoadProperties();
   }
 
-  itemsOnPressed = (catname: string) => {
-    this.props.navigator.push({
-      screen: "example.valuation", // unique ID registered with Navigation.registerScreen
-      title: undefined, // navigation bar title of the pushed screen (optional)
-      passProps: { catname: catname }, // Object that will be passed as props to the pushed screen (optional)
-      animated: true, // does the push have transition animation or does it happen immediately (optional)
-      animationType: "slide-horizontal", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
-      backButtonTitle: undefined, // override the back button title (optional)
-      backButtonHidden: false, // hide the back button altogether (optional)
-      navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
-      navigatorButtons: {}, // override the nav buttons for the pushed screen (optional)
-      // enable peek and pop - commited screen will have `isPreview` prop set as true.
-      previewView: undefined, // react ref or node id (optional)
-      previewHeight: undefined, // set preview height, defaults to full height (optional)
-      previewCommit: true, // commit to push preview controller to the navigation stack (optional)
-      previewActions: [
-        {
-          // action presses can be detected with the `PreviewActionPress` event on the commited screen.
-          id: "", // action id (required)
-          title: "", // action title (required)
-          style: undefined, // 'selected' or 'destructive' (optional)
-          actions: [] // list of sub-actions
-        }
-      ]
-    });
-  };
+  // itemsOnPressed = (catname: string) => {
+  //   this.props.navigator.push({
+  //     screen: "example.valuation", // unique ID registered with Navigation.registerScreen
+  //     title: undefined, // navigation bar title of the pushed screen (optional)
+  //     passProps: { catname: catname }, // Object that will be passed as props to the pushed screen (optional)
+  //     animated: true, // does the push have transition animation or does it happen immediately (optional)
+  //     animationType: "slide-horizontal", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
+  //     backButtonTitle: undefined, // override the back button title (optional)
+  //     backButtonHidden: false, // hide the back button altogether (optional)
+  //     navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
+  //     navigatorButtons: {}, // override the nav buttons for the pushed screen (optional)
+  //     // enable peek and pop - commited screen will have `isPreview` prop set as true.
+  //     previewView: undefined, // react ref or node id (optional)
+  //     previewHeight: undefined, // set preview height, defaults to full height (optional)
+  //     previewCommit: true, // commit to push preview controller to the navigation stack (optional)
+  //     previewActions: [
+  //       {
+  //         // action presses can be detected with the `PreviewActionPress` event on the commited screen.
+  //         id: "", // action id (required)
+  //         title: "", // action title (required)
+  //         style: undefined, // 'selected' or 'destructive' (optional)
+  //         actions: [] // list of sub-actions
+  //       }
+  //     ]
+  //   });
+  // };
   /*
   makeRemoteRequest = () => {
     const { page, seed } = this.state;
