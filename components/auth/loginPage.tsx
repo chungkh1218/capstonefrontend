@@ -8,10 +8,13 @@ import { connect } from "react-redux";
 import { loginUser, loginFacebook } from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
 import { Button } from "react-native-elements";
-// import FBLoginButton from "./FBLoginButton";
-// const FBSDK = require("react-native-fbsdk");
-// const { LoginManager } = FBSDK;
-import { LoginManager, LoginButton, AccessToken } from "react-native-fbsdk";
+import {
+  LoginManager,
+  LoginButton,
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager
+} from "react-native-fbsdk";
 
 const Form = t.form.Form;
 
@@ -47,15 +50,20 @@ interface ILoginPageProps {
 
 class LoginPage extends Component<ILoginPageProps> {
   handleFBLogin = () => {
+    console.log("Facebbok Login handling...");
     LoginManager.logInWithReadPermissions(["public_profile"]).then(
-      function(result: any) {
+      (result: any) => {
         if (result.isCancelled) {
           alert("Login was cancelled");
         } else {
-          alert(
-            "Login was successful with permissions: " +
-              result.grantedPermissions.toString()
-          );
+          AccessToken.getCurrentAccessToken().then(data => {
+            // console.log(data.accessToken.toString());
+            this.props.fbLogin(data.accessToken);
+          });
+          // alert(
+          //   "Login was successful with permissions: " +
+          //     result.grantedPermissions.toString()
+          // );
           console.log("Result:" + result.grantedPermissions.toString());
         }
       },
@@ -64,7 +72,8 @@ class LoginPage extends Component<ILoginPageProps> {
       }
     );
   };
-  handleSubmit = () => {
+
+  handleLogin = () => {
     const value = this.refs.form.getValue();
     if (value) {
       this.props.login(value.email, value.password);
@@ -95,7 +104,7 @@ class LoginPage extends Component<ILoginPageProps> {
         />
         <Button
           title="Login!"
-          onPress={this.handleSubmit}
+          onPress={this.handleLogin}
           buttonStyle={{
             borderRadius: 24,
             backgroundColor: "#F9BA32",
@@ -105,19 +114,17 @@ class LoginPage extends Component<ILoginPageProps> {
             padding: 12
           }}
         />
-        <LoginButton
-          onLoginFinished={(error, result) => {
-            if (error) {
-              console.log("login has error: " + result.error);
-            } else if (result.isCancelled) {
-              console.log("login is cancelled.");
-            } else {
-              AccessToken.getCurrentAccessToken().then(data => {
-                console.log(data.accessToken.toString());
-              });
-            }
+        <Button
+          title="Login with Facebook!"
+          onPress={this.handleFBLogin}
+          buttonStyle={{
+            borderRadius: 24,
+            backgroundColor: "#3B5998",
+            marginHorizontal: 0,
+            width: Dimensions.get("window").width * 0.85,
+            margin: 8,
+            padding: 12
           }}
-          onLogoutFinished={() => console.log("logout.")}
         />
       </View>
     );

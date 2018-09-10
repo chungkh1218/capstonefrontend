@@ -123,14 +123,13 @@ export function loginUser(email: string, password: string) {
 }
 
 export function loginFacebook(accessToken: string) {
+  console.log("Redux action get access token: " + accessToken);
   return (dispatch: Dispatch<any>) => {
+    // dispatch(loginSuccess());
     return axios
-      .post<{ token: string; message?: string }>(
-        `${Config.API_URL}/api/login/facebook`,
-        {
-          access_token: accessToken
-        }
-      )
+      .post<{ accessToken: string }>(`${Config.API_URL}/api/login/facebook`, {
+        access_token: accessToken
+      })
       .then(response => {
         if (response.data == null) {
           dispatch(loginFailure("Unknown Error"));
@@ -140,7 +139,7 @@ export function loginFacebook(accessToken: string) {
           dispatch(loginFailure(response.data.message || ""));
         } else {
           // If login was successful, set the token in local storage
-          localStorage.setItem("token", response.data.token);
+          AsyncStorage.setItem("token", response.data.token);
           // Dispatch the success action
           dispatch(loginSuccess());
         }
