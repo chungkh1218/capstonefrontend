@@ -1801,7 +1801,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
+					"\"~/Documents/FacebookSDK\"",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1852,7 +1852,7 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS\"",
 					"\"${PODS_ROOT}/AppCenterReactNativeShared/AppCenterReactNativeShared\"",
-					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
+					"\"~/Documents/FacebookSDK\"",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

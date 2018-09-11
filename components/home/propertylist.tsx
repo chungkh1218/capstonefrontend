@@ -9,6 +9,7 @@ import Config from "react-native-config";
 interface IPropertyListProp {
   properties: IProperty[];
   navigator: Navigator;
+  
 }
 
 export default class PropertyList extends Component<IPropertyListProp> {
@@ -34,7 +35,15 @@ export default class PropertyList extends Component<IPropertyListProp> {
     return value;
   };
   render() {
-    // let items = Object.keys(this.props.properties)[0] === "0" ? this.props.properties : [this.props.properties]
+   
+    // // let items = Object.keys(this.props.properties)[0] === "0" ? this.props.properties : [this.props.properties]
+     
+    let ltem= this.props.properties.sort(function(a,b) {
+      return parseInt(b.avWinloss,10) > parseInt(a.avWinloss) ? 1
+      :parseInt(b.avWinloss,10) < parseInt(a.avWinloss,10) ? -1
+      : 0;
+    })
+
     return (
       <FlatList
         data={this.props.properties}
