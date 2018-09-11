@@ -9,7 +9,7 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import { View, ScrollView, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet, Picker } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
 import ModalExample from "../components/home/districtbotton";
@@ -32,6 +32,9 @@ interface IHomeProps extends NavigationComponentProps {
   loadProperties: (search?: string, condition?: string) => void;
   // onButtonLoadProperties:(value?:string)=>void
 }
+interface IHomeStates {
+  language: string;
+}
 
 /*  interface IHomeStates {
   loading: boolean;
@@ -43,9 +46,12 @@ interface IHomeProps extends NavigationComponentProps {
 }
 */
 // type Props = {};
-class Home extends Component<IHomeProps> {
+class Home extends Component<IHomeProps, IHomeStates> {
   constructor(props: IHomeProps) {
     super(props);
+    this.state = {
+      language: "Java"
+    };
   }
   /*
     this.state = {
@@ -187,6 +193,16 @@ class Home extends Component<IHomeProps> {
             properties={this.props.properties}
           />
         </ScrollView>
+
+        {/* <Picker
+          style={{ width: 100 }}
+          selectedValue={this.state.language}
+          onValueChange={lang => this.setState({ language: lang })}
+        >
+          <Picker.Item label="Java" value="java" />
+          <Picker.Item label="JavaScript" value="js" />
+        </Picker> */}
+
         {/*     <View style={styles.homePanel} />
          
         <FlatList

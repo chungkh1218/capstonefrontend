@@ -24,7 +24,7 @@ interface IWatchListItemProps {
   area: string;
   imageUrl: string;
 
-  RemoveItems: () => void;
+  RemoveItems: (item: any) => void;
 }
 class WatchListItem extends Component<IWatchListItemProps> {
   constructor(props: IWatchListItemProps) {
@@ -109,8 +109,8 @@ const mapStateToProps = (state: IRootState) => {
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    ListItems: () => {
-      dispatch(RemoveWatchItems());
+    RemoveItems: (item: any) => {
+      dispatch(RemoveWatchItems(item));
     }
   };
 };

@@ -15,6 +15,7 @@ import {
   GraphRequest,
   GraphRequestManager
 } from "react-native-fbsdk";
+import { IAuthUser } from "../../models/models";
 
 const Form = t.form.Form;
 
@@ -43,7 +44,7 @@ const options = {
 
 interface ILoginPageProps {
   navigator: Navigator;
-  isAuthenticated: boolean;
+  user: IAuthUser;
   login: (email: string, password: string) => Promise<void>;
   fbLogin: (accessToken: string) => Promise<void>;
 }
@@ -85,7 +86,7 @@ class LoginPage extends Component<ILoginPageProps> {
   };
 
   render() {
-    if (this.props.isAuthenticated) {
+    if (this.props.user.isAuthenticated) {
       this.props.navigator.popToRoot({
         animated: true,
         animationType: "fade"
@@ -132,7 +133,7 @@ class LoginPage extends Component<ILoginPageProps> {
 }
 const mapStateToProps = (state: IRootState) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    user: state.auth.user
   };
 };
 

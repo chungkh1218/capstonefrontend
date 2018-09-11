@@ -52,36 +52,31 @@ export interface IUser {
 }
 
 export interface IAuthUser {
-  login: {
-    username: string;
-    email: string;
-    password: string;
-    isLoggedIn: boolean;
-    isLoggingIn: boolean;
-  };
+  username: string;
+  email: string;
+  user_id: number | null;
+  isAuthenticated: boolean;
 }
 
-
-export interface IProperty{
-  avWinloss:number,
-  avPrice_sq: number,
-  catname:string,
-
-
+export interface IProperty {
+  avWinloss: number;
+  avPrice_sq: number;
+  catname: string;
 }
 
-export interface IHistory{
-  re_id:number,
-  addr:string,
-  catfathername:string,
-  transactions:[{
-     re_id:number,
-     price_value:number,
-     date:any,
-     winloss:number,
-     img_url:null|string,
-     id:number,
-     ht_id:number
-  }]
-
+export interface IHistory {
+  re_id: number;
+  addr: string;
+  catfathername: string;
+  transactions: [
+    {
+      re_id: number;
+      price_value: number;
+      date: any;
+      winloss: number;
+      img_url: null | string;
+      id: number;
+      ht_id: number;
+    }
+  ];
 }
