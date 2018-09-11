@@ -5,7 +5,7 @@ import {
   compose,
   applyMiddleware
 } from "redux";
-import { authReducer as AuthReducer, AuthState } from "./reducers/AuthReducer";
+import { authReducer as AuthReducer, IAuthState } from "./reducers/AuthReducer";
 import { IPropListState, SearchReducer } from "./reducers/SearchReducer";
 import { ListHistReducer, IListHistState } from "./reducers/ListHistReducer";
 import { WatchListState, WatchListReducer } from "./reducers/WatchListReducer";
@@ -14,7 +14,7 @@ import thunk from "redux-thunk";
 import { IHistory } from "../models/models";
 
 export interface IRootState {
-  auth: AuthState;
+  auth: IAuthState;
   properties: IPropListState;
   histories: IListHistState;
   watchList: WatchListState;

@@ -46,23 +46,38 @@ function RemoveWatchListItems(): RemoveWatchItemAction {
   };
 }
 
-export function AddWatchItems() {
-  // Do an Axios call
+export function AddWatchItems(userId: number, reId: number) {
   return (dispatch: Dispatch<any>) => {
-    dispatch(AddWatchListItems());
+    console.log("AddWatchItems");
+    return axios
+      .post(`${Config.API_URL}/addflat/${userId}/${reId}`)
+      .then(res => {
+        dispatch(AddWatchListItems());
+      })
+      .catch(err => console.log("Error: ", err));
   };
 }
 
-export function ListWatchItems() {
-  // Do an Axios call
+export function ListWatchItems(userId: number) {
   return (dispatch: Dispatch<any>) => {
-    dispatch(ListWatchListItems());
+    console.log("ListWatchItems");
+    return axios
+      .get(`${Config.API_URL}/listfavflat/${userId}`)
+      .then(res => {
+        dispatch(ListWatchListItems());
+      })
+      .catch(err => console.log("Error: ", err));
   };
 }
 
-export function RemoveWatchItems() {
-  // Do an Axios call
+export function RemoveWatchItems(userId: number, reId: number) {
   return (dispatch: Dispatch<any>) => {
-    dispatch(RemoveWatchListItems());
+    console.log("RemoveWatchItems");
+    return axios
+      .delete(`${Config.API_URL}/deleflat/${userId}/${reId}`)
+      .then(res => {
+        dispatch(RemoveWatchListItems());
+      })
+      .catch(err => console.log("Error: ", err));
   };
 }

@@ -33,12 +33,18 @@ interface IHomeProps extends NavigationComponentProps {
 
   // onButtonLoadProperties:(value?:string)=>void
 }
+interface IHomeStates {
+  language: string;
+}
 
 
 
 class Home extends Component<IHomeProps> {
   constructor(props: IHomeProps) {
     super(props);
+    this.state = {
+      language: "Java"
+    };
   }
 
   componentDidMount() {

@@ -25,7 +25,7 @@ interface IHistProps extends NavigationComponentProps {
   histories: IHistory[];
   catname: string;
   loadHistories: (param: string) => void;
-  addWatchItems: () => void;
+  addItems: (userId: number, reId: number) => void;
 }
 
 class propertyitemdetails extends Component<IHistProps> {
@@ -67,7 +67,7 @@ class propertyitemdetails extends Component<IHistProps> {
 
   addUserFavourite = () => {
     console.log("Add User Favourite" + this.props.catname);
-    this.props.addWatchItems();
+    this.props.addItems(userId, reId);
     Alert.alert(`${this.props.catname} is added as your favourite`);
   };
 
@@ -98,8 +98,8 @@ const mapDispatchToProps = (dispatch: any) => {
     loadHistories: (param: string) => {
       dispatch(ListHistFromAPIAction(param));
     },
-    addWatchItems: () => {
-      dispatch(AddWatchItems());
+    addItems: (userId: number, reId: number) => {
+      dispatch(AddWatchItems(userId, reId));
     }
   };
 };

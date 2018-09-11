@@ -5,7 +5,8 @@ import {
   View,
   StyleSheet,
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Image
 } from "react-native";
 import { IProperty } from "../../models/models";
 import { Navigator } from "react-native-navigation";
@@ -15,6 +16,7 @@ interface IPropertyProps extends IProperty {
   avWinloss: number;
   catname: string;
   avPrice_sq: number;
+  imageUrl: string;
 }
 
 export default class PropertyItem extends React.Component<IPropertyProps> {
@@ -51,23 +53,38 @@ export default class PropertyItem extends React.Component<IPropertyProps> {
     return (
       <TouchableOpacity onPress={this.itemsOnPressed.bind(this)}>
         <View style={styles.homeList}>
-          {/* <Image
-                    style={{ width: 100, height: 100 }}
-                    // source={{
-                    //     uri: item.picture.thumbnail
-                    // }} */}
-
-          <Text style={styles.homeListHeader}>
-            {this.props.catname}
-            {"\n"}
-          </Text>
-          <Text style={styles.homeListItem}>
-            Average Price /sq.feet: ${this.props.avPrice_sq}
-            {"\n"}
-          </Text>
-          <Text style={styles.homeListWinLoss}>
-            WinLoss: {this.props.avWinloss}%{/* address: {this.props.addr} */}
-          </Text>
+          <View style={styles.homeListThumbnail}>
+            <Image
+              style={{
+                flex: 1,
+                alignSelf: "stretch",
+                width: undefined,
+                height: undefined
+              }}
+              source={{
+                uri:
+                  "https://www.28hse.com/en/utf8/developer/d298/selfcapture/7zRjsPPexx_large.jpg"
+              }}
+            />
+          </View>
+          <View style={styles.homeListContent}>
+            {/* <Text>{this.props.imageUrl}</Text> */}
+            <Text style={{ fontWeight: "bold" }}>{this.props.catname}</Text>
+            <Text>
+              ${this.props.avPrice_sq}
+              /sq.ft
+            </Text>
+            <Text>{this.props.imageUrl}</Text>
+            <Text
+              style={{
+                fontSize: 36,
+                fontWeight: "bold",
+                alignSelf: "flex-end"
+              }}
+            >
+              {this.props.avWinloss}%{/* address: {this.props.addr} */}
+            </Text>
+          </View>
         </View>
       </TouchableOpacity>
     );
@@ -77,25 +94,24 @@ export default class PropertyItem extends React.Component<IPropertyProps> {
 const styles = StyleSheet.create({
   homeList: {
     flex: 1,
+    flexDirection: "row",
     width: Dimensions.get("window").width,
     height: 120,
     backgroundColor: "#C8D1E7",
-    padding: 20,
+    // padding: 4,
     marginBottom: 4
   },
-  homeListWinLoss: {
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "right"
+  homeListThumbnail: {
+    flex: 1
+    // backgroundColor: "blue"
   },
-  homeListHeader: {
+  homeListContent: {
+    flex: 2,
+    justifyContent: "space-around",
     fontSize: 16,
-    textAlign: "left",
-    color: "black"
-  },
-  homeListItem: {
-    fontSize: 16,
-    textAlign: "left",
-    color: "dimgray"
+    textAlign: "right",
+    color: "dimgray",
+    padding: 10
+    // backgroundColor: "red"
   }
 });

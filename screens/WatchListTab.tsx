@@ -21,10 +21,12 @@ import {
 import { connect } from "react-redux";
 import { IRootState } from "../redux/store";
 import { ListWatchItems } from "../redux/actions/WatchListAction";
+import { IAuthUser } from "../models/models";
 
 interface IWatchListProps {
-  isAuthenticated: boolean;
-  ListItems: () => void;
+  // isAuthenticated: boolean;
+  user: IAuthUser;
+  // ListItems: () => void;
 }
 
 interface IWatchListStates {
@@ -38,11 +40,6 @@ interface IWatchListStates {
     imageUrl: string;
   }>;
 }
-const photoreference =
-  "CmRaAAAAuZ36wzrMYCVNWM1smQkRKuQyXecPgRpcsMfrSqbJM0EUTXZ62j8Ljxtk8HsxohXbtAwZAwmj_F3HmDwLoQaH9qt2TZJhhA6EuXK41UFo0Ow750MJujtrr5hgHR2lF7EXEhCkWj_dZ4LefrYzLU1_5RF1GhTR7Ggem5IJ-v7V2U8fjKoU9tBUOg";
-const key = "AIzaSyAWhKz6APT6ExkjDLpvmvKfBNpSlx983yk";
-const imageLink = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoreference}&key=${key}`;
-
 class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
   constructor(props: IWatchListProps) {
     super(props);
@@ -76,7 +73,8 @@ class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
           my_target_price: "$4,300,000",
           addr: "BLOCK 6 3#/F Room F",
           area: "690ft",
-          imageUrl: imageLink
+          imageUrl:
+            "https://www.28hse.com/en/utf8/developer/d298/selfcapture/7zRjsPPexx_large.jpg"
         }
       ]
     };
@@ -88,12 +86,11 @@ class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
 
   updateFavourite = () => {
     console.log("Update favourite");
-    // Update State of WatchList
-    this.props.ListItems();
+    // this.props.ListItems();
   };
 
   public render() {
-    if (!this.props.isAuthenticated) {
+    if (!this.props.user.isAuthenticated) {
       return (
         <View style={styles.container}>
           <TouchableOpacity
@@ -181,16 +178,16 @@ class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
 
 const mapStateToProps = (state: IRootState) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated,
+    user: state.auth.user,
     watchList: state.watchList.watchList
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    ListItems: () => {
-      dispatch(ListWatchItems());
-    }
+    // ListItems: () => {
+    //   dispatch(ListWatchItems());
+    // }
   };
 };
 
