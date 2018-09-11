@@ -29,7 +29,7 @@ export function SearchPropFromAPIAction(search?: string, condition?: string ) {
     console.log(search)
     if(condition === 'estate') {
       axios
-        .get(`${Config.API_URL}/api/estate/infoP/${search}?page=1&numberOfResults=30`)
+        .get(`http://localhost:8080/api/estate/infoP/${search}?page=1&numberOfResults=30`)
         .then(res => {
           console.log(res);
           dispatch(SearchPropertyAction(res.data));

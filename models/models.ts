@@ -63,7 +63,7 @@ export interface IAuthUser {
 
 
 export interface IProperty{
-  avWinloss:number,
+  avWinloss:any,
   avPrice_sq: number,
   catname:string,
 
