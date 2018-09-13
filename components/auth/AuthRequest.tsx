@@ -9,51 +9,22 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Dimensions,
-  Alert,
-  Text
-} from "react-native";
-import { Button } from "react-native-elements";
-import { NavigationComponentProps } from "react-native-navigation";
-
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { IRootState } from "../redux/store";
-import { logoutUser } from "../redux/actions/AuthAction";
-import { connect } from "react-redux";
-import { IAuthUser } from "../models/models";
-import AuthRequest from "../components/auth/AuthRequest";
 
-interface IUserTapProps extends NavigationComponentProps {
-  user: IAuthUser;
-  logout: () => void;
+interface IAuthRequestProps {
+  navigator: Navigator;
 }
-
-class User extends Component<IUserTapProps> {
-  handleLogout = () => {
-    this.props.logout();
-    if (this.props.user.isAuthenticated) {
-      Alert.alert("Authenication", "You are signed out");
-    }
-    this.props.navigator.popToRoot({
-      animated: true,
-      animationType: "fade"
-    });
-  };
+export default class AuthRequest extends Component<IAuthRequestProps> {
   render() {
     return (
       <View style={styles.container}>
-        <AuthRequest navigator={this.props.navigator} />
-        {/* <TouchableOpacity
+        <TouchableOpacity
           onPress={() =>
             this.props.navigator.push({
               screen: "example.auth", // unique ID registered with Navigation.registerScreen
               title: undefined, // navigation bar title of the pushed screen (optional)
               subtitle: undefined, // navigation bar subtitle of the pushed screen (optional)
-              titleImage: require("../src/icons/IC-Verified-User-24px.png"), // iOS only. navigation bar title image instead of the title text of the pushed screen (optional)
               passProps: {}, // Object that will be passed as props to the pushed screen (optional)
               animated: true, // does the push have transition animation or does it happen immediately (optional)
               animationType: "fade", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
@@ -78,45 +49,12 @@ class User extends Component<IUserTapProps> {
           }
         >
           <Icon name="user-circle" size={144} />
-        </TouchableOpacity> */}
-        {/* <Text style={styles.welcome}>Please Sign Up / Login</Text> */}
-        {this.props.user.isAuthenticated ? (
-          <Button
-            title="Logout!"
-            onPress={this.handleLogout}
-            icon={{ name: "diff-added", type: "octicon" }}
-            buttonStyle={{
-              backgroundColor: "blue",
-              marginHorizontal: 0,
-              width: Dimensions.get("window").width,
-              padding: 22
-            }}
-          />
-        ) : null}
+        </TouchableOpacity>
+        <Text style={styles.welcome}>Please Sign Up / Login</Text>
       </View>
     );
   }
 }
-
-const mapStateToProps = (state: IRootState) => {
-  return {
-    user: state.auth.user
-  };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    logout: () => {
-      dispatch(logoutUser());
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(User);
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
