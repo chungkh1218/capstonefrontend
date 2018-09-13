@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Dispatch } from "redux";
 import { IHistory } from "../../models/models";
-import Config from 'react-native-config'
+import Config from "react-native-config";
 
 export const LIST_HIST = "LIST_HIST";
 export type LIST_HIST = typeof LIST_HIST;

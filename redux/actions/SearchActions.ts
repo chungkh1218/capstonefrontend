@@ -23,13 +23,16 @@ export function SearchPropertyAction(
 }
 
 //thunk action creator
-
-export function SearchPropFromAPIAction(search?: string, condition?: string ) {
+export function SearchPropFromAPIAction(search?: string, condition?: string) {
   return (dispatch: Dispatch<ISearchPropAction>) => {
-    console.log(search)
-    if(condition === 'estate') {
+    console.log(search);
+    if (condition === "estate") {
       axios
-        .get(`http://localhost:8080/api/estate/infoP/${search}?page=1&numberOfResults=30`)
+        .get(
+          `${
+            Config.API_URL
+          }/api/estate/infoP/${search}?page=1&numberOfResults=30`
+        )
         .then(res => {
           console.log(res);
           dispatch(SearchPropertyAction(res.data));
@@ -37,7 +40,11 @@ export function SearchPropFromAPIAction(search?: string, condition?: string ) {
         .catch(err => console.log("uh oh error", err));
     } else {
       axios
-        .get(`${Config.API_URL}/api/estate/infoA/${search}?page=1&numberOfResults=30`)
+        .get(
+          `${
+            Config.API_URL
+          }/api/estate/infoA/${search}?page=1&numberOfResults=30`
+        )
         .then(res => {
           dispatch(ModalSearchPropertyAction(res.data));
         })
