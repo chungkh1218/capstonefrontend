@@ -16,7 +16,7 @@ import ModalExample from "../components/home/districtbotton";
 import SearchBar from "../components/home/searchbar";
 import PropertyList from "../components/home/propertylist";
 // import styles from "../src/styles/style";
-import { IUser } from "../models/models";
+import { IUser, IAuthUser } from "../models/models";
 import { IProperty } from "../models/models";
 import { IRootState } from "../redux/store";
 import { SearchPropFromAPIAction } from "../redux/actions/SearchActions";
@@ -27,7 +27,7 @@ import SplashScreen from "react-native-splash-screen";
 interface IHomeProps extends NavigationComponentProps {
   properties: IProperty[];
   // loadProperties: (search?: string) => void;
-  isAuthenticated: boolean;
+  user: IAuthUser;
   // catname: string;
   loadProperties: (search?: string, condition?: string) => void;
   // onButtonLoadProperties:(value?:string)=>void
@@ -70,7 +70,7 @@ class Home extends Component<IHomeProps, IHomeStates> {
     SplashScreen.hide();
   }
   componentWillMount() {
-    if (!this.props.isAuthenticated) {
+    if (!this.props.user.isAuthenticated) {
       this.props.navigator.showModal({
         screen: "example.landingpage", // unique ID registered with Navigation.registerScreen
         navigatorStyle: {
@@ -172,7 +172,7 @@ class Home extends Component<IHomeProps, IHomeStates> {
 */
 
   render() {
-    if (this.props.isAuthenticated) {
+    if (this.props.user.isAuthenticated) {
       this.props.navigator.dismissModal({
         screen: "example.landingpage" // unique ID registered with Navigation.registerScreen
       });
@@ -254,7 +254,7 @@ class Home extends Component<IHomeProps, IHomeStates> {
 const mapStateToProps = (state: IRootState) => {
   return {
     properties: state.properties.propertylist,
-    isAuthenticated: state.auth.isAuthenticated
+    user: state.auth.user
   };
 };
 
