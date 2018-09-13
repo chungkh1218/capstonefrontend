@@ -17,14 +17,14 @@ export interface IRootState {
   auth: IAuthState;
   properties: IPropListState;
   histories: IListHistState;
-  watchList: WatchListState;
+  watches: WatchListState;
 }
 
 const rootReducer = combineReducers({
   auth: AuthReducer,
   properties: SearchReducer,
   histories: ListHistReducer,
-  watchList: WatchListReducer
+  watches: WatchListReducer
 });
 
 declare global {

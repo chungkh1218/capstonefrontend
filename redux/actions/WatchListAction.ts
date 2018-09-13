@@ -1,6 +1,8 @@
 import { Dispatch } from "redux";
 import axios from "axios";
 import Config from "react-native-config";
+import { IWatchList } from "../../models/models";
+import { AsyncStorage } from "react-native";
 
 export const ADD_WATCH_ITEM = "ADD_WATCH_ITEM";
 export type ADD_WATCH_ITEM = typeof ADD_WATCH_ITEM;
@@ -13,14 +15,17 @@ export type REMOVE_WATCH_ITEM = typeof REMOVE_WATCH_ITEM;
 
 export interface AddWatchItemAction {
   type: ADD_WATCH_ITEM;
+  watchList: IWatchList[];
 }
 
 export interface ListWatchItemAction {
   type: LIST_WATCH_ITEM;
+  watchList: IWatchList[];
 }
 
 export interface RemoveWatchItemAction {
   type: REMOVE_WATCH_ITEM;
+  watchList: IWatchList[];
 }
 
 export type watchListAction =
@@ -28,56 +33,94 @@ export type watchListAction =
   | ListWatchItemAction
   | RemoveWatchItemAction;
 
-function AddWatchListItems(): AddWatchItemAction {
+export function AddWatchListItems(watchList: IWatchList[]): AddWatchItemAction {
   return {
+    watchList,
     type: ADD_WATCH_ITEM
   };
 }
 
-function ListWatchListItems(): ListWatchItemAction {
+export function ListWatchListItems(
+  watchList: IWatchList[]
+): ListWatchItemAction {
   return {
+    watchList,
     type: LIST_WATCH_ITEM
   };
 }
 
-function RemoveWatchListItems(): RemoveWatchItemAction {
+export function RemoveWatchListItems(
+  watchList: IWatchList[]
+): RemoveWatchItemAction {
   return {
+    watchList,
     type: REMOVE_WATCH_ITEM
   };
 }
 
-export function AddWatchItems(userId: number, reId: number) {
+export function AddWatchItems(reId: number) {
   return (dispatch: Dispatch<any>) => {
     console.log("AddWatchItems");
-    return axios
-      .post(`${Config.API_URL}/addflat/${userId}/${reId}`)
-      .then(res => {
-        dispatch(AddWatchListItems());
+    AsyncStorage.getItem("token")
+      .then(token => {
+        console.log("token: " + token);
+        return axios
+          .post(`${Config.API_URL}/api/fav/addflat/${reId}`, {
+            headers: {
+              Authorization: "Bearer " + token,
+              "Content-Type": "application/json"
+            }
+          })
+          .then(res => {
+            dispatch(AddWatchListItems(res.data));
+          });
       })
-      .catch(err => console.log("Error: ", err));
+      .catch(err => {
+        console.log("Error: ", err);
+      });
   };
 }
 
-export function ListWatchItems(userId: number) {
+export function ListWatchItems() {
   return (dispatch: Dispatch<any>) => {
     console.log("ListWatchItems");
-    return axios
-      .get(`${Config.API_URL}/listfavflat/${userId}`)
-      .then(res => {
-        dispatch(ListWatchListItems());
+    AsyncStorage.getItem("token")
+      .then(token => {
+        console.log("token: " + token);
+        return axios
+          .get(`${Config.API_URL}/api/fav/watchlist/`, {
+            headers: {
+              Authorization: "Bearer " + token
+            }
+          })
+          .then(res => {
+            dispatch(ListWatchListItems(res.data));
+          });
       })
-      .catch(err => console.log("Error: ", err));
+      .catch(err => {
+        console.log("Error: ", err);
+      });
   };
 }
 
-export function RemoveWatchItems(userId: number, reId: number) {
+export function RemoveWatchItems(reId: number) {
   return (dispatch: Dispatch<any>) => {
     console.log("RemoveWatchItems");
-    return axios
-      .delete(`${Config.API_URL}/deleflat/${userId}/${reId}`)
-      .then(res => {
-        dispatch(RemoveWatchListItems());
+    AsyncStorage.getItem("token")
+      .then(token => {
+        console.log("token: " + token);
+        return axios
+          .delete(`${Config.API_URL}/api/fav/deleflat/${reId}`, {
+            headers: {
+              Authorization: "Bearer " + token
+            }
+          })
+          .then(res => {
+            dispatch(RemoveWatchListItems(res.data));
+          });
       })
-      .catch(err => console.log("Error: ", err));
+      .catch(err => {
+        console.log("Error: ", err);
+      });
   };
 }

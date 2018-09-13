@@ -9,7 +9,14 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import { View, Button, Alert, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Button,
+  Alert,
+  StyleSheet,
+  ScrollView,
+  ActivityIndicator
+} from "react-native";
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
 import HistoryList from "../tshistory/historylist";
@@ -25,7 +32,7 @@ interface IHistProps extends NavigationComponentProps {
   histories: IHistory[];
   catname: string;
   loadHistories: (param: string) => void;
-  addItems: (userId: number, reId: number) => void;
+  addItems: (reId: number) => void;
 }
 
 class propertyitemdetails extends Component<IHistProps> {
@@ -67,13 +74,14 @@ class propertyitemdetails extends Component<IHistProps> {
 
   addUserFavourite = () => {
     console.log("Add User Favourite" + this.props.catname);
-    this.props.addItems(userId, reId);
+    this.props.addItems(200);
     Alert.alert(`${this.props.catname} is added as your favourite`);
   };
 
   render() {
     return (
       <View style={styles.container}>
+        {/* <ActivityIndicator size="large" /> */}
         <ScrollView>
           <HistoryList histories={this.props.histories} />
         </ScrollView>
@@ -89,7 +97,7 @@ class propertyitemdetails extends Component<IHistProps> {
 const mapStateToProps = (state: IRootState) => {
   return {
     histories: state.histories.historylist,
-    watchList: state.watchList.watchList
+    watchList: state.watches.watchList
   };
 };
 
@@ -98,8 +106,8 @@ const mapDispatchToProps = (dispatch: any) => {
     loadHistories: (param: string) => {
       dispatch(ListHistFromAPIAction(param));
     },
-    addItems: (userId: number, reId: number) => {
-      dispatch(AddWatchItems(userId, reId));
+    addItems: (reId: number) => {
+      dispatch(AddWatchItems(reId));
     }
   };
 };

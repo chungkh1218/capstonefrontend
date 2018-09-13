@@ -1,22 +1,25 @@
-import {IHistory} from '../../models/models'
+import { IHistory } from "../../models/models";
 
-import{IListHistAction, LIST_HIST} from '../actions/ListHistoryActions'
+import { IListHistAction, LIST_HIST } from "../actions/ListHistoryActions";
 
 export interface IListHistState {
-    historylist:IHistory[];
+  historylist: IHistory[];
 }
 
 const initialState = {
-    historylist:[]
-}
+  historylist: []
+};
 
-export function ListHistReducer(state:IListHistState = initialState, action:IListHistAction){
-    switch (action.type){
-        case LIST_HIST:
-        return {
-            historylist:action.histories
-        }
-    }
+export function ListHistReducer(
+  state: IListHistState = initialState,
+  action: IListHistAction
+) {
+  switch (action.type) {
+    case LIST_HIST:
+      return {
+        historylist: action.histories
+      };
+  }
 
-    return state
+  return state;
 }

@@ -4,9 +4,10 @@ import {
   LIST_WATCH_ITEM,
   REMOVE_WATCH_ITEM
 } from "../actions/WatchListAction";
+import { IWatchList } from "../../models/models";
 
 export interface WatchListState {
-  watchList: Array<{}>;
+  watchList: IWatchList[];
 }
 
 const initialState = {
@@ -18,18 +19,29 @@ export function WatchListReducer(
   action: watchListAction
 ) {
   switch (action.type) {
+    // Add a watch item
     case ADD_WATCH_ITEM:
-      // Add a watch item
       console.log("Add Watch Item!");
-      return state;
+      return {
+        ...state,
+        watchList: action.watchList
+      };
+    // Update the watch list
     case LIST_WATCH_ITEM:
-      // Update the watch list
       console.log("List Watch Item!");
-      return state;
+      return {
+        ...state,
+        watchList: action.watchList
+      };
+    // Remove a watch item
     case REMOVE_WATCH_ITEM:
-      // Remove a watch item
       console.log("Remove Watch Item!");
+      return {
+        ...state,
+        watchList: action.watchList
+      };
+
+    default:
       return state;
   }
-  return state;
 }

@@ -58,8 +58,20 @@ export interface IAuthUser {
   isAuthenticated: boolean;
 }
 
+export interface IWatchList {
+  re_id: number;
+  address: [
+    {
+      catname: string;
+      catfathername: string;
+      sq_price: string;
+      winloss: number;
+    }
+  ];
+}
+
 export interface IProperty {
-  avWinloss: number;
+  avWinloss: any;
   avPrice_sq: number;
   catname: string;
 }
