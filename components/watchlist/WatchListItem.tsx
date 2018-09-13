@@ -34,7 +34,7 @@ class WatchListItem extends Component<IWatchListItemProps> {
   removeFavourite = () => {
     console.log("Remove favourite");
     // Update State of WatchList
-
+    this.props.RemoveItems(101);
     this.props.navigator.dismissModal({
       animationType: "slide-down"
     });
@@ -103,7 +103,7 @@ class WatchListItem extends Component<IWatchListItemProps> {
 
 const mapStateToProps = (state: IRootState) => {
   return {
-    watchList: state.watchList.watchList
+    watchList: state.watches.watchList
   };
 };
 
