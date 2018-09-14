@@ -24,12 +24,14 @@ export function SearchPropertyAction(
 
 //thunk action creator
 
-export function SearchPropFromAPIAction(search?: string, condition?: string ) {
+export function SearchPropFromAPIAction(search?: string, condition?: string) {
   return (dispatch: Dispatch<ISearchPropAction>) => {
-    console.log(search)
-    if(condition === 'estate') {
+    console.log(search);
+    if (condition === "estate") {
       axios
-        .get(`http://localhost:8080/api/estate/infoP/${search}?page=1&numberOfResults=30`)
+        .get(
+          `${Config.API_URL}/estate/infoP/${search}?page=1&numberOfResults=30`
+        )
         .then(res => {
           console.log(res);
           dispatch(SearchPropertyAction(res.data));
@@ -37,7 +39,9 @@ export function SearchPropFromAPIAction(search?: string, condition?: string ) {
         .catch(err => console.log("uh oh error", err));
     } else {
       axios
-        .get(`${Config.API_URL}/api/estate/infoA/${search}?page=1&numberOfResults=30`)
+        .get(
+          `${Config.API_URL}/api/estate/infoA/${search}?page=1&numberOfResults=30`
+        )
         .then(res => {
           dispatch(ModalSearchPropertyAction(res.data));
         })
@@ -67,3 +71,17 @@ export function ModalSearchPropertyAction(
 //       .catch(err => console.log("uh oh error", err));
 //   };
 // }
+
+// const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${keyWord}&key=AIzaSyAWhKz6APT6ExkjDLpvmvKfBNpSlx983yk`;
+// fetch(url)
+//   .then(res => res.json())
+//   .then(resTxt => {
+//     console.log(resTxt.results[0].reference);
+//     photoreference = resTxt.results[0].reference;
+//     imageLink = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoreference}&key=AIzaSyAWhKz6APT6ExkjDLpvmvKfBNpSlx983yk`;
+//     console.log("Image Link: " + imageLink);
+//     value = imageLink;
+//   })
+//   .catch(err => {
+//     console.log("Error: " + err);
+//   });

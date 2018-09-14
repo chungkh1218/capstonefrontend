@@ -9,7 +9,7 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import { View, Button, Alert, StyleSheet, ScrollView } from "react-native";
+import { View, Button, Alert, StyleSheet, ScrollView,Image,Text } from "react-native";
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
 import HistoryList from "../tshistory/historylist";
@@ -17,12 +17,13 @@ import { IHistory } from "../../models/models";
 import Auth from "../auth/Auth";
 import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
-import { ListHistFromAPIAction } from "../../redux/actions/ListHistoryActions";
+import { ListHistFromAPIAction, GetImgFromAPIAction } from "../../redux/actions/ListHistoryActions";
 import { AddWatchItems } from "../../redux/actions/WatchListAction";
 Navigation.registerComponent("example.auth", () => Auth);
 
 interface IHistProps extends NavigationComponentProps {
   histories: IHistory[];
+  url:string;
   catname: string;
   loadHistories: (param: string) => void;
   addItems: (userId: number, reId: number) => void;
@@ -72,35 +73,49 @@ class propertyitemdetails extends Component<IHistProps> {
   };
 
   render() {
-    return (
-      <View style={styles.container}>
+    const uri = this.props.url
+    console.log(this.props.histories);
+    console.log(uri)
+    return <View style={styles.container}>
+        <Text>{this.props.catname}</Text>
         <ScrollView>
-          <HistoryList histories={this.props.histories} />
+          <View>
+            <Image style={{ width: 400, height: 300 }} source={{ uri: uri }} />
+          </View>
+          {/* </ScrollView> */}
+          {/* <ScrollView> */}
+          <View>
+            <HistoryList histories={this.props.histories} />
+          </View>
+
+          <View style={styles.buttonGroup}>
+            <Button title="Bank Valuation" onPress={this.goBankPressed} />
+            <Button title="Add Favourite" onPress={this.addUserFavourite} />
+          </View>
         </ScrollView>
-        <View style={styles.buttonGroup}>
-          <Button title="Bank Valuation" onPress={this.goBankPressed} />
-          <Button title="Add Favourite" onPress={this.addUserFavourite} />
-        </View>
-      </View>
-    );
+      </View>;
   }
 }
 
 const mapStateToProps = (state: IRootState) => {
   return {
     histories: state.histories.historylist,
-    watchList: state.watchList.watchList
+    watchList: state.watchList.watchList,
+    url:       state.url.imgurl
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
     loadHistories: (param: string) => {
-      dispatch(ListHistFromAPIAction(param));
+      dispatch(ListHistFromAPIAction(param))
+      
+      ;
     },
     addItems: (userId: number, reId: number) => {
       dispatch(AddWatchItems(userId, reId));
-    }
+    },
+   
   };
 };
 

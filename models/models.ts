@@ -59,7 +59,7 @@ export interface IAuthUser {
 }
 
 export interface IProperty {
-  avWinloss: number;
+  avWinloss: any;
   avPrice_sq: number;
   catname: string;
 }
@@ -68,6 +68,7 @@ export interface IHistory {
   re_id: number;
   addr: string;
   catfathername: string;
+  // imgurl:string;
   transactions: [
     {
       re_id: number;
@@ -80,3 +81,5 @@ export interface IHistory {
     }
   ];
 }
+
+

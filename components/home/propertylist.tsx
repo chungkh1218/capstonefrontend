@@ -14,23 +14,11 @@ interface IPropertyListProp {
 
 export default class PropertyList extends Component<IPropertyListProp> {
   private photoSearch = (keyWord: string) => {
-    console.log("Using " + keyWord + "as keyword to search");
+    // console.log("Using " + keyWord + "as keyword to search");
     let value = keyWord;
     let imageLink = "";
     let photoreference = "";
-    // const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${keyWord}&key=AIzaSyAWhKz6APT6ExkjDLpvmvKfBNpSlx983yk`;
-    // fetch(url)
-    //   .then(res => res.json())
-    //   .then(resTxt => {
-    //     console.log(resTxt.results[0].reference);
-    //     photoreference = resTxt.results[0].reference;
-    //     imageLink = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoreference}&key=AIzaSyAWhKz6APT6ExkjDLpvmvKfBNpSlx983yk`;
-    //     console.log("Image Link: " + imageLink);
-    //     value = imageLink;
-    //   })
-    //   .catch(err => {
-    //     console.log("Error: " + err);
-    //   });
+
 
     return value;
   };
@@ -61,3 +49,5 @@ export default class PropertyList extends Component<IPropertyListProp> {
     );
   }
 }
+
+
