@@ -29,9 +29,7 @@ export function SearchPropFromAPIAction(search?: string, condition?: string) {
     if (condition === "estate") {
       axios
         .get(
-          `${
-            Config.API_URL
-          }/api/estate/infoP/${search}?page=1&numberOfResults=30`
+          `${Config.API_URL}/estate/infoP/${search}?page=1&numberOfResults=30`
         )
         .then(res => {
           console.log(res);
@@ -74,3 +72,17 @@ export function ModalSearchPropertyAction(
 //       .catch(err => console.log("uh oh error", err));
 //   };
 // }
+
+// const url = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${keyWord}&key=AIzaSyAWhKz6APT6ExkjDLpvmvKfBNpSlx983yk`;
+// fetch(url)
+//   .then(res => res.json())
+//   .then(resTxt => {
+//     console.log(resTxt.results[0].reference);
+//     photoreference = resTxt.results[0].reference;
+//     imageLink = `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photoreference}&key=AIzaSyAWhKz6APT6ExkjDLpvmvKfBNpSlx983yk`;
+//     console.log("Image Link: " + imageLink);
+//     value = imageLink;
+//   })
+//   .catch(err => {
+//     console.log("Error: " + err);
+//   });

@@ -134,49 +134,18 @@ export default class ModalExample extends Component<
 
   public render() {
     return <View>
-         <TouchableHighlight>
-          <ModalDropdown
-            style={styles.dropdown}
-            options={ntoptions}
-            defaultValue="New Territories"
-            textStyle={styles.buttontext}
-            dropdownTextStyle={styles.buttontext}
-            dropdownStyle={styles.listeditem}
-            onSelect={(index, value) => this.onSelectedItem(index, value)}
-          />
+        <Text style={styles.narrative}>You are currently searching for :{this.state.value} </Text>
+        <TouchableHighlight>
+          <ModalDropdown style={styles.dropdown} options={ntoptions} defaultValue="New Territories" textStyle={styles.buttontext} dropdownTextStyle={styles.buttontext} dropdownStyle={styles.listeditem} onSelect={(index, value) => this.onSelectedItem(index, value)} />
         </TouchableHighlight>
         <TouchableHighlight>
-          <ModalDropdown
-            style={styles.dropdown}
-            options={kloptions}
-            defaultValue="Kowloon"
-            textStyle={styles.buttontext}
-            dropdownTextStyle={styles.buttontext}
-            dropdownStyle={styles.listeditem}
-            onSelect={(index, value) => this.onSelectedItem(index, value)}
-          />
+          <ModalDropdown style={styles.dropdown} options={kloptions} defaultValue="Kowloon" textStyle={styles.buttontext} dropdownTextStyle={styles.buttontext} dropdownStyle={styles.listeditem} onSelect={(index, value) => this.onSelectedItem(index, value)} />
         </TouchableHighlight>
         <TouchableHighlight>
-          <ModalDropdown
-            style={styles.dropdown}
-            options={hkoptions}
-            defaultValue="HK Island"
-            textStyle={styles.buttontext}
-            dropdownTextStyle={styles.buttontext}
-            dropdownStyle={styles.listeditem}
-            onSelect={(index, value) => this.onSelectedItem(index, value)}
-          />
+          <ModalDropdown style={styles.dropdown} options={hkoptions} defaultValue="HK Island" textStyle={styles.buttontext} dropdownTextStyle={styles.buttontext} dropdownStyle={styles.listeditem} onSelect={(index, value) => this.onSelectedItem(index, value)} />
         </TouchableHighlight>
         <TouchableHighlight>
-          <ModalDropdown
-            style={styles.dropdown}
-            options={lantauoptions}
-            defaultValue="Lantau"
-            textStyle={styles.buttontext}
-            dropdownTextStyle={styles.buttontext}
-            dropdownStyle={styles.listeditem}
-            onSelect={(index, value) => this.onSelectedItem(index, value)}
-          />
+          <ModalDropdown style={styles.dropdown} options={lantauoptions} defaultValue="Lantau" textStyle={styles.buttontext} dropdownTextStyle={styles.buttontext} dropdownStyle={styles.listeditem} onSelect={(index, value) => this.onSelectedItem(index, value)} />
         </TouchableHighlight>
       </View>;
   }
@@ -203,5 +172,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 3,
     alignItems: "center"
+  },
+  narrative:{
+    alignItems:'center'
   }
 });

@@ -49,7 +49,7 @@ export default class PropertyItem extends React.Component<IPropertyProps> {
   };
 
   render() {
-    console.log(this.props.catname);
+    // console.log(this.props.catname);
     return (
       <TouchableOpacity onPress={this.itemsOnPressed.bind(this)}>
         <View style={styles.homeList}>

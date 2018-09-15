@@ -15,7 +15,8 @@ import {
   Alert,
   StyleSheet,
   ScrollView,
-  ActivityIndicator
+  Image,
+  Text
 } from "react-native";
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
@@ -24,12 +25,16 @@ import { IHistory } from "../../models/models";
 import Auth from "../auth/Auth";
 import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
-import { ListHistFromAPIAction } from "../../redux/actions/ListHistoryActions";
+import {
+  ListHistFromAPIAction,
+  GetImgFromAPIAction
+} from "../../redux/actions/ListHistoryActions";
 import { AddWatchItems } from "../../redux/actions/WatchListAction";
 Navigation.registerComponent("example.auth", () => Auth);
 
 interface IHistProps extends NavigationComponentProps {
   histories: IHistory[];
+  url: string;
   catname: string;
   loadHistories: (param: string) => void;
   addItems: (reId: number) => void;
@@ -79,16 +84,27 @@ class propertyitemdetails extends Component<IHistProps> {
   };
 
   render() {
+    const uri = this.props.url;
+    console.log(this.props.histories);
+    console.log(uri);
     return (
       <View style={styles.container}>
-        {/* <ActivityIndicator size="large" /> */}
+        <Text>{this.props.catname}</Text>
         <ScrollView>
-          <HistoryList histories={this.props.histories} />
+          <View>
+            <Image style={{ width: 400, height: 300 }} source={{ uri: uri }} />
+          </View>
+          {/* </ScrollView> */}
+          {/* <ScrollView> */}
+          <View>
+            <HistoryList histories={this.props.histories} />
+          </View>
+
+          <View style={styles.buttonGroup}>
+            <Button title="Bank Valuation" onPress={this.goBankPressed} />
+            <Button title="Add Favourite" onPress={this.addUserFavourite} />
+          </View>
         </ScrollView>
-        <View style={styles.buttonGroup}>
-          <Button title="Bank Valuation" onPress={this.goBankPressed} />
-          <Button title="Add Favourite" onPress={this.addUserFavourite} />
-        </View>
       </View>
     );
   }
@@ -97,7 +113,8 @@ class propertyitemdetails extends Component<IHistProps> {
 const mapStateToProps = (state: IRootState) => {
   return {
     histories: state.histories.historylist,
-    watchList: state.watches.watchList
+    watchList: state.watches.watchList,
+    url: state.url.imgurl
   };
 };
 

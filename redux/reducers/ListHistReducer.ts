@@ -1,5 +1,4 @@
 import { IHistory } from "../../models/models";
-
 import { IListHistAction, LIST_HIST } from "../actions/ListHistoryActions";
 
 export interface IListHistState {
@@ -16,9 +15,7 @@ export function ListHistReducer(
 ) {
   switch (action.type) {
     case LIST_HIST:
-      return {
-        historylist: action.histories
-      };
+      return { historylist: action.histories };
   }
 
   return state;

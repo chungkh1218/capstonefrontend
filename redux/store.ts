@@ -8,6 +8,7 @@ import {
 import { authReducer as AuthReducer, IAuthState } from "./reducers/AuthReducer";
 import { IPropListState, SearchReducer } from "./reducers/SearchReducer";
 import { ListHistReducer, IListHistState } from "./reducers/ListHistReducer";
+import { GetImgReducer, IListHistImgState } from "./reducers/GetImgReducer";
 import { WatchListState, WatchListReducer } from "./reducers/WatchListReducer";
 
 import thunk from "redux-thunk";
@@ -18,11 +19,13 @@ export interface IRootState {
   properties: IPropListState;
   histories: IListHistState;
   watches: WatchListState;
+  url: IListHistImgState;
 }
 
 const rootReducer = combineReducers({
   auth: AuthReducer,
   properties: SearchReducer,
+  url: GetImgReducer,
   histories: ListHistReducer,
   watches: WatchListReducer
 });

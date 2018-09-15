@@ -80,6 +80,7 @@ export interface IHistory {
   re_id: number;
   addr: string;
   catfathername: string;
+  // imgurl:string;
   transactions: [
     {
       re_id: number;
@@ -92,3 +93,5 @@ export interface IHistory {
     }
   ];
 }
+
+
