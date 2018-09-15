@@ -74,7 +74,7 @@ class propertyitemdetails extends Component<IHistProps> {
 
   addUserFavourite = () => {
     console.log("Add User Favourite" + this.props.catname);
-    this.props.addItems(200);
+    // this.props.addItems(123);
     Alert.alert(`${this.props.catname} is added as your favourite`);
   };
 

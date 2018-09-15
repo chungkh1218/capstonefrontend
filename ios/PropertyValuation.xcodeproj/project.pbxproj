@@ -1923,7 +1923,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = siuhangw.PropertyValuation;
+				PRODUCT_BUNDLE_IDENTIFIER = siuhang.PropertyValuation;
 				PRODUCT_NAME = PropertyValuation;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1963,7 +1963,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = siuhangw.PropertyValuation;
+				PRODUCT_BUNDLE_IDENTIFIER = siuhang.PropertyValuation;
 				PRODUCT_NAME = PropertyValuation;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

@@ -59,16 +59,16 @@ export function RemoveWatchListItems(
 }
 
 export function AddWatchItems(reId: number) {
+  console.log("Step 1: " + reId);
   return (dispatch: Dispatch<any>) => {
-    console.log("AddWatchItems");
+    console.log("Step 2: " + reId);
     AsyncStorage.getItem("token")
       .then(token => {
         console.log("token: " + token);
         return axios
           .post(`${Config.API_URL}/api/fav/addflat/${reId}`, {
             headers: {
-              Authorization: "Bearer " + token,
-              "Content-Type": "application/json"
+              Authorization: "Bearer " + token
             }
           })
           .then(res => {
