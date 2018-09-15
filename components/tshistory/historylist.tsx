@@ -23,7 +23,7 @@ export default class HistoryList extends Component<IHistoryListProp> {
             transactions={item.transactions}
           />
         )}
-        keyExtractor={item => item.re_id.toString()}
+        keyExtractor={(item, key) => String(key)}
       />
     );
   }

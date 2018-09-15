@@ -29,6 +29,7 @@ class WatchList extends React.Component<IWatchListProps> {
   }
 
   public render() {
+    console.log(this.props.watchList, String(new Date()));
     if (!this.props.user.isAuthenticated) {
       return (
         <View style={styles.container}>
@@ -36,10 +37,12 @@ class WatchList extends React.Component<IWatchListProps> {
         </View>
       );
     } else {
-      // console.log("WatchList Props: " + this.props.watchList[1].re_id);
       return (
         <View style={styles.container}>
-          <WatchListList navigator={this.props.navigator} />
+          <WatchListList
+            navigator={this.props.navigator}
+            watchList={this.props.watchList}
+          />
         </View>
       );
     }

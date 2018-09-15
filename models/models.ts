@@ -64,8 +64,8 @@ export interface IWatchList {
     {
       catname: string;
       catfathername: string;
-      sq_price: string;
-      winloss: number;
+      avWinloss: number;
+      avPrice_sq: string;
     }
   ];
 }

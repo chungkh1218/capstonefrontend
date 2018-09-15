@@ -2,6 +2,7 @@ import { Dispatch } from "redux";
 import axios from "axios";
 import { AsyncStorage } from "react-native";
 import Config from "react-native-config";
+import { ListWatchItems } from "./WatchListAction";
 
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export type LOGIN_SUCCESS = typeof LOGIN_SUCCESS;
@@ -88,6 +89,7 @@ export function signUpUser(
         } else {
           AsyncStorage.setItem("token", response.data.token);
           console.log("loginSuccess");
+          dispatch(ListWatchItems());
           dispatch(loginSuccess());
         }
       })
@@ -115,6 +117,7 @@ export function loginUser(email: string, password: string) {
         } else {
           AsyncStorage.setItem("token", response.data.token);
           console.log("loginSuccess");
+          dispatch(ListWatchItems());
           dispatch(loginSuccess());
         }
       })

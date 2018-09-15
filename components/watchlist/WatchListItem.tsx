@@ -17,12 +17,14 @@ import { connect } from "react-redux";
 
 interface IWatchListItemProps {
   re_id: number;
-  catfathername: string;
-  catname: string;
-  my_target_price: string;
-  addr: string;
-  area: string;
-  imageUrl: string;
+  address: [
+    {
+      catname: string;
+      catfathername: string;
+      avWinloss: number;
+      avPrice_sq: string;
+    }
+  ];
 
   RemoveItems: (item: any) => void;
 }
@@ -33,8 +35,6 @@ class WatchListItem extends Component<IWatchListItemProps> {
 
   removeFavourite = () => {
     console.log("Remove favourite");
-    // Update State of WatchList
-    this.props.RemoveItems(101);
     this.props.navigator.dismissModal({
       animationType: "slide-down"
     });
@@ -45,9 +45,11 @@ class WatchListItem extends Component<IWatchListItemProps> {
     return (
       <View style={styles.container}>
         <Card
-          image={{
-            uri: this.props.imageUrl
-          }}
+          image={
+            {
+              // uri: this.props.imageUrl
+            }
+          }
         >
           <Text
             style={{
@@ -56,15 +58,18 @@ class WatchListItem extends Component<IWatchListItemProps> {
             }}
           >
             <Text h4 style={{ fontWeight: "bold" }}>
-              {this.props.catname}
+              {this.props.re_id}
               {"\n"}
             </Text>
             <Text style={{ fontSize: 16, color: "dimgray" }}>
-              {this.props.addr} {this.props.catfathername}
-            </Text>
-            <Text style={{ fontSize: 16, color: "dimgray" }}>
-              {"\n"}
-              {this.props.area}
+              {this.props.address.map((item, i) => (
+                <Text key={i}>
+                  Catname: {item.catname}
+                  CatFathername: {item.catfathername}
+                  avWinloss: {item.avWinloss}
+                  avPrice_sq: {item.avPrice_sq}
+                </Text>
+              ))}
             </Text>
           </Text>
           <Button

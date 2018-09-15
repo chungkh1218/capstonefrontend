@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { signUpUser } from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
 import { Button } from "react-native-elements";
+import { IAuthUser } from "../../models/models";
 
 const Form = t.form.Form;
 
@@ -46,7 +47,7 @@ const options = {
 
 interface ISignUpPageProps {
   navigator: Navigator;
-  isAuthenticated: boolean;
+  user: IAuthUser;
   signup: (
     name: string,
     email: string,
@@ -77,7 +78,7 @@ class SignUpPage extends Component<ISignUpPageProps> {
   };
 
   render() {
-    if (this.props.isAuthenticated) {
+    if (this.props.user.isAuthenticated) {
       this.props.navigator.popToRoot({
         animated: true,
         animationType: "fade"
@@ -112,7 +113,7 @@ class SignUpPage extends Component<ISignUpPageProps> {
 
 const mapStateToProps = (state: IRootState) => {
   return {
-    isAuthenticated: state.auth.isAuthenticated
+    user: state.auth.user
   };
 };
 

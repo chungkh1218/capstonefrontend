@@ -23,21 +23,18 @@ export function WatchListReducer(
     case ADD_WATCH_ITEM:
       console.log("Add Watch Item!");
       return {
-        ...state,
         watchList: action.watchList
       };
     // Update the watch list
     case LIST_WATCH_ITEM:
-      console.log("List Watch Item!");
+      console.log(action.watchList);
       return {
-        ...state,
         watchList: action.watchList
       };
     // Remove a watch item
     case REMOVE_WATCH_ITEM:
       console.log("Remove Watch Item!");
       return {
-        ...state,
         watchList: action.watchList
       };
 
