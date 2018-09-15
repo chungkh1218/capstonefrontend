@@ -1,51 +1,91 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+// /**
+//  * Sample React Native App
+//  * https://github.com/facebook/react-native
+//  *
+//  * @format
+//  * @flow
+//  */
 
-import * as React from "react";
-import { Component } from "react";
-// import React, { Component } from "react";
-import { Platform, StyleSheet, Text, View } from "react-native";
+// import * as React from "react";
+// import { Navigation } from "react-native-navigation";
+// import LandingPage from "./components/auth/LandingPage";
+// import Home from "./screens/HomeTab";
+// import WatchList from "./screens/WatchListTab";
+// import User from "./screens/UserTab";
 
-const instructions = Platform.select({
-  ios: "Press Cmd+R to reload,\n" + "Cmd+D or shake for dev menu",
-  android:
-    "Double tap R on your keyboard to reload,\n" +
-    "Shake or press menu button for dev menu"
-});
+// Navigation.registerComponent("example.landingpage", () => LandingPage);
+// Navigation.registerComponent("example.home", () => Home);
+// Navigation.registerComponent("example.watchlist", () => WatchList);
+// Navigation.registerComponent("example.user", () => User);
 
-type Props = {};
-export default class App extends Component<Props> {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
-      </View>
-    );
-  }
-}
+// class App {
+//   constructor() {
+//     // Constructor
+//   }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#F5FCFF"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  }
-});
+//   static initialApp() {
+//     Navigation.startSingleScreenApp({
+//       screen: {
+//         screen: "landingpage",
+//         navigatorStyle: {
+//           navBarBackgroundColor: "#9EF8E4"
+//         },
+//         appStyle: {
+//           hideBackButtonTitle: true
+//         }
+//       }
+//     });
+//   }
+
+//   static loginApp(token: string) {
+//     Navigation.startTabBasedApp({
+//       tabs: [
+//         {
+//           label: "Home",
+//           screen: "example.home",
+//           icon: require("./src/icons/IC-Home-24px.png"),
+//           title: "Home",
+//           titleImage: require("./src/icons/IC-Home-24px.png"),
+//           navigatorStyle: {
+//             screenBackgroundColor: "#97A9D4"
+//           }
+//         },
+//         {
+//           label: "WatchList",
+//           screen: "example.watchlist",
+//           icon: require("./src/icons/IC-Remove-Red-Eye-24px.png"),
+//           title: "WatchList",
+//           navigatorStyle: {
+//             screenBackgroundColor: "#97A9D4"
+//           }
+//         },
+//         {
+//           label: "User",
+//           screen: "example.user",
+//           icon: require("./src/icons/IC-Verified-User-24px.png"),
+//           title: "User",
+//           navigatorStyle: {
+//             screenBackgroundColor: "#97A9D4"
+//           }
+//         }
+//       ],
+//       tabsStyle: {
+//         tabBarButtonColor: "#7AAA57",
+//         tabBarSelectedButtonColor: "#4B7A29",
+//         tabBarBackgroundColor: "#B6DA9C",
+//         initialTabIndex: 0
+//       },
+//       appStyle: {
+//         orientation: "portrait",
+//         bottomTabBadgeTextColor: "red",
+//         bottomTabBadgeBackgroundColor: "green"
+//       },
+
+//       passProps: {},
+//       animationType: "slide-down"
+//     });
+//   }
+// }
+
+// export default App;
+// new App();

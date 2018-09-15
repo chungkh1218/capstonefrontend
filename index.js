@@ -7,7 +7,7 @@
 
 import { Navigation } from "react-native-navigation";
 
-import App from "./App";
+// import App from "./App";
 import LandingPage from "./components/auth/LandingPage";
 import Home from "./screens/HomeTab";
 import Valuation from "./components/home/propertyitemdetails";
@@ -33,7 +33,7 @@ Navigation.registerComponent(
   Provider
 );
 Navigation.registerComponent("example.bankvaluation", () => BankValution);
-Navigation.registerComponent("example.app", () => App, store, Provider);
+// Navigation.registerComponent("example.app", () => App, store, Provider);
 Navigation.registerComponent(
   "example.landingpage",
   () => LandingPage,
