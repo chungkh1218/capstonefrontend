@@ -1,13 +1,12 @@
 /** @format */
 
 // import {AppRegistry} from 'react-native';
-// import App from './App';
+// import "./App";
 // import {name as appName} from './app.json';
 // AppRegistry.registerComponent(appName, () => App);
 
 import { Navigation } from "react-native-navigation";
 
-// import App from "./App";
 import LandingPage from "./components/auth/LandingPage";
 import Home from "./screens/HomeTab";
 import Valuation from "./components/home/propertyitemdetails";
@@ -127,9 +126,9 @@ Navigation.startTabBasedApp({
     }
   ],
   tabsStyle: {
-    tabBarButtonColor: "#7AAA57",
-    tabBarSelectedButtonColor: "#4B7A29",
-    tabBarBackgroundColor: "#B6DA9C",
+    tabBarButtonColor: "#FFAE12",
+    tabBarSelectedButtonColor: "#FF9212",
+    tabBarBackgroundColor: "#FACC56",
     initialTabIndex: 0
   },
   appStyle: {

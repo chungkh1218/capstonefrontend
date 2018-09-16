@@ -74,7 +74,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "white"
   },
   welcome: {
     fontSize: 20,
@@ -85,7 +86,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: Dimensions.get("window").width,
     height: 120,
-    backgroundColor: "aliceblue",
     padding: 20
   },
   homeListThumbnail: {

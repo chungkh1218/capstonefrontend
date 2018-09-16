@@ -49,10 +49,10 @@ export default class Auth extends Component<Props> {
                 ]
               })
             }
-            icon={{ name: "diff-renamed", type: "octicon" }}
+            // icon={{ name: "diff-renamed", type: "octicon" }}
             buttonStyle={{
               borderRadius: 24,
-              backgroundColor: "#FFB45C",
+              backgroundColor: "#FF7600",
               marginHorizontal: 0,
               width: Dimensions.get("window").width * 0.85,
               margin: 8,
@@ -89,10 +89,10 @@ export default class Auth extends Component<Props> {
                 ]
               })
             }
-            icon={{ name: "diff-added", type: "octicon" }}
+            // icon={{ name: "diff-added", type: "octicon" }}
             buttonStyle={{
               borderRadius: 24,
-              backgroundColor: "#FF8D5C",
+              backgroundColor: "#FF7600",
               marginHorizontal: 0,
               width: Dimensions.get("window").width * 0.85,
               margin: 8,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "white"
   },
   title: {
     flex: 1,

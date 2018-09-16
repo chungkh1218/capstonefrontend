@@ -8,7 +8,8 @@ import {
   StyleSheet,
   Picker,
   Modal,
-  ScrollView
+  ScrollView,
+  Dimensions
 } from "react-native";
 
 import ModalDropdown from "react-native-modal-dropdown";
@@ -96,7 +97,10 @@ const lantauoptions = [
   "Other Islands"
 ];
 
-const allLocations = ntoptions.concat(kloptions).concat(hkoptions).concat(lantauoptions)
+const allLocations = ntoptions
+  .concat(kloptions)
+  .concat(hkoptions)
+  .concat(lantauoptions);
 
 interface IDistrictbuttonProp {
   onModalPressed: (value: string) => void;
@@ -133,47 +137,86 @@ export default class ModalExample extends Component<
   };
 
   public render() {
-    return <View>
-        <Text style={styles.narrative}>You are currently searching for :{this.state.value} </Text>
-        <TouchableHighlight>
-          <ModalDropdown style={styles.dropdown} options={ntoptions} defaultValue="New Territories" textStyle={styles.buttontext} dropdownTextStyle={styles.buttontext} dropdownStyle={styles.listeditem} onSelect={(index, value) => this.onSelectedItem(index, value)} />
-        </TouchableHighlight>
-        <TouchableHighlight>
-          <ModalDropdown style={styles.dropdown} options={kloptions} defaultValue="Kowloon" textStyle={styles.buttontext} dropdownTextStyle={styles.buttontext} dropdownStyle={styles.listeditem} onSelect={(index, value) => this.onSelectedItem(index, value)} />
-        </TouchableHighlight>
-        <TouchableHighlight>
-          <ModalDropdown style={styles.dropdown} options={hkoptions} defaultValue="HK Island" textStyle={styles.buttontext} dropdownTextStyle={styles.buttontext} dropdownStyle={styles.listeditem} onSelect={(index, value) => this.onSelectedItem(index, value)} />
-        </TouchableHighlight>
-        <TouchableHighlight>
-          <ModalDropdown style={styles.dropdown} options={lantauoptions} defaultValue="Lantau" textStyle={styles.buttontext} dropdownTextStyle={styles.buttontext} dropdownStyle={styles.listeditem} onSelect={(index, value) => this.onSelectedItem(index, value)} />
-        </TouchableHighlight>
-      </View>;
+    return (
+      <View>
+        <Text style={styles.narrative}>
+          You are currently searching for :{this.state.value}{" "}
+        </Text>
+        <View style={styles.buttonContainer}>
+          <TouchableHighlight style={{ backgroundColor: "#FFC08A" }}>
+            <ModalDropdown
+              style={styles.dropdown}
+              options={ntoptions}
+              defaultValue="New Territories"
+              textStyle={styles.buttontext}
+              dropdownTextStyle={styles.buttontext}
+              dropdownStyle={styles.listeditem}
+              onSelect={(index, value) => this.onSelectedItem(index, value)}
+            />
+          </TouchableHighlight>
+          <TouchableHighlight style={{ backgroundColor: "#FFE0D4" }}>
+            <ModalDropdown
+              style={styles.dropdown}
+              options={kloptions}
+              defaultValue="Kowloon"
+              textStyle={styles.buttontext}
+              dropdownTextStyle={styles.buttontext}
+              dropdownStyle={styles.listeditem}
+              onSelect={(index, value) => this.onSelectedItem(index, value)}
+            />
+          </TouchableHighlight>
+          <TouchableHighlight style={{ backgroundColor: "#FFC08A" }}>
+            <ModalDropdown
+              style={styles.dropdown}
+              options={hkoptions}
+              defaultValue="HK Island"
+              textStyle={styles.buttontext}
+              dropdownTextStyle={styles.buttontext}
+              dropdownStyle={styles.listeditem}
+              onSelect={(index, value) => this.onSelectedItem(index, value)}
+            />
+          </TouchableHighlight>
+          <TouchableHighlight style={{ backgroundColor: "#FFE0D4" }}>
+            <ModalDropdown
+              style={styles.dropdown}
+              options={lantauoptions}
+              defaultValue="Lantau"
+              textStyle={styles.buttontext}
+              dropdownTextStyle={styles.buttontext}
+              dropdownStyle={styles.listeditem}
+              onSelect={(index, value) => this.onSelectedItem(index, value)}
+            />
+          </TouchableHighlight>
+        </View>
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    flexDirection: "row",
+    justifyContent: "center"
+  },
   dropdown: {
-    width: 450,
-    height: 50,
-    borderColor: "cornflowerblue",
-    borderWidth: 2,
-    borderRadius: 3,
-    backgroundColor: "white"
+    width: Dimensions.get("window").width * 0.25,
+    padding: 10
+    // backgroundColor: "#FFC08A"
   },
   buttontext: {
-    fontSize: 20,
-    alignSelf: "center",
-    paddingTop: 5
+    fontSize: 16,
+    alignSelf: "center"
   },
   listeditem: {
-    width: 450,
+    width: Dimensions.get("window").width,
     height: 300,
-    borderColor: "cornflowerblue",
+    borderColor: "#FFC08A",
     borderWidth: 2,
     borderRadius: 3,
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: "#FFE0D4"
   },
-  narrative:{
-    alignItems:'center'
+  narrative: {
+    alignItems: "center"
   }
 });

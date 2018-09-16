@@ -69,15 +69,16 @@ export default class PropertyItem extends React.Component<IPropertyProps> {
           </View>
           <View style={styles.homeListContent}>
             {/* <Text>{this.props.imageUrl}</Text> */}
-            <Text style={{ fontWeight: "bold" }}>{this.props.catname}</Text>
-            <Text>
+            <Text style={{ color: "black", fontWeight: "bold" }}>
+              {this.props.catname}
+            </Text>
+            <Text style={{ color: "gray" }}>
               ${this.props.avPrice_sq}
               /sq.ft
             </Text>
-            <Text>{this.props.imageUrl}</Text>
             <Text
               style={{
-                fontSize: 36,
+                fontSize: 28,
                 fontWeight: "bold",
                 alignSelf: "flex-end"
               }}
@@ -96,22 +97,24 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     width: Dimensions.get("window").width,
-    height: 120,
-    backgroundColor: "#C8D1E7",
-    // padding: 4,
-    marginBottom: 4
+    height: 90,
+    backgroundColor: "white",
+    marginBottom: 6,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25
   },
   homeListThumbnail: {
     flex: 1
-    // backgroundColor: "blue"
   },
   homeListContent: {
     flex: 2,
     justifyContent: "space-around",
-    fontSize: 16,
     textAlign: "right",
-    color: "dimgray",
+    color: "white",
     padding: 10
-    // backgroundColor: "red"
   }
 });

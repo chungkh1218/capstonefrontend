@@ -96,9 +96,9 @@ class SignUpPage extends Component<ISignUpPageProps> {
           onPress={this.handleSubmit}
           buttonStyle={{
             borderRadius: 24,
-            backgroundColor: "#F9BA32",
+            backgroundColor: "#FF7600",
             marginHorizontal: 0,
-            width: Dimensions.get("window").width * 0.85,
+            width: Dimensions.get("window").width * 0.5,
             margin: 8,
             padding: 12
           }}
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     padding: 20,
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "white"
   },
   welcome: {
     fontSize: 20,

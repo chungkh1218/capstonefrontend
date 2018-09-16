@@ -1,75 +1,112 @@
 import * as React from "react";
 import { Component } from "react";
-import { Text, View, TouchableOpacity, ScrollView } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  Text,
+  Dimensions,
+  StyleSheet,
+  FlatList,
+  Image
+} from "react-native";
 import { Linking } from "react-native";
-import { List, ListItem } from "react-native-elements";
 import MortgageInput from "../components/mortgagecalculator";
 import Header from "../components/mortgagehead";
-export default class BankValuation extends Component {
+interface IBankValuationProps {}
+interface IBankValuationState {
+  data: Array<{
+    name: string;
+    url: string;
+  }>;
+}
+export default class BankValuation extends Component<
+  IBankValuationProps,
+  IBankValuationState
+> {
+  constructor(props: IBankValuationProps) {
+    super(props);
+    this.state = {
+      data: [
+        {
+          name: "HSBC",
+          url:
+            "https://www.hsbc.com.hk/zh-hk/personal/mortgages/property-valuation-tool.html"
+        },
+        {
+          name: "Hang Seng Bank",
+          url:
+            "https://www.hsbc.com.hk/zh-hk/personal/mortgages/property-valuation-tool.html"
+        },
+        {
+          name: "DBS",
+          url:
+            "https://www.hsbc.com.hk/zh-hk/personal/mortgages/property-valuation-tool.html"
+        },
+        {
+          name: "Standard Chartered",
+          url:
+            "https://www.hsbc.com.hk/zh-hk/personal/mortgages/property-valuation-tool.html"
+        }
+      ]
+    };
+  }
   render() {
     return (
-      <View>
-        <List containerStyle={{ marginBottom: 20 }}>
-          {/* HSBC */}
-          <TouchableOpacity
-            onPress={() =>
-              Linking.openURL(
-                "https://www.hsbc.com.hk/zh-hk/personal/mortgages/property-valuation-tool.html"
-              )
-            }
-          >
-            <ListItem
-              roundAvatar // avatar={{ uri: l.avatar_url }}
-              key={"HSBC"}
-              title={"HSBC Property Valuation Tool"}
-            />
-          </TouchableOpacity>
+      <View style={styles.container}>
+        <FlatList
+          data={this.state.data}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => Linking.openURL(item.url)}>
+              <View style={styles.homeList}>
+                <Text style={{ padding: 20, fontSize: 18 }}>{item.name}</Text>
 
-          <TouchableOpacity
-            onPress={() =>
-              Linking.openURL(
-                "https://www.hangseng.com/zh-hk/e-valuation/keyword-search/"
-              )
-            }
-          >
-            <ListItem
-              roundAvatar // avatar={{ uri: l.avatar_url }}
-              key={"HSB"}
-              title={"Heng Seng Bank"}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
-              Linking.openURL(
-                "https://evalhk.dtz.com/e-valuation/DBSV2/Home/Index/cn"
-              )
-            }
-          >
-            <ListItem
-              roundAvatar // avatar={{ uri: l.avatar_url }}
-              key={"DBS"}
-              title={"DBS"}
-            />
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
-              Linking.openURL(
-                "https://www.sc.com/hk/borrow/mortgage-planner/property-valuation/"
-              )
-            }
-          >
-            <ListItem
-              roundAvatar // avatar={{ uri: l.avatar_url }}
-              key={"SC"}
-              title={"Standard Chartered"}
-            />
-          </TouchableOpacity>
-        </List>
-
+                <Image
+                  style={{ width: 20, height: 20 }}
+                  source={{
+                    uri:
+                      "http://logok.org/wp-content/uploads/2014/06/HSBC_logo-880x660.png"
+                  }}
+                />
+              </View>
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item, key) => String(key)}
+        />
         {/* <ScrollView><MortgageInput/></ScrollView> */}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "white"
+  },
+  homeList: {
+    flex: 1,
+    flexDirection: "row",
+    width: Dimensions.get("window").width,
+    height: 90,
+    backgroundColor: "white",
+    marginBottom: 6,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25
+  },
+  homeListThumbnail: {
+    flex: 1
+  },
+  homeListContent: {
+    flex: 2,
+    justifyContent: "space-around",
+    textAlign: "right",
+    color: "white",
+    padding: 10
+  }
+});

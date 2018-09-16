@@ -9,7 +9,7 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import { Text,View, ScrollView, StyleSheet } from "react-native";
+import { Text, View, ScrollView, StyleSheet, Picker } from "react-native";
 
 import { NavigationComponentProps } from "react-native-navigation";
 import ModalExample from "../components/home/districtbotton";
@@ -33,18 +33,16 @@ interface IHomeProps extends NavigationComponentProps {
 
   // onButtonLoadProperties:(value?:string)=>void
 }
-interface IHomeStates {
-  language: string;
-}
-
-
+// interface IHomeStates {
+//   language: string;
+// }
 
 class Home extends Component<IHomeProps> {
   constructor(props: IHomeProps) {
     super(props);
-    this.state = {
-      language: "Java"
-    };
+    // this.state = {
+    //   language: "Java"
+    // };
   }
 
   componentDidMount() {
@@ -63,8 +61,6 @@ class Home extends Component<IHomeProps> {
     // this.props.onButtonLoadProperties();
   }
 
-
-
   render() {
     if (this.props.user.isAuthenticated) {
       this.props.navigator.dismissModal({
@@ -76,27 +72,41 @@ class Home extends Component<IHomeProps> {
         <View style={styles.searchbar}>
           <SearchBar onSearchChange={this.onSearchBarChanged} />
         </View>
-         {/* <Text>You are currently searching for : </Text> */}
+        {/* <Text>You are currently searching for : </Text> */}
         <ModalExample
           onModalPressed={value => {
             this.props.loadProperties(value, "district");
           }}
         />
+        {/* <Picker
+          selectedValue={this.state.language}
+          style={{
+            borderWidth: 2,
+            borderColor: "red",
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            right: 0
+          }}
+          onValueChange={(itemValue, itemIndex) =>
+            this.setState({ language: itemValue })
+          }
+        >
+          <Picker.Item label="Java" value="java" />
+          <Picker.Item label="JavaScript" value="js" />
+        </Picker> */}
         <ScrollView>
           <PropertyList
             navigator={this.props.navigator}
             properties={this.props.properties}
           />
         </ScrollView>
-
       </View>
     );
   }
 
-
   private onSearchBarChanged = (search: string, condition: string) => {
     this.props.loadProperties(search, condition);
-    
   };
 }
 const mapStateToProps = (state: IRootState) => {
@@ -124,6 +134,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#97A9D4"
+    backgroundColor: "white"
   }
 });

@@ -7,20 +7,50 @@
 //  */
 
 // import * as React from "react";
+// import { AsyncStorage } from "react-native";
 // import { Navigation } from "react-native-navigation";
+// // import { navigatorStyle } from "./screens/styles/common";
+
 // import LandingPage from "./components/auth/LandingPage";
 // import Home from "./screens/HomeTab";
 // import WatchList from "./screens/WatchListTab";
 // import User from "./screens/UserTab";
 
-// Navigation.registerComponent("example.landingpage", () => LandingPage);
-// Navigation.registerComponent("example.home", () => Home);
-// Navigation.registerComponent("example.watchlist", () => WatchList);
-// Navigation.registerComponent("example.user", () => User);
+// import { createReduxStore } from "./redux/store";
+// // import { loginSuccess } from "./redux/actions/AuthAction";
+// import { Provider } from "react-redux";
+
+// const store = createReduxStore();
+
+// Navigation.registerComponent(
+//   "example.landingpage",
+//   () => LandingPage,
+//   store,
+//   Provider
+// );
+// Navigation.registerComponent("example.home", () => Home, store, Provider);
+// Navigation.registerComponent(
+//   "example.watchlist",
+//   () => WatchList,
+//   store,
+//   Provider
+// );
+// Navigation.registerComponent("example.user", () => User, store, Provider);
 
 // class App {
 //   constructor() {
 //     // Constructor
+//     // AsyncStorage.getItem("token").then((token: string | null) => {
+//     //   if (token) {
+//     // [CODE REVIEW] check profile, if ok, store profile to redux. if not ok (401), pop to login page
+//     // store.dispatch(getUserProfile(token));
+//     // refresh token ?
+//     // store.dispatch(loginSuccess(token));
+//     // App.loginApp(token); // redirect to home page
+//     //   } else {
+//     App.initialApp(); // if no prev token -> need to login
+//     //   }
+//     // });
 //   }
 
 //   static initialApp() {
@@ -28,7 +58,7 @@
 //       screen: {
 //         screen: "landingpage",
 //         navigatorStyle: {
-//           navBarBackgroundColor: "#9EF8E4"
+//           //   navBarBackgroundColor: "#9EF8E4"
 //         },
 //         appStyle: {
 //           hideBackButtonTitle: true

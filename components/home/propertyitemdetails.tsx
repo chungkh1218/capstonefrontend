@@ -16,7 +16,8 @@ import {
   StyleSheet,
   ScrollView,
   Image,
-  Text
+  Text,
+  Dimensions
 } from "react-native";
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
@@ -89,22 +90,29 @@ class propertyitemdetails extends Component<IHistProps> {
     console.log(uri);
     return (
       <View style={styles.container}>
-        <Text>{this.props.catname}</Text>
         <ScrollView>
           <View>
-            <Image style={{ width: 400, height: 300 }} source={{ uri: uri }} />
+            <Image
+              style={{ width: Dimensions.get("window").width, height: 180 }}
+              source={{ uri: uri }}
+            />
           </View>
-          {/* </ScrollView> */}
-          {/* <ScrollView> */}
           <View>
             <HistoryList histories={this.props.histories} />
           </View>
-
-          <View style={styles.buttonGroup}>
-            <Button title="Bank Valuation" onPress={this.goBankPressed} />
-            <Button title="Add Favourite" onPress={this.addUserFavourite} />
-          </View>
         </ScrollView>
+        <View style={styles.buttonGroup}>
+          <Button
+            color="white"
+            title="Bank Valuation"
+            onPress={this.goBankPressed}
+          />
+          <Button
+            color="white"
+            title="Add Favourite"
+            onPress={this.addUserFavourite}
+          />
+        </View>
       </View>
     );
   }
@@ -137,9 +145,10 @@ export default connect(
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    width: Dimensions.get("window").width,
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#F5FCFF"
+    backgroundColor: "white"
   },
   welcome: {
     fontSize: 20,
@@ -152,8 +161,11 @@ const styles = StyleSheet.create({
     marginBottom: 5
   },
   buttonGroup: {
+    width: Dimensions.get("window").width,
     position: "relative",
+    justifyContent: "space-evenly",
     flexDirection: "row",
-    padding: 10
+    padding: 10,
+    backgroundColor: "#FFC08A"
   }
 });

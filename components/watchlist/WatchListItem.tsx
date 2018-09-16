@@ -57,41 +57,48 @@ class WatchListItem extends Component<IWatchListItemProps> {
               marginBottom: 180
             }}
           >
-            <Text h4 style={{ fontWeight: "bold" }}>
+            {/* <Text h4 style={{ fontWeight: "bold" }}>
               {this.props.re_id}
               {"\n"}
-            </Text>
+            </Text> */}
+            {this.props.address.map((item, i) => (
+              <Text h4 style={{ fontWeight: "bold" }} key={i}>
+                {item.catname}
+                {"\n"}
+              </Text>
+            ))}
             <Text style={{ fontSize: 16, color: "dimgray" }}>
               {this.props.address.map((item, i) => (
                 <Text key={i}>
-                  Catname: {item.catname}
-                  CatFathername: {item.catfathername}
+                  {item.catfathername}
+                  {"\n"}
                   avWinloss: {item.avWinloss}
+                  {"\n"}
                   avPrice_sq: {item.avPrice_sq}
                 </Text>
               ))}
             </Text>
           </Text>
           <Button
-            icon={{ name: "code" }}
-            backgroundColor="red"
+            backgroundColor="#FF7600"
             buttonStyle={{
+              width: Dimensions.get("window").width * 0.5,
               borderRadius: 24,
               marginLeft: 0,
               marginRight: 0,
-              marginBottom: 0
+              marginBottom: 6
             }}
             title="Remove Favourite"
             onPress={this.removeFavourite}
           />
           <Button
-            icon={{ name: "code" }}
-            backgroundColor="#304A8B"
+            backgroundColor="#FF7600"
             buttonStyle={{
+              width: Dimensions.get("window").width * 0.5,
               borderRadius: 24,
               marginLeft: 0,
               marginRight: 0,
-              marginBottom: 0
+              marginBottom: 6
             }}
             title="Go Back"
             onPress={() =>
@@ -131,7 +138,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#97A9D4"
+    backgroundColor: "#FACC56"
   },
   welcome: {
     fontSize: 20,

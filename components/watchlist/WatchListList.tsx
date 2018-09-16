@@ -26,122 +26,46 @@ interface IWatchListListProps {
 export class WatchListList extends React.Component<IWatchListListProps> {
   constructor(props: IWatchListListProps) {
     super(props);
-
-    // this.state = {
-    //   data: [
-    //     {
-    //       re_id: 1,
-    //       catfathername: "Kwun Tong",
-    //       catname: "Wah Fat Building ",
-    //       my_target_price: "$5,000,000",
-    //       addr: "8/F Room 11",
-    //       area: "690ft",
-    //       imageUrl:
-    //         "https://images.okay.com/Building/Folder150/1208_634105534157968750.JPG"
-    //     },
-    //     {
-    //       re_id: 2,
-    //       catfathername: "Ho Man Tin",
-    //       catname: "Mantin Heights",
-    //       my_target_price: "$3,600,000",
-    //       addr: "TOWER 7 7/F Room G",
-    //       area: "690ft",
-    //       imageUrl:
-    //         "https://www.28hse.com/en/utf8/developer/d298/selfcapture/7zRjsPPexx_large.jpg"
-    //     },
-    //     {
-    //       re_id: 3,
-    //       catfathername: "Tai Kok Tsui",
-    //       catname: "Metro Harbour View",
-    //       my_target_price: "$4,300,000",
-    //       addr: "BLOCK 6 3#/F Room F",
-    //       area: "690ft",
-    //       imageUrl:
-    //         "https://www.28hse.com/en/utf8/developer/d298/selfcapture/7zRjsPPexx_large.jpg"
-    //     }
-    //   ]
-    // };
   }
 
   public render() {
     console.log(this.props.watchList[0]);
     return (
-      <View>
-        <FlatList
-          data={this.props.watchList}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigator.showModal({
-                  screen: "example.watchlistitem", // unique ID registered with Navigation.registerScreen
-                  title: "Modal", // title of the screen as appears in the nav bar (optional)
-                  passProps: {
-                    re_id: item.re_id,
-                    address: item.address
-                  }, // simple serializable object that will pass as props to the modal (optional)
-                  navigatorStyle: {}, // override the navigator style for the screen, see "Styling the navigator" below (optional)
-                  animationType: "slide-up" // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
-                })
-              }
-            >
-              <View style={styles.homeList}>
-                <View style={styles.homeListContent}>
-                  <Text style={styles.homeListHeader}>
-                    Re_id:: {item.re_id}
-                  </Text>
-                  {item.address.map((item, i) => (
-                    <Text key={i}>
-                      Catname: {item.catname}
-                      CatFatherName: {item.catfathername}
-                      Winloss: {item.avWinloss}
-                      Price: {item.avPrice_sq}
-                    </Text>
-                  ))}
-                </View>
+      <FlatList
+        data={this.props.watchList}
+        renderItem={({ item }) => (
+          <TouchableOpacity
+            onPress={() =>
+              this.props.navigator.showModal({
+                screen: "example.watchlistitem", // unique ID registered with Navigation.registerScreen
+                title: "Modal", // title of the screen as appears in the nav bar (optional)
+                passProps: {
+                  re_id: item.re_id,
+                  address: item.address
+                }, // simple serializable object that will pass as props to the modal (optional)
+                navigatorStyle: {}, // override the navigator style for the screen, see "Styling the navigator" below (optional)
+                animationType: "slide-up" // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
+              })
+            }
+          >
+            <View style={styles.homeList}>
+              <View style={styles.homeListContent}>
+                {item.address.map((item, i) => (
+                  <View key={i}>
+                    <Text style={styles.homeListHeader}>{item.catname}</Text>
+                    <View style={styles.homeListItem}>
+                      <Text>{item.catfathername}</Text>
+                      <Text>Winloss: {item.avWinloss}</Text>
+                      <Text>Price: {item.avPrice_sq}</Text>
+                    </View>
+                  </View>
+                ))}
               </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item, key) => String(key)}
-        />
-
-        {/* <FlatList
-          data={this.props.watchList}
-          renderItem={({ item }) => (
-            <TouchableOpacity
-              onPress={() =>
-                this.props.navigator.showModal({
-                  screen: "example.watchlisttestitem", // unique ID registered with Navigation.registerScreen
-                  title: item.re_id, // title of the screen as appears in the nav bar (optional)
-                  passProps: {
-                    // re_id: item.re_id,
-                    // address: item.address
-                  }, // simple serializable object that will pass as props to the modal (optional)
-                  navigatorStyle: {}, // override the navigator style for the screen, see "Styling the navigator" below (optional)
-                  animationType: "slide-up" // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
-                })
-              }
-            >
-              <View style={styles.homeList}>
-                <View style={styles.homeListContent}>
-                  <Text style={styles.homeListHeader}>
-                    Re_id:: {item.re_id}
-                  </Text>
-
-                  {item.address.map((item, i) => (
-                    <Text key={i}>
-                      Catname: {item.catname}
-                      CatFatherName: {item.catfathername}
-                      Winloss: {item.avWinloss}
-                      Price: {item.avPrice_sq}
-                    </Text>
-                  ))}
-                </View>
-              </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item, key) => String(key)}
-        /> */}
-      </View>
+            </View>
+          </TouchableOpacity>
+        )}
+        keyExtractor={(item, key) => String(key)}
+      />
     );
   }
 }
@@ -151,8 +75,15 @@ const styles = StyleSheet.create({
     flex: 1,
     width: Dimensions.get("window").width,
     height: 120,
-    backgroundColor: "aliceblue",
-    padding: 20
+    backgroundColor: "white",
+    padding: 20,
+    marginBottom: 6,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25
   },
   homeListThumbnail: {
     width: 120,
@@ -162,18 +93,16 @@ const styles = StyleSheet.create({
   },
   homeListContent: {
     position: "absolute",
-    right: 20,
-    letterSpacing: 10
+    letterSpacing: 10,
+    padding: 10
   },
   homeListHeader: {
     fontSize: 20,
     fontWeight: "bold",
-    textAlign: "right",
     letterSpacing: 1
   },
   homeListItem: {
     fontSize: 16,
-    textAlign: "right",
     color: "dimgray"
   }
 });
