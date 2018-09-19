@@ -31,19 +31,21 @@ export default class BankValuation extends Component<
       data: [
         {
           name: "HSBC",
-          url: "../src/img/hsbc_logo.png"
+          url:
+            "https://www.hsbc.com.hk/personal/mortgages/property-valuation-tool.html"
         },
         {
           name: "Hang Seng Bank",
-          url: "../src/img/hsb_logo.png"
+          url: "https://www.hangseng.com/en-hk/e-valuation/address-search/#"
         },
         {
           name: "DBS",
-          url: "../src/img/dbs_logo.png"
+          url: "https://evalhk.dtz.com/e-valuation/DBSV2/Home/Index/en"
         },
         {
           name: "Standard Chartered",
-          url: "../src/img/sc_logo.png"
+          url:
+            "https://www.sc.com/hk/borrow/mortgage-planner/property-valuation/"
         }
       ]
     };
