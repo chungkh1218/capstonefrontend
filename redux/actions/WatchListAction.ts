@@ -66,7 +66,7 @@ export function AddWatchItems(reId: number) {
       .then(token => {
         console.log("token: " + token);
         return axios
-          .post(`${Config.API_URL}/api/fav/addflat/${reId}`, {
+          .post(`${Config.API_URL}/api/fav/addflat/${reId}`, reId, {
             headers: {
               Authorization: "Bearer " + token
             }

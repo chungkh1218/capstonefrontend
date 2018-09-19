@@ -23,11 +23,13 @@ export function WatchListReducer(
     case ADD_WATCH_ITEM:
       console.log("Add Watch Item!");
       return {
+        ...state,
         watchList: action.watchList
+        // watchList: state.watchList.concat(action.watchList)
       };
     // Update the watch list
     case LIST_WATCH_ITEM:
-      console.log(action.watchList);
+      console.log("List Watch Item!");
       return {
         watchList: action.watchList
       };
@@ -35,7 +37,9 @@ export function WatchListReducer(
     case REMOVE_WATCH_ITEM:
       console.log("Remove Watch Item!");
       return {
+        ...state,
         watchList: action.watchList
+        // watchList: state.watchList.concat(action.watchList)
       };
 
     default:

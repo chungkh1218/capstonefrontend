@@ -13,15 +13,6 @@ import { IWatchList } from "../../models/models";
 interface IWatchListListProps {
   navigator: Navigator;
   watchList: IWatchList[];
-  // data: Array<{
-  //   re_id: number;
-  //   catfathername: string;
-  //   catname: string;
-  //   my_target_price: string;
-  //   addr: string;
-  //   area: string;
-  //   imageUrl: string;
-  // }>;
 }
 export class WatchListList extends React.Component<IWatchListListProps> {
   constructor(props: IWatchListListProps) {
@@ -29,7 +20,7 @@ export class WatchListList extends React.Component<IWatchListListProps> {
   }
 
   public render() {
-    console.log(this.props.watchList[0]);
+    // console.log(this.props.watchList[0]);
     return (
       <FlatList
         data={this.props.watchList}
@@ -55,8 +46,8 @@ export class WatchListList extends React.Component<IWatchListListProps> {
                     <Text style={styles.homeListHeader}>{item.catname}</Text>
                     <View style={styles.homeListItem}>
                       <Text>{item.catfathername}</Text>
-                      <Text>Winloss: {item.avWinloss}</Text>
-                      <Text>Price: {item.avPrice_sq}</Text>
+                      <Text>Winloss: {item.avWinloss}%</Text>
+                      <Text>Price: ${item.avPrice_sq}</Text>
                     </View>
                   </View>
                 ))}

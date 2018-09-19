@@ -74,6 +74,7 @@ export interface IProperty {
   avWinloss: any;
   avPrice_sq: number;
   catname: string;
+  re_id: number;
 }
 
 export interface IHistory {
@@ -93,5 +94,3 @@ export interface IHistory {
     }
   ];
 }
-
-

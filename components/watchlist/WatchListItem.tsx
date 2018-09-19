@@ -14,6 +14,8 @@ import { Card, Button, Text } from "react-native-elements";
 import { RemoveWatchItems } from "../../redux/actions/WatchListAction";
 import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
+import axios from "axios";
+import Config from "react-native-config";
 
 interface IWatchListItemProps {
   re_id: number;
@@ -34,7 +36,8 @@ class WatchListItem extends Component<IWatchListItemProps> {
   }
 
   removeFavourite = () => {
-    console.log("Remove favourite");
+    this.props.RemoveItems(this.props.re_id);
+    console.log("Remove favourite: " + this.props.re_id);
     this.props.navigator.dismissModal({
       animationType: "slide-down"
     });
@@ -72,9 +75,8 @@ class WatchListItem extends Component<IWatchListItemProps> {
                 <Text key={i}>
                   {item.catfathername}
                   {"\n"}
-                  avWinloss: {item.avWinloss}
-                  {"\n"}
-                  avPrice_sq: {item.avPrice_sq}
+                  Winloss: {item.avWinloss}%{"\n"}${item.avPrice_sq}
+                  /sq.ft
                 </Text>
               ))}
             </Text>

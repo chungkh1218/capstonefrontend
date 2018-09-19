@@ -6,13 +6,14 @@ import { IHistory } from "../../models/models";
 
 export default class HistoryItem extends Component<IHistory> {
   render() {
+    // console.log(this.props.transactions[0]);
     return (
       <View style={styles.container}>
         <View style={styles.item}>
           <Text style={{ fontSize: 16, fontWeight: "bold" }}>
             {this.props.addr}
           </Text>
-          <View key={this.props.transactions[0].ht_id}>
+          {/* <View key={this.props.transactions[0].ht_id}>
             <Text style={{ lineHeight: 26 }}>
               Tran.price:$
               {this.props.transactions[0].price_value}
@@ -22,20 +23,26 @@ export default class HistoryItem extends Component<IHistory> {
               {"\n"}
               WINLOSS: {this.props.transactions[0].winloss}%
             </Text>
-          </View>
+          </View> */}
 
-          {/* {this.props.transactions.map((item: any, index) => (
-          <View key={index.toString()}>
-            <Text>
-              WINLOSS: {item.winloss}%{"\n"}
-              Tran.price:$
-              {item.price_value}
-              {"\n"}
-              Tran.date:
-              {item.date}
-            </Text>
-          </View>
-        ))} */}
+          {this.props.transactions.map((item: any, index) => (
+            <View
+              style={{
+                paddingTop: 8
+              }}
+              key={index.toString()}
+            >
+              <Text>
+                WINLOSS: {item.winloss}%{"\n"}
+                Tran.price:$
+                {item.price_value}
+                {"\n"}
+                Tran.date:
+                {item.date}
+                {"\n"}
+              </Text>
+            </View>
+          ))}
         </View>
       </View>
     );

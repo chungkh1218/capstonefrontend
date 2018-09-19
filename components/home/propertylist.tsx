@@ -18,7 +18,6 @@ export default class PropertyList extends Component<IPropertyListProp> {
     let imageLink = "";
     let photoreference = "";
 
-
     return value;
   };
   render() {
@@ -49,5 +48,3 @@ export default class PropertyList extends Component<IPropertyListProp> {
     );
   }
 }
-
-

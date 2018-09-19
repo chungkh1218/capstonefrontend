@@ -17,7 +17,7 @@ import ModalDropdown from "react-native-modal-dropdown";
 const ntoptions = [
   "Tuen Mun",
   "Yuen Long",
-  "Sha Tin",
+  "ShaTin",
   "Tai Po",
   "Sai Kung",
   "Clearwater Bay",

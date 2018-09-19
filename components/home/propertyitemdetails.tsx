@@ -22,7 +22,7 @@ import {
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
 import HistoryList from "../tshistory/historylist";
-import { IHistory } from "../../models/models";
+import { IHistory, IWatchList } from "../../models/models";
 import Auth from "../auth/Auth";
 import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
@@ -35,6 +35,7 @@ Navigation.registerComponent("example.auth", () => Auth);
 
 interface IHistProps extends NavigationComponentProps {
   histories: IHistory[];
+  // watchList: IWatchList[];
   url: string;
   catname: string;
   loadHistories: (param: string) => void;
@@ -50,6 +51,13 @@ class propertyitemdetails extends Component<IHistProps> {
     const param = this.props.catname;
     this.props.loadHistories(param);
   }
+
+  // componenetDidUpdate() {
+  //   if (this.props.watchList !== this.props.watchList) {
+  //     console.log("watchList will be update");
+  //     // handleListUpdate(this.props.watchList);
+  //   }
+  // }
 
   goBankPressed = () => {
     this.props.navigator.push({
@@ -79,8 +87,10 @@ class propertyitemdetails extends Component<IHistProps> {
   };
 
   addUserFavourite = () => {
-    console.log("Add User Favourite" + this.props.catname);
-    // this.props.addItems(123);
+    console.log("Add User Favourite: " + this.props.catname);
+    // console.log("Add Re ID: " + this.props.histories[0].re_id);
+    console.log("Add Re ID: " + this.props.histories[0].re_id);
+    this.props.addItems(this.props.histories[0].re_id);
     Alert.alert(`${this.props.catname} is added as your favourite`);
   };
 

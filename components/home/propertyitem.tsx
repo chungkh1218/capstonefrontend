@@ -53,8 +53,14 @@ export default class PropertyItem extends React.Component<IPropertyProps> {
     return (
       <TouchableOpacity onPress={this.itemsOnPressed.bind(this)}>
         <View style={styles.homeList}>
-          <View style={styles.homeListThumbnail}>
-            <Image
+          <View
+            style={
+              this.props.avWinloss > 100
+                ? { flex: 1, backgroundColor: "red" }
+                : { flex: 1, backgroundColor: "#FF9212" }
+            }
+          >
+            {/* <Image
               style={{
                 flex: 1,
                 alignSelf: "stretch",
@@ -65,10 +71,9 @@ export default class PropertyItem extends React.Component<IPropertyProps> {
                 uri:
                   "https://www.28hse.com/en/utf8/developer/d298/selfcapture/7zRjsPPexx_large.jpg"
               }}
-            />
+            /> */}
           </View>
           <View style={styles.homeListContent}>
-            {/* <Text>{this.props.imageUrl}</Text> */}
             <Text style={{ color: "black", fontWeight: "bold" }}>
               {this.props.catname}
             </Text>
@@ -107,11 +112,12 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25
   },
-  homeListThumbnail: {
-    flex: 1
-  },
+  // homeListThumbnail: {
+  //   flex: 1,
+  //   backgroundColor: "#FF9212"
+  // },
   homeListContent: {
-    flex: 2,
+    flex: 23,
     justifyContent: "space-around",
     textAlign: "right",
     color: "white",
