@@ -46,10 +46,13 @@ class UserProfile extends Component<IUserProfileProps> {
         source={require("../../src/img/Logout_BG.png")}
         style={styles.container}
       >
-        <Text style={styles.header}>{this.props.user.username}</Text>
+        <Text style={styles.header}>
+          Hi, {this.props.user.username}. {"\n"} Welcome to Property Prince.
+          {"\n"}
+          We can you to find your ideal property investment here.
+        </Text>
         <Text style={styles.description}>
-          User Info:
-          {this.props.user.user_id}
+          Email:
           {this.props.user.email}
         </Text>
         <Button
@@ -102,7 +105,8 @@ const styles = StyleSheet.create({
   //   alignItems: "center"
   // },
   header: {
-    fontSize: 24,
+    fontSize: 16,
+    lineHeight: 24,
     color: "black",
     textAlign: "center",
     margin: 10

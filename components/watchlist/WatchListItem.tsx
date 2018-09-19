@@ -79,34 +79,36 @@ class WatchListItem extends Component<IWatchListItemProps> {
               ))}
             </Text>
           </Text>
-          <Button
-            backgroundColor="#FF7600"
-            buttonStyle={{
-              width: Dimensions.get("window").width * 0.5,
-              borderRadius: 24,
-              marginLeft: 0,
-              marginRight: 0,
-              marginBottom: 6
+          <View
+            style={{
+              alignItems: "center"
             }}
-            title="Remove Favourite"
-            onPress={this.removeFavourite}
-          />
-          <Button
-            backgroundColor="#FF7600"
-            buttonStyle={{
-              width: Dimensions.get("window").width * 0.5,
-              borderRadius: 24,
-              marginLeft: 0,
-              marginRight: 0,
-              marginBottom: 6
-            }}
-            title="Go Back"
-            onPress={() =>
-              this.props.navigator.dismissModal({
-                animationType: "slide-down" // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
-              })
-            }
-          />
+          >
+            <Button
+              backgroundColor="#FF7600"
+              buttonStyle={{
+                width: Dimensions.get("window").width * 0.5,
+                borderRadius: 24,
+                marginBottom: 6
+              }}
+              title="Remove Favourite"
+              onPress={this.removeFavourite}
+            />
+            <Button
+              backgroundColor="#FF7600"
+              buttonStyle={{
+                width: Dimensions.get("window").width * 0.5,
+                borderRadius: 24,
+                marginBottom: 6
+              }}
+              title="Go Back"
+              onPress={() =>
+                this.props.navigator.dismissModal({
+                  animationType: "slide-down" // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
+                })
+              }
+            />
+          </View>
         </Card>
       </View>
     );
@@ -139,31 +141,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FACC56"
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: "center",
-    margin: 10
-  },
-  instructions: {
-    textAlign: "center",
-    color: "#333333",
-    marginBottom: 5
-  },
-  imagePanel: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: Dimensions.get("window").width,
-    height: 100,
-    backgroundColor: "red"
-  },
-  userPanel: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: Dimensions.get("window").width,
-    height: 100,
-    backgroundColor: "#304A8B"
   }
 });

@@ -2,24 +2,21 @@ import {
   authAction,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  LOGOUT,
-  SWITCH_AUTHSTATUS
+  LOGOUT
 } from "../actions/AuthAction";
 import { IAuthUser } from "../../models/models";
 
 export interface IAuthState {
   user: IAuthUser;
-  // isAuthenticated: boolean;
 }
 
 const initialState = {
   user: {
-    username: "string",
-    email: "string",
+    username: "username is null",
+    email: "email is null",
     user_id: null,
     isAuthenticated: false
   }
-  // isAuthenticated: false
 };
 
 export function authReducer(
@@ -31,6 +28,8 @@ export function authReducer(
       return {
         user: {
           ...state.user,
+          username: action.username,
+          email: action.email,
           isAuthenticated: true
         }
       };
@@ -48,12 +47,6 @@ export function authReducer(
           isAuthenticated: false
         }
       };
-    // case SWITCH_AUTHSTATUS:
-    //   console.log("Sign up. Your auth status is: " + state.isAuthenticated);
-
-    //   if (state.isAuthenticated === false) return { isAuthenticated: true };
-    //   else if (state.isAuthenticated === true)
-    //     return { isAuthenticated: false };
     default:
       return state;
   }

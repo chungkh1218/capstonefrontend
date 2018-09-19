@@ -104,7 +104,7 @@ class LoginPage extends Component<ILoginPageProps> {
           options={options}
         />
         <Button
-          title="Login!"
+          title="Login"
           onPress={this.handleLogin}
           buttonStyle={{
             borderRadius: 24,
@@ -117,7 +117,7 @@ class LoginPage extends Component<ILoginPageProps> {
           }}
         />
         <Button
-          title="Login with Facebook!"
+          title="Facebook Login"
           onPress={this.handleFBLogin}
           buttonStyle={{
             borderRadius: 24,
