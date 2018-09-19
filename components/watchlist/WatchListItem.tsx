@@ -48,11 +48,11 @@ class WatchListItem extends Component<IWatchListItemProps> {
     return (
       <View style={styles.container}>
         <Card
-          image={
-            {
-              // uri: this.props.imageUrl
-            }
-          }
+        // image={
+        //   {
+        //     // uri: this.props.imageUrl
+        //   }
+        // }
         >
           <Text
             style={{
@@ -70,7 +70,7 @@ class WatchListItem extends Component<IWatchListItemProps> {
                 {"\n"}
               </Text>
             ))}
-            <Text style={{ fontSize: 16, color: "dimgray" }}>
+            <Text style={{ fontSize: 16, color: "dimgray", padding: 20 }}>
               {this.props.address.map((item, i) => (
                 <Text key={i}>
                   {item.catfathername}

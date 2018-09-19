@@ -46,8 +46,8 @@ export class WatchListList extends React.Component<IWatchListListProps> {
                     <Text style={styles.homeListHeader}>{item.catname}</Text>
                     <View style={styles.homeListItem}>
                       <Text>{item.catfathername}</Text>
-                      <Text>Winloss: {item.avWinloss}%</Text>
-                      <Text>Price: ${item.avPrice_sq}</Text>
+                      {/* <Text>Winloss: {item.avWinloss}%</Text> */}
+                      {/* <Text>Price: ${item.avPrice_sq}</Text> */}
                     </View>
                   </View>
                 ))}

@@ -1,8 +1,9 @@
 import * as React from "react";
 import { Component } from "react";
-import { StyleSheet, Button, Text, View, TextInput } from "react-native";
+import { StyleSheet, Text, View, TextInput, Dimensions } from "react-native";
 import PropTypes from "prop-types";
-import Header from "./mortgagehead";
+import { Button } from "react-native-elements";
+// import Header from "./mortgagehead";
 
 interface IMortgageInputProps {}
 
@@ -21,9 +22,9 @@ export default class MortgageInput extends React.Component<
   constructor(props: IMortgageInputProps) {
     super(props);
     this.state = {
-      rate: 0,
-      principal: 0,
-      years: 0,
+      rate: 2.5,
+      principal: 5500000,
+      years: 35,
       response: "",
       completed: false
     };
@@ -78,52 +79,95 @@ export default class MortgageInput extends React.Component<
 
   render() {
     return (
-      <View
-      //   style={styles.container}
-      >
-        <Header />
-        {this.state.completed ? (
-          <View
-          //    style={styles.results}
-          >
-            <Text style={{ fontSize: 14, color: "black" }}>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={{ fontSize: 18, alignSelf: "center", color: "#ffffff" }}>
+            Mortgage Calculator
+          </Text>
+        </View>
+
+        <View style={styles.resultGroup}>
+          {this.state.completed ? (
+            <Text style={{ fontSize: 18, color: "black" }}>
               {this.state.response}
             </Text>
+          ) : null}
+        </View>
+
+        <View style={styles.inputGroup}>
+          <View>
+            <Text
+              style={{ fontSize: 20, fontWeight: "bold", paddingBottom: 8 }}
+            >
+              Rate
+            </Text>
+            <TextInput
+              keyboardType="numeric"
+              placeholder="Rate"
+              // style={styles.inputs}
+              value={this.state.rate.toString()}
+              onChangeText={number => this.setState({ rate: number })}
+            />
           </View>
-        ) : null}
-        <TextInput
-          keyboardType="numeric"
-          placeholder="Rate"
-          style={styles.inputs}
-          value={this.state.rate.toString()}
-          onChangeText={number => this.setState({ rate: number })}
-        />
-        <TextInput
-          keyboardType="numeric"
-          placeholder="Principal"
-          style={styles.inputs}
-          value={this.state.principal.toString()}
-          onChangeText={number => this.setState({ principal: number })}
-        />
-        <TextInput
-          keyboardType="numeric"
-          placeholder="Years"
-          style={styles.inputs}
-          value={this.state.years.toString()}
-          onChangeText={number => this.setState({ years: number })}
-        />
-        <View style={styles.button}>
+          <View>
+            <Text
+              style={{ fontSize: 20, fontWeight: "bold", paddingBottom: 8 }}
+            >
+              Principal
+            </Text>
+            <TextInput
+              keyboardType="numeric"
+              placeholder="Principal"
+              // style={styles.inputs}
+              value={this.state.principal.toString()}
+              onChangeText={number => this.setState({ principal: number })}
+            />
+          </View>
+
+          <View>
+            <Text
+              style={{ fontSize: 20, fontWeight: "bold", paddingBottom: 8 }}
+            >
+              Years
+            </Text>
+            <TextInput
+              keyboardType="numeric"
+              placeholder="Years"
+              // style={styles.inputs}
+              value={this.state.years.toString()}
+              onChangeText={number => this.setState({ years: number })}
+            />
+          </View>
+        </View>
+
+        <View style={styles.buttonGroup}>
           <Button
             onPress={this.calculate}
-            //   style={styles.button}
+            // style={styles.button}
             title="Calculate"
             accessibilityLabel="Learn more about this purple button"
+            buttonStyle={{
+              borderRadius: 24,
+              backgroundColor: "#FF7600",
+              marginHorizontal: 0,
+              width: Dimensions.get("window").width * 0.5,
+              margin: 6,
+              padding: 8
+            }}
           />
           <Button
             onPress={this.reset}
-            //   style={styles.button}
+            // style={styles.button}
             title="Reset"
             accessibilityLabel="Learn more about this purple button"
+            buttonStyle={{
+              borderRadius: 24,
+              backgroundColor: "#FF7600",
+              marginHorizontal: 0,
+              width: Dimensions.get("window").width * 0.5,
+              margin: 6,
+              padding: 8
+            }}
           />
           <Button
             onPress={() =>
@@ -131,9 +175,17 @@ export default class MortgageInput extends React.Component<
                 animationType: "slide-up" // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
               })
             }
-            //   style={styles.button}
+            // style={styles.button}
             title="Back"
             accessibilityLabel="Learn more about this purple button"
+            buttonStyle={{
+              borderRadius: 24,
+              backgroundColor: "#FF7600",
+              marginHorizontal: 0,
+              width: Dimensions.get("window").width * 0.5,
+              margin: 6,
+              padding: 8
+            }}
           />
         </View>
       </View>
@@ -142,35 +194,45 @@ export default class MortgageInput extends React.Component<
 }
 
 const styles = StyleSheet.create({
-  // button: {
-  //   backgroundColor: "#FFA500",
-  //   height: 5,
-  //   width: 15,
-  //   color: "#FFFAFA",
-  //   bottom: 15
-  // },
   container: {
     flex: 1,
-    backgroundColor: "#067EBD",
-    alignItems: "center",
     justifyContent: "center",
-    bottom: 50
-  },
-  inputs: {
-    width: 300,
-    alignSelf: "center",
-    height: 40,
-    top: 5,
+    alignItems: "center",
     backgroundColor: "#FFFFFF"
   },
-  // button: {
-  //   flexDirection: "row",
-  //   justifyContent: "center"
-  // }
-  results: {
-    width: 300,
-    alignSelf: "center",
-    height: 70,
-    margin: 10
+  header: {
+    width: Dimensions.get("window").width,
+    backgroundColor: "#FF9212",
+    padding: 18
+  },
+  resultGroup: {
+    flex: 2,
+    width: Dimensions.get("window").width,
+    backgroundColor: "#DCDCDC",
+    padding: 20
+  },
+  inputGroup: {
+    flex: 3,
+    justifyContent: "space-around",
+    width: Dimensions.get("window").width,
+    // backgroundColor: "green"
+    paddingRight: 20,
+    paddingLeft: 20,
+    paddingBottom: 20
+  },
+  buttonGroup: {
+    flex: 3,
+    justifyContent: "space-around",
+    alignItems: "center",
+    width: Dimensions.get("window").width,
+    // backgroundColor: "blue",
+    paddingBottom: 80
   }
+  // inputs: {
+  //   width: 300,
+  //   alignSelf: "center",
+  //   height: 40,
+  //   top: 5,
+  //   backgroundColor: "#FFFFFF"
+  // }
 });

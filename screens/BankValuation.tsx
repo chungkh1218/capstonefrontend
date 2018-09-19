@@ -80,8 +80,8 @@ export default class BankValuation extends Component<
             })
           }
           buttonStyle={{
-            borderRadius: 24,
-            backgroundColor: "#3B5998",
+            borderRadius: 18,
+            backgroundColor: "#FF9212",
             marginHorizontal: 0,
             width: Dimensions.get("window").width * 0.5,
             alignSelf: "center",

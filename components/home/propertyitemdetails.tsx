@@ -176,6 +176,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     flexDirection: "row",
     padding: 10,
-    backgroundColor: "#FFC08A"
+    backgroundColor: "#FF9212"
   }
 });
