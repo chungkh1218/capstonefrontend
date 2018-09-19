@@ -51,8 +51,25 @@ export default class BankValuation extends Component<
   render() {
     return (
       <View style={styles.container}>
+        <FlatList
+          data={this.state.data}
+          renderItem={({ item }) => (
+            <TouchableOpacity onPress={() => Linking.openURL(item.url)}>
+              <View style={styles.homeList}>
+                <Text style={{ padding: 20, fontSize: 18 }}>{item.name}</Text>
+                {/* <Image
+                  style={{ width: 80, height: 80, backgroundColor: "red" }}
+                  source={{ uri: item.url.toString() }}
+                  source={require(item.url.toString())}
+                /> */}
+              </View>
+            </TouchableOpacity>
+          )}
+          keyExtractor={(item, key) => String(key)}
+        />
+
         <Button
-          title="Calculator"
+          title="Mortgage Calculator"
           onPress={() =>
             this.props.navigator.showModal({
               screen: "example.mortgagecalculator", // unique ID registered with Navigation.registerScreen
@@ -71,24 +88,6 @@ export default class BankValuation extends Component<
             margin: 8,
             padding: 12
           }}
-        />
-
-        <FlatList
-          data={this.state.data}
-          renderItem={({ item }) => (
-            <TouchableOpacity onPress={() => Linking.openURL(item.url)}>
-              <View style={styles.homeList}>
-                <Text style={{ padding: 20, fontSize: 18 }}>{item.name}</Text>
-
-                {/* <Image
-                  style={{ width: 80, height: 80, backgroundColor: "red" }}
-                  source={{ uri: item.url.toString() }}
-                  source={require(item.url.toString())}
-                /> */}
-              </View>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item, key) => String(key)}
         />
       </View>
     );

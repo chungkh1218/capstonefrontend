@@ -80,7 +80,7 @@ class LandingPage extends Component<ILandingPageProps> {
                 padding: 8
               }}
             />
-            <Button
+            {/* <Button
               title="Register"
               onPress={() =>
                 this.props.navigator.push({
@@ -157,7 +157,7 @@ class LandingPage extends Component<ILandingPageProps> {
                 margin: 6,
                 padding: 8
               }}
-            />
+            /> */}
           </View>
         </View>
       </ImageBackground>
