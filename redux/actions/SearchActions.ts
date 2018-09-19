@@ -9,14 +9,16 @@ export type SEARCH_PROP = typeof SERACH_PROP;
 export interface ISearchPropAction {
   type: SEARCH_PROP;
   properties: IProperty[];
+  isLoading:boolean
 }
 
 //noraml action creator
 export function SearchPropertyAction(
-  properties: IProperty[]
+  properties: IProperty[],isLoading:boolean
 ): ISearchPropAction {
   console.log();
   return {
+    isLoading,
     properties,
     type: SERACH_PROP
   };
@@ -29,11 +31,11 @@ export function SearchPropFromAPIAction(search?: string, condition?: string) {
     if (condition === "estate") {
       axios
         .get(
-          `${Config.API_URL}/estate/infoP/${search}?page=1&numberOfResults=30`
+          `${Config.API_URL}/api/estate/infoP/${search}?page=1&numberOfResults=30`
         )
         .then(res => {
           console.log(res);
-          dispatch(SearchPropertyAction(res.data));
+          dispatch(SearchPropertyAction(res.data,false));
         })
         .catch(err => console.log("uh oh error", err));
     } else {
@@ -52,10 +54,11 @@ export function SearchPropFromAPIAction(search?: string, condition?: string) {
 }
 
 export function ModalSearchPropertyAction(
-  properties: IProperty[]
+  properties: IProperty[],isLoading:boolean
 ): ISearchPropAction {
   console.log();
   return {
+    isLoading,
     properties,
     type: SERACH_PROP
   };

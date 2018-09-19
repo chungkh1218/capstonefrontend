@@ -20,6 +20,7 @@ export interface IRootState {
   histories: IListHistState;
   watches: WatchListState;
   url: IListHistImgState;
+  isLoading:IPropListState;
 }
 
 const rootReducer = combineReducers({
@@ -27,7 +28,8 @@ const rootReducer = combineReducers({
   properties: SearchReducer,
   url: GetImgReducer,
   histories: ListHistReducer,
-  watches: WatchListReducer
+  watches: WatchListReducer,
+  isLoading:SearchReducer
 });
 
 declare global {
