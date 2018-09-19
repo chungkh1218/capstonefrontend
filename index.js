@@ -22,8 +22,16 @@ import SearchBar from "./components/home/searchbar";
 import { createReduxStore } from "./redux/store";
 import HistoryList from "./components/tshistory/historylist";
 import BankValution from "./screens/BankValuation";
+import MortgageCalculator from "./components/mortgage/mortgagecalculator";
 
 const store = createReduxStore();
+
+Navigation.registerComponent(
+  "example.mortgagecalculator",
+  () => MortgageCalculator,
+  store,
+  Provider
+);
 
 Navigation.registerComponent(
   "example.watchlistitem",

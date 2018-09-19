@@ -7,11 +7,13 @@ import {
   Dimensions,
   StyleSheet,
   FlatList,
-  Image
+  Image,
+  ScrollView
 } from "react-native";
 import { Linking } from "react-native";
-import MortgageInput from "../components/mortgagecalculator";
-import Header from "../components/mortgagehead";
+import MortgageInput from "../components/mortgage/mortgagecalculator";
+import Header from "../components/mortgage/mortgagehead";
+import { Button } from "react-native-elements";
 interface IBankValuationProps {}
 interface IBankValuationState {
   data: Array<{
@@ -29,23 +31,19 @@ export default class BankValuation extends Component<
       data: [
         {
           name: "HSBC",
-          url:
-            "https://www.hsbc.com.hk/zh-hk/personal/mortgages/property-valuation-tool.html"
+          url: "../src/img/hsbc_logo.png"
         },
         {
           name: "Hang Seng Bank",
-          url:
-            "https://www.hsbc.com.hk/zh-hk/personal/mortgages/property-valuation-tool.html"
+          url: "../src/img/hsb_logo.png"
         },
         {
           name: "DBS",
-          url:
-            "https://www.hsbc.com.hk/zh-hk/personal/mortgages/property-valuation-tool.html"
+          url: "../src/img/dbs_logo.png"
         },
         {
           name: "Standard Chartered",
-          url:
-            "https://www.hsbc.com.hk/zh-hk/personal/mortgages/property-valuation-tool.html"
+          url: "../src/img/sc_logo.png"
         }
       ]
     };
@@ -53,6 +51,28 @@ export default class BankValuation extends Component<
   render() {
     return (
       <View style={styles.container}>
+        <Button
+          title="Calculator"
+          onPress={() =>
+            this.props.navigator.showModal({
+              screen: "example.mortgagecalculator", // unique ID registered with Navigation.registerScreen
+              title: "Modal", // title of the screen as appears in the nav bar (optional)
+              passProps: {}, // simple serializable object that will pass as props to the modal (optional)
+              navigatorStyle: {}, // override the navigator style for the screen, see "Styling the navigator" below (optional)
+              animationType: "slide-up" // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
+            })
+          }
+          buttonStyle={{
+            borderRadius: 24,
+            backgroundColor: "#3B5998",
+            marginHorizontal: 0,
+            width: Dimensions.get("window").width * 0.5,
+            alignSelf: "center",
+            margin: 8,
+            padding: 12
+          }}
+        />
+
         <FlatList
           data={this.state.data}
           renderItem={({ item }) => (
@@ -60,19 +80,16 @@ export default class BankValuation extends Component<
               <View style={styles.homeList}>
                 <Text style={{ padding: 20, fontSize: 18 }}>{item.name}</Text>
 
-                <Image
-                  style={{ width: 20, height: 20 }}
-                  source={{
-                    uri:
-                      "http://logok.org/wp-content/uploads/2014/06/HSBC_logo-880x660.png"
-                  }}
-                />
+                {/* <Image
+                  style={{ width: 80, height: 80, backgroundColor: "red" }}
+                  source={{ uri: item.url.toString() }}
+                  source={require(item.url.toString())}
+                /> */}
               </View>
             </TouchableOpacity>
           )}
           keyExtractor={(item, key) => String(key)}
         />
-        {/* <ScrollView><MortgageInput/></ScrollView> */}
       </View>
     );
   }

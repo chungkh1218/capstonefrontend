@@ -6,7 +6,7 @@ const homeStyles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#FFFFFF"
   },
   searchinput: {
     height: 50,
@@ -19,11 +19,11 @@ const homeStyles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: '#48BBEC',
     // borderRadius: 8,
-    color: 'white',
+    color: "#FF9212"
   },
   searchbar: {
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: "row",
+    alignItems: "center"
   },
   homePanel: {
     flex: 1,
@@ -41,7 +41,7 @@ const homeStyles = StyleSheet.create({
   item: {
     backgroundColor: "lightblue",
     borderWidth: 1,
-    borderColor: 'white',
+    borderColor: "white",
 
     fontSize: 16,
     textAlign: "left",
@@ -50,11 +50,11 @@ const homeStyles = StyleSheet.create({
     // width: 270
   },
   districtbox: {
-    flexDirection: 'row',
+    flexDirection: "row"
   },
   districtbar: {
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: "row",
+    alignItems: "center"
   },
   searchInput: {
     height: 50,
@@ -64,17 +64,15 @@ const homeStyles = StyleSheet.create({
     marginRight: 5,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#48BBEC',
+    borderColor: "#48BBEC",
     borderRadius: 8,
-    color: '#48BBEC',
+    color: "#48BBEC"
   },
   propertylist: {
     backgroundColor: "white",
     borderWidth: 1,
-    borderColor: 'white',
+    borderColor: "white",
     fontSize: 30
   }
-
-
 });
 export default homeStyles;
