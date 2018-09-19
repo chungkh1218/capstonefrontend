@@ -17,7 +17,8 @@ import {
   ScrollView,
   Image,
   Text,
-  Dimensions
+  Dimensions,
+  ActivityIndicator
 } from "react-native";
 import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
@@ -34,6 +35,7 @@ import { AddWatchItems } from "../../redux/actions/WatchListAction";
 Navigation.registerComponent("example.auth", () => Auth);
 
 interface IHistProps extends NavigationComponentProps {
+  isLoading:boolean
   histories: IHistory[];
   // watchList: IWatchList[];
   url: string;
@@ -42,9 +44,16 @@ interface IHistProps extends NavigationComponentProps {
   addItems: (reId: number) => void;
 }
 
-class propertyitemdetails extends Component<IHistProps> {
+interface IHistState {
+  isLoading:boolean
+}
+
+class propertyitemdetails extends Component<IHistProps, IHistState> {
   constructor(props: IHistProps) {
     super(props);
+    this.state = {
+      isLoading: true
+    };
   }
 
   componentWillMount() {
@@ -94,7 +103,13 @@ class propertyitemdetails extends Component<IHistProps> {
     Alert.alert(`${this.props.catname} is added as your favourite`);
   };
 
+  componentWillReceiveProps(props:any) {
+    this.setState({ isLoading: props.isLoading });
+  }
   render() {
+    const spinner = this.state.isLoading ? (
+      <ActivityIndicator size="large" />
+    ) : null;
     const uri = this.props.url;
     console.log(this.props.histories);
     console.log(uri);
@@ -108,6 +123,7 @@ class propertyitemdetails extends Component<IHistProps> {
             />
           </View>
           <View>
+            {this.state.isLoading ? spinner  : null}
             <HistoryList histories={this.props.histories} />
           </View>
         </ScrollView>

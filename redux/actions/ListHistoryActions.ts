@@ -9,6 +9,7 @@ export type LIST_HIST = typeof LIST_HIST;
 export type LIST_HIST_IMG = typeof LIST_HIST_IMG;
 
 export interface IListHistAction {
+  isLoading1:boolean;
   type: LIST_HIST;
   histories: IHistory[];
  
@@ -20,8 +21,9 @@ export interface IGetImgAction{
   url:string
 }
 
-export function ListHistAction(histories: IHistory[]): IListHistAction {
+export function ListHistAction(histories: IHistory[],isLoading1:boolean): IListHistAction {
   return {
+    isLoading1,
     histories,
     type: LIST_HIST
   };
@@ -41,7 +43,7 @@ export function ListHistFromAPIAction(param: string) {
       .get(`${Config.API_URL}/api/estate/estate/${param}`)
       .then(res => {
         console.log(res)
-        dispatch(ListHistAction(res.data));
+        dispatch(ListHistAction(res.data,false));
       })
       .catch(err => console.log("uh oh error", err));
   };
