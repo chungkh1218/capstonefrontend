@@ -25,6 +25,7 @@ public class MainApplication extends NavigationApplication {
 
   @Override
   public void onCreate() {
+    // SplashScreen.show(this);  // here
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
   }
@@ -39,7 +40,13 @@ public class MainApplication extends NavigationApplication {
       // No need to add RnnPackage and MainReactPackage
         return Arrays.<ReactPackage>asList(
           // eg. new VectorIconsPackage()
-            new VectorIconsPackage()
+            new VectorIconsPackage(),
+            // new FBSDKPackage(),
+            new SplashScreenReactPackage(),
+            new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),
+            new AppCenterReactNativeAnalyticsPackage(MainApplication.this, getResources().getString(R.string.appCenterAnalytics_whenToEnableAnalytics)),
+            new AppCenterReactNativePackage(MainApplication.this),
+            new ReactNativeConfigPackage()
       );
     }
 
@@ -65,12 +72,12 @@ public class MainApplication extends NavigationApplication {
 //     protected List<ReactPackage> getPackages() {
 //       return Arrays.<ReactPackage>asList(
 //           new MainReactPackage(),
-            new FBSDKPackage(),
-            new SplashScreenReactPackage(),
-            new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),
-            new AppCenterReactNativeAnalyticsPackage(MainApplication.this, getResources().getString(R.string.appCenterAnalytics_whenToEnableAnalytics)),
-            new AppCenterReactNativePackage(MainApplication.this),
-            new ReactNativeConfigPackage(),
+            // new FBSDKPackage(),
+            // new SplashScreenReactPackage(),
+            // new AppCenterReactNativeCrashesPackage(MainApplication.this, getResources().getString(R.string.appCenterCrashes_whenToSendCrashes)),
+            // new AppCenterReactNativeAnalyticsPackage(MainApplication.this, getResources().getString(R.string.appCenterAnalytics_whenToEnableAnalytics)),
+            // new AppCenterReactNativePackage(MainApplication.this),
+            // new ReactNativeConfigPackage(),
             // new VectorIconsPackage(),
 //             new NavigationReactPackage()
 //       );

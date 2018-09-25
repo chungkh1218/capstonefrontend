@@ -1,12 +1,19 @@
 package com.propertyvaluation;
 
 import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen; // import this
+import android.os.Bundle; // import this
 import com.reactnativenavigation.controllers.SplashActivity;
 
 
 // public class MainActivity extends ReactActivity {
 public class MainActivity extends SplashActivity {
 
+    @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            SplashScreen.show(this);  // here
+            super.onCreate(savedInstanceState);
+        }
 
     /**
      * Returns the name of the main component registered from JavaScript.
