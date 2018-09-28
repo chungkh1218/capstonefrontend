@@ -21,7 +21,7 @@ import PropertyList from "./components/home/propertylist";
 import SearchBar from "./components/home/searchbar";
 import { createReduxStore } from "./redux/store";
 import HistoryList from "./components/tshistory/historylist";
-import BankValution from "./screens/BankValuation";
+import BankValution from "./components/valuation/bankvaluation";
 import MortgageCalculator from "./components/mortgage/mortgagecalculator";
 
 const store = createReduxStore();
