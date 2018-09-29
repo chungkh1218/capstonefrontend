@@ -28,19 +28,38 @@
     "tcomb-form-native": "^0.6.15"
   },
   "devDependencies": {
-    "@types/react": "^16.4.11",
-    "@types/react-native": "^0.56.10",
+    "@types/jest": "^23.3.2",
+    "@types/react": "^16.4.14",
+    "@types/react-native": "^0.57.0",
     "@types/react-native-fbsdk": "^0.6.2",
     "@types/react-native-navigation": "^2.0.0",
+    "@types/react-test-renderer": "^16.0.2",
     "babel-jest": "23.4.2",
     "babel-preset-react-native": "^5",
     "jest": "23.5.0",
+    "react-addons-test-utils": "^15.6.2",
     "react-native-typescript-transformer": "^1.2.10",
     "react-test-renderer": "16.4.1",
+    "ts-jest": "^23.10.2",
     "typescript": "^3.0.1"
   },
   "jest": {
     "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/"
+    ],
+    "cacheDirectory": ".jest/cache",
     "setupFiles": [
       "<rootDir>/node_modules/appcenter/test/AppCenterMock.js",
       "<rootDir>/node_modules/appcenter-crashes/test/AppCenterCrashesMock.js",
