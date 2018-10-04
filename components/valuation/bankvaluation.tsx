@@ -11,8 +11,6 @@ import {
   ScrollView
 } from "react-native";
 import { Linking } from "react-native";
-import MortgageInput from "../components/mortgage/mortgagecalculator";
-import Header from "../components/mortgage/mortgagehead";
 import { Button } from "react-native-elements";
 interface IBankValuationProps {}
 interface IBankValuationState {

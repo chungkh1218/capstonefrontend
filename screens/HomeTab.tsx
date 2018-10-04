@@ -30,6 +30,7 @@ interface IHomeProps extends NavigationComponentProps {
   user: IAuthUser;
   // catname: string;
   loadProperties: (search?: string, condition?: string) => void;
+  navigator: Navigation;
 
   // onButtonLoadProperties:(value?:string)=>void
 }

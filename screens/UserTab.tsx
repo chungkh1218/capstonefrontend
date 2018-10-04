@@ -9,18 +9,9 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import {
-  StyleSheet,
-  View,
-  TouchableOpacity,
-  Dimensions,
-  Alert,
-  Text
-} from "react-native";
-import { Button } from "react-native-elements";
-import { NavigationComponentProps } from "react-native-navigation";
+import { StyleSheet, View, Alert } from "react-native";
+import { Navigation } from "react-native-navigation";
 
-import Icon from "react-native-vector-icons/FontAwesome";
 import { IRootState } from "../redux/store";
 import { logoutUser } from "../redux/actions/AuthAction";
 import { connect } from "react-redux";
@@ -28,9 +19,10 @@ import { IAuthUser } from "../models/models";
 import AuthRequest from "../components/auth/AuthRequest";
 import UserProfile from "../components/auth/UserProfile";
 
-interface IUserTapProps extends NavigationComponentProps {
+interface IUserTapProps {
   user: IAuthUser;
   logout: () => void;
+  navigator: Navigation;
 }
 
 class User extends Component<IUserTapProps> {

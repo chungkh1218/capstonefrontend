@@ -21,6 +21,7 @@ interface IWatchListProps {
   user: IAuthUser;
   watchList: IWatchList[];
   ListItems: () => void;
+  navigator: Navigator;
 }
 
 class WatchList extends React.Component<IWatchListProps> {
