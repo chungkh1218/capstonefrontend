@@ -1,0 +1,360 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing UserProfile renders as expected 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <UserProfile
+    logout={[Function]}
+    navigator={true}
+    user={
+      Object {
+        "email": "pet@pet.com",
+        "isAuthenticated": true,
+        "user_id": 1,
+        "username": "peter",
+      }
+    }
+  />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "class",
+    "props": Object {
+      "children": Array [
+        <Component
+          style={
+            Object {
+              "color": "black",
+              "fontSize": 16,
+              "lineHeight": 24,
+              "margin": 10,
+              "textAlign": "center",
+            }
+          }
+        >
+          Hi, 
+          peter
+          . 
+          
+
+           Welcome to Property Prince.
+          
+
+          We can you to find your ideal property investment here.
+        </Component>,
+        <Component
+          style={
+            Object {
+              "color": "grey",
+              "fontSize": 12,
+              "margin": 10,
+              "textAlign": "center",
+            }
+          }
+        >
+          Email:
+          pet@pet.com
+        </Component>,
+        <Button
+          buttonStyle={
+            Object {
+              "backgroundColor": "#FF7600",
+              "borderRadius": 24,
+              "margin": 8,
+              "marginHorizontal": 0,
+              "padding": 12,
+              "width": 262.5,
+            }
+          }
+          onPress={[Function]}
+          title="Logout!"
+        />,
+      ],
+      "source": Object {
+        "testUri": "../../../src/img/Logout_BG.png",
+      },
+      "style": Object {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "flex": 1,
+        "justifyContent": "center",
+        "width": 750,
+      },
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            "Hi, ",
+            "peter",
+            ". ",
+            "
+",
+            " Welcome to Property Prince.",
+            "
+",
+            "We can you to find your ideal property investment here.",
+          ],
+          "style": Object {
+            "color": "black",
+            "fontSize": 16,
+            "lineHeight": 24,
+            "margin": 10,
+            "textAlign": "center",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          "Hi, ",
+          "peter",
+          ". ",
+          "
+",
+          " Welcome to Property Prince.",
+          "
+",
+          "We can you to find your ideal property investment here.",
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "children": Array [
+            "Email:",
+            "pet@pet.com",
+          ],
+          "style": Object {
+            "color": "grey",
+            "fontSize": 12,
+            "margin": 10,
+            "textAlign": "center",
+          },
+        },
+        "ref": null,
+        "rendered": Array [
+          "Email:",
+          "pet@pet.com",
+        ],
+        "type": [Function],
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "buttonStyle": Object {
+            "backgroundColor": "#FF7600",
+            "borderRadius": 24,
+            "margin": 8,
+            "marginHorizontal": 0,
+            "padding": 12,
+            "width": 262.5,
+          },
+          "onPress": [Function],
+          "title": "Logout!",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [Function],
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "class",
+      "props": Object {
+        "children": Array [
+          <Component
+            style={
+              Object {
+                "color": "black",
+                "fontSize": 16,
+                "lineHeight": 24,
+                "margin": 10,
+                "textAlign": "center",
+              }
+            }
+          >
+            Hi, 
+            peter
+            . 
+            
+
+             Welcome to Property Prince.
+            
+
+            We can you to find your ideal property investment here.
+          </Component>,
+          <Component
+            style={
+              Object {
+                "color": "grey",
+                "fontSize": 12,
+                "margin": 10,
+                "textAlign": "center",
+              }
+            }
+          >
+            Email:
+            pet@pet.com
+          </Component>,
+          <Button
+            buttonStyle={
+              Object {
+                "backgroundColor": "#FF7600",
+                "borderRadius": 24,
+                "margin": 8,
+                "marginHorizontal": 0,
+                "padding": 12,
+                "width": 262.5,
+              }
+            }
+            onPress={[Function]}
+            title="Logout!"
+          />,
+        ],
+        "source": Object {
+          "testUri": "../../../src/img/Logout_BG.png",
+        },
+        "style": Object {
+          "alignItems": "center",
+          "backgroundColor": "white",
+          "flex": 1,
+          "justifyContent": "center",
+          "width": 750,
+        },
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              "Hi, ",
+              "peter",
+              ". ",
+              "
+",
+              " Welcome to Property Prince.",
+              "
+",
+              "We can you to find your ideal property investment here.",
+            ],
+            "style": Object {
+              "color": "black",
+              "fontSize": 16,
+              "lineHeight": 24,
+              "margin": 10,
+              "textAlign": "center",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            "Hi, ",
+            "peter",
+            ". ",
+            "
+",
+            " Welcome to Property Prince.",
+            "
+",
+            "We can you to find your ideal property investment here.",
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "children": Array [
+              "Email:",
+              "pet@pet.com",
+            ],
+            "style": Object {
+              "color": "grey",
+              "fontSize": 12,
+              "margin": 10,
+              "textAlign": "center",
+            },
+          },
+          "ref": null,
+          "rendered": Array [
+            "Email:",
+            "pet@pet.com",
+          ],
+          "type": [Function],
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "buttonStyle": Object {
+              "backgroundColor": "#FF7600",
+              "borderRadius": 24,
+              "margin": 8,
+              "marginHorizontal": 0,
+              "padding": 12,
+              "width": 262.5,
+            },
+            "onPress": [Function],
+            "title": "Logout!",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [Function],
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "context": Object {
+      "store": Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      },
+    },
+  },
+}
+`;

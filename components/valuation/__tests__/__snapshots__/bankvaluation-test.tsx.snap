@@ -1,0 +1,479 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BankValuation renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <RCTScrollView
+    data={
+      Array [
+        Object {
+          "name": "HSBC",
+          "src": Object {
+            "testUri": "../../../src/img/hsbc_logo.png",
+          },
+          "url": "https://www.hsbc.com.hk/personal/mortgages/property-valuation-tool.html",
+        },
+        Object {
+          "name": "Hang Seng Bank",
+          "src": Object {
+            "testUri": "../../../src/img/hsb_logo.png",
+          },
+          "url": "https://www.hangseng.com/en-hk/e-valuation/address-search/#",
+        },
+        Object {
+          "name": "DBS",
+          "src": Object {
+            "testUri": "../../../src/img/dbs_logo.png",
+          },
+          "url": "https://evalhk.dtz.com/e-valuation/DBSV2/Home/Index/en",
+        },
+        Object {
+          "name": "Standard Chartered",
+          "src": Object {
+            "testUri": "../../../src/img/sc_logo.png",
+          },
+          "url": "https://www.sc.com/hk/borrow/mortgage-planner/property-valuation/",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "red",
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 90,
+                "justifyContent": "space-between",
+                "marginBottom": 6,
+                "shadowColor": "#000000",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.25,
+                "width": 750,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "fontSize": 18,
+                  "padding": 20,
+                }
+              }
+            >
+              HSBC
+            </Text>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "blue",
+                  "justifyContent": "center",
+                  "width": 187.5,
+                }
+              }
+            >
+              <Image
+                resizeMode="cover"
+                source={
+                  Object {
+                    "testUri": "../../../src/img/hsbc_logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "height": 150,
+                    "width": 150,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "red",
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 90,
+                "justifyContent": "space-between",
+                "marginBottom": 6,
+                "shadowColor": "#000000",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.25,
+                "width": 750,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "fontSize": 18,
+                  "padding": 20,
+                }
+              }
+            >
+              Hang Seng Bank
+            </Text>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "blue",
+                  "justifyContent": "center",
+                  "width": 187.5,
+                }
+              }
+            >
+              <Image
+                resizeMode="cover"
+                source={
+                  Object {
+                    "testUri": "../../../src/img/hsb_logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "height": 150,
+                    "width": 150,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "red",
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 90,
+                "justifyContent": "space-between",
+                "marginBottom": 6,
+                "shadowColor": "#000000",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.25,
+                "width": 750,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "fontSize": 18,
+                  "padding": 20,
+                }
+              }
+            >
+              DBS
+            </Text>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "blue",
+                  "justifyContent": "center",
+                  "width": 187.5,
+                }
+              }
+            >
+              <Image
+                resizeMode="cover"
+                source={
+                  Object {
+                    "testUri": "../../../src/img/dbs_logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "height": 150,
+                    "width": 150,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessible={true}
+          isTVSelectable={true}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "backgroundColor": "red",
+                "flex": 1,
+                "flexDirection": "row",
+                "height": 90,
+                "justifyContent": "space-between",
+                "marginBottom": 6,
+                "shadowColor": "#000000",
+                "shadowOffset": Object {
+                  "height": 2,
+                  "width": 0,
+                },
+                "shadowOpacity": 0.25,
+                "width": 750,
+              }
+            }
+          >
+            <Text
+              style={
+                Object {
+                  "fontSize": 18,
+                  "padding": 20,
+                }
+              }
+            >
+              Standard Chartered
+            </Text>
+            <View
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "blue",
+                  "justifyContent": "center",
+                  "width": 187.5,
+                }
+              }
+            >
+              <Image
+                resizeMode="cover"
+                source={
+                  Object {
+                    "testUri": "../../../src/img/sc_logo.png",
+                  }
+                }
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "height": 150,
+                    "width": 150,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Array [
+        Object {
+          "marginLeft": 15,
+          "marginRight": 15,
+        },
+        undefined,
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={null}
+    >
+      <View
+        pointerEvents="box-only"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#9E9E9E",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 19,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "padding": 12,
+            },
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#FF9212",
+              "borderRadius": 18,
+              "margin": 8,
+              "marginHorizontal": 0,
+              "padding": 12,
+              "width": 375,
+            },
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              Array [
+                Object {
+                  "color": "white",
+                  "fontSize": 20,
+                },
+                undefined,
+                Object {
+                  "fontSize": 17.5,
+                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          Mortgage Calculator
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

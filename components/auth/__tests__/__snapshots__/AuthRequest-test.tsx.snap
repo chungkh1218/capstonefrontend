@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AuthRequest renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "flex": 1,
+      "justifyContent": "center",
+      "width": 750,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "testUri": "../../../src/img/AuthRequest_BG.png",
+      }
+    }
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "height": undefined,
+          "width": 750,
+        },
+        undefined,
+      ]
+    }
+  />
+  <Text
+    style={
+      Object {
+        "color": "black",
+        "fontSize": 24,
+        "margin": 10,
+        "textAlign": "center",
+      }
+    }
+  >
+    Authenication 
+  </Text>
+  <Text
+    style={
+      Object {
+        "color": "grey",
+        "fontSize": 12,
+        "margin": 10,
+        "textAlign": "center",
+      }
+    }
+  >
+    Please Sign Up / Login to try the advance features
+  </Text>
+  <View
+    style={
+      Array [
+        Object {
+          "marginLeft": 15,
+          "marginRight": 15,
+        },
+        undefined,
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={null}
+    >
+      <View
+        pointerEvents="box-only"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#9E9E9E",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 19,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "padding": 12,
+            },
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "backgroundColor": "#FF7600",
+              "borderRadius": 24,
+              "margin": 8,
+              "marginHorizontal": 0,
+              "padding": 12,
+              "width": 262.5,
+            },
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              Array [
+                Object {
+                  "color": "white",
+                  "fontSize": 20,
+                },
+                undefined,
+                Object {
+                  "fontSize": 17.5,
+                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          Login
+        </Text>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "marginLeft": 15,
+          "marginRight": 15,
+        },
+        undefined,
+        undefined,
+        undefined,
+      ]
+    }
+  >
+    <View
+      accessible={true}
+      isTVSelectable={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={null}
+    >
+      <View
+        pointerEvents="box-only"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#9E9E9E",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "padding": 19,
+            },
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "padding": 12,
+            },
+            undefined,
+            undefined,
+            undefined,
+            Object {
+              "backgroundColor": "#FF7600",
+              "borderRadius": 24,
+              "margin": 8,
+              "marginHorizontal": 0,
+              "padding": 12,
+              "width": 262.5,
+            },
+            undefined,
+            undefined,
+          ]
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {},
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              undefined,
+              Array [
+                Object {
+                  "color": "white",
+                  "fontSize": 20,
+                },
+                undefined,
+                Object {
+                  "fontSize": 17.5,
+                },
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+              ],
+            ]
+          }
+        >
+          Register
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

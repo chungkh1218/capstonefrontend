@@ -3,7 +3,7 @@ import BankValuation from "../bankvaluation";
 
 import renderer from "react-test-renderer";
 
-test("renders correctly", () => {
-  const tree = renderer.create(<BankValuation />).toJSON();
+test("BankValuation renders correctly", () => {
+  const tree = renderer.create(<BankValuation navigator />).toJSON();
   expect(tree).toMatchSnapshot();
 });

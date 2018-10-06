@@ -7,12 +7,13 @@ import {
   Dimensions,
   StyleSheet,
   FlatList,
-  Image,
-  ScrollView
+  Image
 } from "react-native";
 import { Linking } from "react-native";
 import { Button } from "react-native-elements";
-interface IBankValuationProps {}
+interface IBankValuationProps {
+  navigator: any;
+}
 interface IBankValuationState {
   data: Array<{
     name: string;
