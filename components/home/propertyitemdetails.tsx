@@ -24,7 +24,7 @@ import { NavigationComponentProps } from "react-native-navigation";
 import { Navigation } from "react-native-navigation";
 import HistoryList from "../tshistory/historylist";
 import { IHistory, IWatchList } from "../../models/models";
-import Auth from "../auth/Auth";
+// import Auth from "../auth/Obsolete/Auth";
 import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
 import {
@@ -32,10 +32,10 @@ import {
   GetImgFromAPIAction
 } from "../../redux/actions/ListHistoryActions";
 import { AddWatchItems } from "../../redux/actions/WatchListAction";
-Navigation.registerComponent("example.auth", () => Auth);
+// Navigation.registerComponent("example.auth", () => Auth);
 
 interface IHistProps extends NavigationComponentProps {
-  isLoading:boolean
+  isLoading: boolean;
   histories: IHistory[];
   // watchList: IWatchList[];
   url: string;
@@ -45,7 +45,7 @@ interface IHistProps extends NavigationComponentProps {
 }
 
 interface IHistState {
-  isLoading:boolean
+  isLoading: boolean;
 }
 
 class propertyitemdetails extends Component<IHistProps, IHistState> {
@@ -103,7 +103,7 @@ class propertyitemdetails extends Component<IHistProps, IHistState> {
     Alert.alert(`${this.props.catname} is added as your favourite`);
   };
 
-  componentWillReceiveProps(props:any) {
+  componentWillReceiveProps(props: any) {
     this.setState({ isLoading: props.isLoading });
   }
   render() {
@@ -123,7 +123,7 @@ class propertyitemdetails extends Component<IHistProps, IHistState> {
             />
           </View>
           <View>
-            {this.state.isLoading ? spinner  : null}
+            {this.state.isLoading ? spinner : null}
             <HistoryList histories={this.props.histories} />
           </View>
         </ScrollView>

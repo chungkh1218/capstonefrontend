@@ -1,20 +1,13 @@
 // Login Page
 import * as React from "react";
 import { Component } from "react";
-import { Navigator } from "react-native-navigation";
 import { Text, View, StyleSheet, Alert, Dimensions } from "react-native";
 import t from "tcomb-form-native";
 import { connect } from "react-redux";
 import { loginUser, loginFacebook } from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
 import { Button } from "react-native-elements";
-import {
-  LoginManager,
-  LoginButton,
-  AccessToken,
-  GraphRequest,
-  GraphRequestManager
-} from "react-native-fbsdk";
+import { LoginManager, AccessToken } from "react-native-fbsdk";
 import { IAuthUser } from "../../models/models";
 
 const Form = t.form.Form;
@@ -43,14 +36,14 @@ const options = {
 };
 
 interface ILoginPageProps {
-  navigator: Navigator;
+  navigator: any;
   user: IAuthUser;
   login: (email: string, password: string) => Promise<void>;
   fbLogin: (accessToken: string) => Promise<void>;
 }
 
 class LoginPage extends Component<ILoginPageProps> {
-  handleFBLogin = () => {
+  _handleFBLogin = () => {
     console.log("Facebbok Login handling...");
     LoginManager.logInWithReadPermissions(["public_profile"]).then(
       (result: any) => {
@@ -58,13 +51,8 @@ class LoginPage extends Component<ILoginPageProps> {
           alert("Login was cancelled");
         } else {
           AccessToken.getCurrentAccessToken().then(data => {
-            // console.log(data.accessToken.toString());
             this.props.fbLogin(data.accessToken);
           });
-          // alert(
-          //   "Login was successful with permissions: " +
-          //     result.grantedPermissions.toString()
-          // );
           console.log("Result:" + result.grantedPermissions.toString());
         }
       },
@@ -74,15 +62,11 @@ class LoginPage extends Component<ILoginPageProps> {
     );
   };
 
-  handleLogin = () => {
+  _handleLogin = () => {
     const value = this.refs.form.getValue();
     if (value) {
       this.props.login(value.email, value.password);
     }
-  };
-
-  changeInputValue = (value: string) => {
-    console.log("Value: " + value);
   };
 
   render() {
@@ -105,7 +89,7 @@ class LoginPage extends Component<ILoginPageProps> {
         />
         <Button
           title="Login"
-          onPress={this.handleLogin}
+          onPress={this._handleLogin}
           buttonStyle={{
             borderRadius: 24,
             backgroundColor: "#FF7600",
@@ -118,7 +102,7 @@ class LoginPage extends Component<ILoginPageProps> {
         />
         <Button
           title="Facebook Login"
-          onPress={this.handleFBLogin}
+          onPress={this._handleFBLogin}
           buttonStyle={{
             borderRadius: 24,
             backgroundColor: "#3B5998",

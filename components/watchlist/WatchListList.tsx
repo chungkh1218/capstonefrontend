@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Component } from "react";
 import {
   Text,
   View,
@@ -11,7 +10,7 @@ import {
 import { IWatchList } from "../../models/models";
 
 interface IWatchListListProps {
-  navigator: Navigator;
+  navigator: any;
   watchList: IWatchList[];
 }
 export class WatchListList extends React.Component<IWatchListListProps> {
@@ -19,25 +18,31 @@ export class WatchListList extends React.Component<IWatchListListProps> {
     super(props);
   }
 
+  _handleWatchListItem(item: any, navigator: any) {
+    this.props.navigator.showModal({
+      screen: "example.watchlistitemdetail",
+      title: "Modal",
+      passProps: {
+        navigator: navigator,
+        re_id: item.re_id,
+        address: item.address
+      },
+      navigatorStyle: {},
+      animationType: "slide-up"
+    });
+  }
+
   public render() {
-    // console.log(this.props.watchList[0]);
     return (
       <FlatList
         data={this.props.watchList}
         renderItem={({ item }) => (
           <TouchableOpacity
-            onPress={() =>
-              this.props.navigator.showModal({
-                screen: "example.watchlistitem", // unique ID registered with Navigation.registerScreen
-                title: "Modal", // title of the screen as appears in the nav bar (optional)
-                passProps: {
-                  re_id: item.re_id,
-                  address: item.address
-                }, // simple serializable object that will pass as props to the modal (optional)
-                navigatorStyle: {}, // override the navigator style for the screen, see "Styling the navigator" below (optional)
-                animationType: "slide-up" // 'none' / 'slide-up' , appear animation for the modal (optional, default 'slide-up')
-              })
-            }
+            onPress={this._handleWatchListItem.bind(
+              this,
+              item,
+              this.props.navigator
+            )}
           >
             <View style={styles.homeList}>
               <View style={styles.homeListContent}>
@@ -46,8 +51,8 @@ export class WatchListList extends React.Component<IWatchListListProps> {
                     <Text style={styles.homeListHeader}>{item.catname}</Text>
                     <View style={styles.homeListItem}>
                       <Text>{item.catfathername}</Text>
-                      {/* <Text>Winloss: {item.avWinloss}%</Text> */}
-                      {/* <Text>Price: ${item.avPrice_sq}</Text> */}
+                      <Text>Winloss: {item.avWinloss}%</Text>
+                      <Text>Price: ${item.avPrice_sq}</Text>
                     </View>
                   </View>
                 ))}

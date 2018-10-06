@@ -30,7 +30,7 @@ interface IHomeProps extends NavigationComponentProps {
   user: IAuthUser;
   // catname: string;
   loadProperties: (search?: string, condition?: string) => void;
-  navigator: Navigation;
+  navigator: any;
 
   // onButtonLoadProperties:(value?:string)=>void
 }
@@ -62,6 +62,10 @@ class Home extends Component<IHomeProps> {
     // this.props.onButtonLoadProperties();
   }
 
+  private onSearchBarChanged = (search: string, condition: string) => {
+    this.props.loadProperties(search, condition);
+  };
+
   render() {
     if (this.props.user.isAuthenticated) {
       this.props.navigator.dismissModal({
@@ -70,8 +74,11 @@ class Home extends Component<IHomeProps> {
     }
     return (
       <View style={styles.container}>
-        <View style={styles.searchbar}>
-          <SearchBar onSearchChange={this.onSearchBarChanged} />
+        <View>
+          <SearchBar
+            isLoading={false}
+            onSearchChange={this.onSearchBarChanged}
+          />
         </View>
         {/* <Text>You are currently searching for : </Text> */}
         <ModalExample
@@ -105,10 +112,6 @@ class Home extends Component<IHomeProps> {
       </View>
     );
   }
-
-  private onSearchBarChanged = (search: string, condition: string) => {
-    this.props.loadProperties(search, condition);
-  };
 }
 const mapStateToProps = (state: IRootState) => {
   return {

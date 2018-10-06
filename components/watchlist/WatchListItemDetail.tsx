@@ -1,23 +1,12 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import * as React from "react";
 import { Component } from "react";
-// import React, { Component } from "react";
 import { StyleSheet, View, Dimensions, Alert } from "react-native";
 import { Card, Button, Text } from "react-native-elements";
 import { RemoveWatchItems } from "../../redux/actions/WatchListAction";
 import { IRootState } from "../../redux/store";
 import { connect } from "react-redux";
-import axios from "axios";
-import Config from "react-native-config";
 
-interface IWatchListItemProps {
+interface IWatchListItemDetailProps {
   navigator: any;
   re_id: number;
   address: [
@@ -31,12 +20,13 @@ interface IWatchListItemProps {
 
   RemoveItems: (item: any) => void;
 }
-class WatchListItem extends Component<IWatchListItemProps> {
-  constructor(props: IWatchListItemProps) {
+
+class WatchListItemDetail extends Component<IWatchListItemDetailProps> {
+  constructor(props: IWatchListItemDetailProps) {
     super(props);
   }
 
-  removeFavourite = () => {
+  _removeFavourite = () => {
     this.props.RemoveItems(this.props.re_id);
     console.log("Remove favourite: " + this.props.re_id);
     this.props.navigator.dismissModal({
@@ -45,16 +35,16 @@ class WatchListItem extends Component<IWatchListItemProps> {
     Alert.alert("Remove favourite");
   };
 
+  _goBack = () => {
+    this.props.navigator.dismissModal({
+      animationType: "slide-down"
+    });
+  };
+
   render() {
     return (
       <View style={styles.container}>
-        <Card
-        // image={
-        //   {
-        //     // uri: this.props.imageUrl
-        //   }
-        // }
-        >
+        <Card>
           <Text
             style={{
               width: Dimensions.get("window").width * 0.85,
@@ -85,27 +75,15 @@ class WatchListItem extends Component<IWatchListItemProps> {
           >
             <Button
               backgroundColor="#FF7600"
-              buttonStyle={{
-                width: Dimensions.get("window").width * 0.5,
-                borderRadius: 24,
-                marginBottom: 6
-              }}
+              buttonStyle={styles.button}
               title="Remove Favourite"
-              onPress={this.removeFavourite}
+              onPress={this._removeFavourite}
             />
             <Button
               backgroundColor="#FF7600"
-              buttonStyle={{
-                width: Dimensions.get("window").width * 0.5,
-                borderRadius: 24,
-                marginBottom: 6
-              }}
+              buttonStyle={styles.button}
               title="Go Back"
-              onPress={() =>
-                this.props.navigator.dismissModal({
-                  animationType: "slide-down"
-                })
-              }
+              onPress={this._goBack}
             />
           </View>
         </Card>
@@ -132,7 +110,7 @@ const mapDispatchToProps = (dispatch: any) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(WatchListItem);
+)(WatchListItemDetail);
 
 const styles = StyleSheet.create({
   container: {
@@ -140,5 +118,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#FACC56"
+  },
+  button: {
+    width: Dimensions.get("window").width * 0.5,
+    borderRadius: 24,
+    marginBottom: 6
   }
 });

@@ -16,7 +16,6 @@ import {
   ImageBackground,
   Alert
 } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { Button } from "react-native-elements";
 import { IAuthUser } from "../../models/models";
 import { connect } from "react-redux";
@@ -24,12 +23,16 @@ import { logoutUser } from "../../redux/actions/AuthAction";
 import { IRootState } from "../../redux/store";
 
 interface IUserProfileProps {
-  navigator: Navigator;
+  navigator: any;
   user: IAuthUser;
   logout: () => void;
 }
 
 class UserProfile extends Component<IUserProfileProps> {
+  constructor(props: IUserProfileProps) {
+    super(props);
+  }
+
   handleLogout = () => {
     this.props.logout();
     if (this.props.user.isAuthenticated) {
@@ -40,6 +43,7 @@ class UserProfile extends Component<IUserProfileProps> {
       animationType: "fade"
     });
   };
+
   render() {
     return (
       <ImageBackground
@@ -51,10 +55,12 @@ class UserProfile extends Component<IUserProfileProps> {
           {"\n"}
           We can you to find your ideal property investment here.
         </Text>
+
         <Text style={styles.description}>
           Email:
           {this.props.user.email}
         </Text>
+
         <Button
           title="Logout!"
           onPress={this.handleLogout}
@@ -74,7 +80,7 @@ class UserProfile extends Component<IUserProfileProps> {
 
 const mapStateToProps = (state: IRootState) => {
   return {
-    user: state.auth.user
+    // user: state.auth.user
   };
 };
 
@@ -99,11 +105,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white"
   },
-  // content: {
-  //   flex: 1,
-  //   justifyContent: "center",
-  //   alignItems: "center"
-  // },
   header: {
     fontSize: 16,
     lineHeight: 24,

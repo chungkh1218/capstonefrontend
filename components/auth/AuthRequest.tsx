@@ -9,21 +9,11 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Dimensions,
-  Image,
-  ScrollView,
-  ImageBackground
-} from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { StyleSheet, Text, Dimensions, ImageBackground } from "react-native";
 import { Button } from "react-native-elements";
 
 interface IAuthRequestProps {
-  navigator: Navigator;
+  navigator: any;
 }
 export default class AuthRequest extends Component<IAuthRequestProps> {
   render() {
@@ -126,11 +116,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "white"
   },
-  // content: {
-  //   flex: 1,
-  //   justifyContent: "center",
-  //   alignItems: "center"
-  // },
   header: {
     fontSize: 24,
     color: "black",

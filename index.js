@@ -10,12 +10,15 @@ import { Navigation } from "react-native-navigation";
 import LandingPage from "./components/auth/LandingPage";
 import Home from "./screens/HomeTab";
 import Valuation from "./components/home/propertyitemdetails";
+
 import User from "./screens/UserTab";
-import Auth from "./components/auth/Auth";
 import LoginPage from "./components/auth/LoginPage";
 import SignUpPage from "./components/auth/SignUpPage";
+
 import WatchList from "./screens/WatchListTab";
-import WatchListItem from "./components/watchlist/WatchListItem";
+// import WatchListItem from "./components/watchlist/WatchListItem";
+import WatchListItemDetail from "./components/watchlist/WatchListItemDetail";
+
 import { Provider } from "react-redux";
 import PropertyList from "./components/home/propertylist";
 import SearchBar from "./components/home/searchbar";
@@ -29,13 +32,6 @@ const store = createReduxStore();
 Navigation.registerComponent(
   "example.mortgagecalculator",
   () => MortgageCalculator,
-  store,
-  Provider
-);
-
-Navigation.registerComponent(
-  "example.watchlistitem",
-  () => WatchListItem,
   store,
   Provider
 );
@@ -54,6 +50,18 @@ Navigation.registerComponent(
   store,
   Provider
 );
+// Navigation.registerComponent(
+//   "example.watchlistitem",
+//   () => WatchListItem,
+//   store,
+//   Provider
+// );
+Navigation.registerComponent(
+  "example.watchlistitemdetail",
+  () => WatchListItemDetail,
+  store,
+  Provider
+);
 Navigation.registerComponent(
   "example.propertyitemdetails",
   () => Valuation,
@@ -61,7 +69,6 @@ Navigation.registerComponent(
   Provider
 );
 Navigation.registerComponent("example.user", () => User, store, Provider);
-Navigation.registerComponent("example.auth", () => Auth);
 Navigation.registerComponent(
   "example.loginPage",
   () => LoginPage,
@@ -105,15 +112,6 @@ Navigation.startTabBasedApp({
         screenBackgroundColor: "#97A9D4"
       }
     },
-    // {
-    //   label: "Valuation",
-    //   screen: "example.valuation",
-    //   icon: require("./src/icons/IC-Attach-Money-24px.png"),
-    //   title: "Valuation",
-    //   navigatorStyle: {
-    //     screenBackgroundColor: "#97A9D4"
-    //   }
-    // },
     {
       label: "WatchList",
       screen: "example.watchlist",

@@ -135,12 +135,15 @@ export function loginFacebook(accessToken: string) {
   return (dispatch: Dispatch<any>) => {
     // dispatch(loginSuccess());
     return axios
-      .post<{ accessToken: string; name: string; email: string }>(
-        `${Config.API_URL}/api/login/facebook`,
-        {
-          access_token: accessToken
-        }
-      )
+      .post<{
+        accessToken: string;
+        name: string;
+        email: string;
+        token: string;
+        message: string;
+      }>(`${Config.API_URL}/api/login/facebook`, {
+        access_token: accessToken
+      })
       .then(response => {
         if (response.data == null) {
           dispatch(loginFailure("Unknown Error"));

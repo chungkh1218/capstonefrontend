@@ -9,11 +9,9 @@
 // import React, { Component } from "react";
 import * as React from "react";
 import { Component } from "react";
-import { StyleSheet, View, Alert } from "react-native";
-import { Navigation } from "react-native-navigation";
+import { StyleSheet, View } from "react-native";
 
 import { IRootState } from "../redux/store";
-import { logoutUser } from "../redux/actions/AuthAction";
 import { connect } from "react-redux";
 import { IAuthUser } from "../models/models";
 import AuthRequest from "../components/auth/AuthRequest";
@@ -21,37 +19,19 @@ import UserProfile from "../components/auth/UserProfile";
 
 interface IUserTapProps {
   user: IAuthUser;
-  logout: () => void;
-  navigator: Navigation;
+  navigator: any;
 }
 
 class User extends Component<IUserTapProps> {
-  handleLogout = () => {
-    this.props.logout();
-    if (this.props.user.isAuthenticated) {
-      Alert.alert("Authenication", "You are signed out");
-    }
-    this.props.navigator.popToRoot({
-      animated: true,
-      animationType: "fade"
-    });
-  };
   render() {
     return (
       <View style={styles.container}>
         {this.props.user.isAuthenticated ? (
-          <UserProfile navigator={this.props.navigator} />
+          <UserProfile
+            navigator={this.props.navigator}
+            user={this.props.user}
+          />
         ) : (
-          // <Button
-          //   title="Logout!"
-          //   onPress={this.handleLogout}
-          //   buttonStyle={{
-          //     backgroundColor: "#FF7600",
-          //     marginHorizontal: 0,
-          //     width: Dimensions.get("window").width,
-          //     padding: 22
-          //   }}
-          // />
           <AuthRequest navigator={this.props.navigator} />
         )}
       </View>
@@ -65,18 +45,7 @@ const mapStateToProps = (state: IRootState) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    logout: () => {
-      dispatch(logoutUser());
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(User);
+export default connect(mapStateToProps)(User);
 
 const styles = StyleSheet.create({
   container: {

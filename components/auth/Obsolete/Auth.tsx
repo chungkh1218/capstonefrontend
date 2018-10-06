@@ -34,13 +34,11 @@ export default class Auth extends Component<Props> {
                 backButtonHidden: false, // hide the back button altogether (optional)
                 navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
                 navigatorButtons: {}, // override the nav buttons for the pushed screen (optional)
-                // enable peek and pop - commited screen will have `isPreview` prop set as true.
                 previewView: undefined, // react ref or node id (optional)
                 previewHeight: undefined, // set preview height, defaults to full height (optional)
                 previewCommit: true, // commit to push preview controller to the navigation stack (optional)
                 previewActions: [
                   {
-                    // action presses can be detected with the `PreviewActionPress` event on the commited screen.
                     id: "", // action id (required)
                     title: "", // action title (required)
                     style: undefined, // 'selected' or 'destructive' (optional)
@@ -49,7 +47,6 @@ export default class Auth extends Component<Props> {
                 ]
               })
             }
-            // icon={{ name: "diff-renamed", type: "octicon" }}
             buttonStyle={{
               borderRadius: 24,
               backgroundColor: "#FF7600",
@@ -74,13 +71,11 @@ export default class Auth extends Component<Props> {
                 backButtonHidden: false, // hide the back button altogether (optional)
                 navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
                 navigatorButtons: {}, // override the nav buttons for the pushed screen (optional)
-                // enable peek and pop - commited screen will have `isPreview` prop set as true.
                 previewView: undefined, // react ref or node id (optional)
                 previewHeight: undefined, // set preview height, defaults to full height (optional)
                 previewCommit: true, // commit to push preview controller to the navigation stack (optional)
                 previewActions: [
                   {
-                    // action presses can be detected with the `PreviewActionPress` event on the commited screen.
                     id: "", // action id (required)
                     title: "", // action title (required)
                     style: undefined, // 'selected' or 'destructive' (optional)
@@ -89,7 +84,6 @@ export default class Auth extends Component<Props> {
                 ]
               })
             }
-            // icon={{ name: "diff-added", type: "octicon" }}
             buttonStyle={{
               borderRadius: 24,
               backgroundColor: "#FF7600",
@@ -104,25 +98,6 @@ export default class Auth extends Component<Props> {
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     alignItems: "center",
-//     backgroundColor: "#F5FCFF"
-//   },
-//   welcome: {
-//     fontSize: 20,
-//     textAlign: "center",
-//     margin: 10
-//   },
-//   instructions: {
-//     textAlign: "center",
-//     color: "#333333",
-//     marginBottom: 5
-//   }
-// });
 
 const styles = StyleSheet.create({
   container: {
