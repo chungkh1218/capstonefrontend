@@ -1,144 +1,63 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import * as React from "react";
-import { Component } from "react";
-// import React, { Component } from "react";
-import { StyleSheet, View, Dimensions, Alert } from "react-native";
-import { Card, Button, Text } from "react-native-elements";
-import { RemoveWatchItems } from "../../redux/actions/WatchListAction";
-import { IRootState } from "../../redux/store";
-import { connect } from "react-redux";
-import axios from "axios";
-import Config from "react-native-config";
+import { StyleSheet, View, Dimensions } from "react-native";
+import { Text } from "react-native-elements";
 
 interface IWatchListItemProps {
-  navigator: any;
-  re_id: number;
-  address: [
-    {
-      catname: string;
-      catfathername: string;
-      avWinloss: number;
-      avPrice_sq: string;
-    }
-  ];
-
-  RemoveItems: (item: any) => void;
+  catname: any;
+  catfathername: any;
+  avWinloss: any;
+  avPrice_sq: any;
 }
-class WatchListItem extends Component<IWatchListItemProps> {
-  constructor(props: IWatchListItemProps) {
-    super(props);
-  }
 
-  removeFavourite = () => {
-    this.props.RemoveItems(this.props.re_id);
-    console.log("Remove favourite: " + this.props.re_id);
-    this.props.navigator.dismissModal({
-      animationType: "slide-down"
-    });
-    Alert.alert("Remove favourite");
-  };
-
-  render() {
-    return (
-      <View style={styles.container}>
-        <Card
-        // image={
-        //   {
-        //     // uri: this.props.imageUrl
-        //   }
-        // }
-        >
-          <Text
-            style={{
-              width: Dimensions.get("window").width * 0.85,
-              marginBottom: 180
-            }}
-          >
-            {this.props.address.map((item, i) => (
-              <Text h4 style={{ fontWeight: "bold" }} key={i}>
-                {item.catname}
-                {"\n"}
-              </Text>
-            ))}
-            <Text style={{ fontSize: 16, color: "dimgray", padding: 20 }}>
-              {this.props.address.map((item, i) => (
-                <Text key={i}>
-                  {item.catfathername}
-                  {"\n"}
-                  Winloss: {item.avWinloss}%{"\n"}${item.avPrice_sq}
-                  /sq.ft
-                </Text>
-              ))}
-            </Text>
-          </Text>
-          <View
-            style={{
-              alignItems: "center"
-            }}
-          >
-            <Button
-              backgroundColor="#FF7600"
-              buttonStyle={{
-                width: Dimensions.get("window").width * 0.5,
-                borderRadius: 24,
-                marginBottom: 6
-              }}
-              title="Remove Favourite"
-              onPress={this.removeFavourite}
-            />
-            <Button
-              backgroundColor="#FF7600"
-              buttonStyle={{
-                width: Dimensions.get("window").width * 0.5,
-                borderRadius: 24,
-                marginBottom: 6
-              }}
-              title="Go Back"
-              onPress={() =>
-                this.props.navigator.dismissModal({
-                  animationType: "slide-down"
-                })
-              }
-            />
-          </View>
-        </Card>
+const WatchListItem: React.StatelessComponent<IWatchListItemProps> = ({
+  catname,
+  catfathername,
+  avWinloss,
+  avPrice_sq
+}: IWatchListItemProps) => {
+  return (
+    <View>
+      <Text style={styles.homeListHeader}>{catname}</Text>
+      <View style={styles.homeListItem}>
+        <Text>{catname}</Text>
+        <Text>{catfathername}</Text>
+        <Text>Winloss: {avWinloss}%</Text>
+        <Text>Price: ${avPrice_sq}</Text>
       </View>
-    );
-  }
-}
-
-const mapStateToProps = (state: IRootState) => {
-  return {
-    watchList: state.watches.watchList
-  };
+    </View>
+  );
 };
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    RemoveItems: (item: any) => {
-      dispatch(RemoveWatchItems(item));
-    }
-  };
-};
-
-// Connect to store
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(WatchListItem);
+export default WatchListItem;
 
 const styles = StyleSheet.create({
-  container: {
+  homeList: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#FACC56"
+    width: Dimensions.get("window").width,
+    height: 120,
+    backgroundColor: "white",
+    padding: 20,
+    marginBottom: 6,
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25
+  },
+  homeListThumbnail: {
+    width: 120,
+    height: 120,
+    position: "absolute",
+    left: 0
+  },
+  homeListHeader: {
+    fontSize: 20,
+    fontWeight: "bold",
+    letterSpacing: 1
+  },
+  homeListItem: {
+    fontSize: 16,
+    color: "dimgray"
   }
 });

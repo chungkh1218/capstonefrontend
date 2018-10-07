@@ -8,7 +8,6 @@
 
 // import React, { Component } from "react";
 import * as React from "react";
-import { Component } from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
 import { connect } from "react-redux";
 import { IRootState } from "../redux/store";
@@ -110,6 +109,5 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "right",
     color: "dimgray"
-    // backgroundColor: "red"
   }
 });
