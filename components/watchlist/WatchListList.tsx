@@ -14,7 +14,9 @@ interface IWatchListListProps {
   watchList: IWatchList[];
 }
 
-export class WatchListList extends React.Component<IWatchListListProps> {
+export default class WatchListList extends React.Component<
+  IWatchListListProps
+> {
   constructor(props: IWatchListListProps) {
     super(props);
   }
