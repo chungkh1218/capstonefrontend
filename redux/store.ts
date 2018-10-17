@@ -14,6 +14,7 @@ import { WatchListState, WatchListReducer } from "./reducers/WatchListReducer";
 import thunk from "redux-thunk";
 import { IHistory } from "../models/models";
 
+// Collection of Reducers' State (RootState)
 export interface IRootState {
   auth: IAuthState;
   properties: IPropListState;
@@ -24,14 +25,15 @@ export interface IRootState {
   isLoading1: IListHistState;
 }
 
+// Collection of Reducers (Combine Reducer)
 const rootReducer = combineReducers({
   auth: AuthReducer,
   properties: SearchReducer,
-  url: GetImgReducer,
   histories: ListHistReducer,
   watches: WatchListReducer,
-  isLoading:SearchReducer,
-  isLoading1:ListHistReducer
+  url: GetImgReducer,
+  isLoading: SearchReducer,
+  isLoading1: ListHistReducer
 });
 
 declare global {

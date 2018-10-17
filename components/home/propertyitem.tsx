@@ -1,12 +1,10 @@
 import * as React from "react";
-import { Component } from "react";
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity,
-  Dimensions,
-  Image
+  Dimensions
 } from "react-native";
 import { IProperty } from "../../models/models";
 import { Navigator } from "react-native-navigation";
@@ -17,62 +15,42 @@ interface IPropertyProps extends IProperty {
   catname: string;
   avPrice_sq: number;
   imageUrl: string;
+  re_id: number;
 }
 
 export default class PropertyItem extends React.Component<IPropertyProps> {
   private itemsOnPressed = () => {
-    console.log(this.props);
     this.props.navigator.push({
-      screen: "example.propertyitemdetails", // unique ID registered with Navigation.registerScreen
-      title: this.props.catname, // navigation bar title of the pushed screen (optional)
-      passProps: { catname: this.props.catname }, // Object that will be passed as props to the pushed screen (optional)
-      animated: true, // does the push have transition animation or does it happen immediately (optional)
-      animationType: "slide-horizontal", // 'fade' (for both) / 'slide-horizontal' (for android) does the push have different transition animation (optional)
-      backButtonTitle: undefined, // override the back button title (optional)
-      backButtonHidden: false, // hide the back button altogether (optional)
-      navigatorStyle: {}, // override the navigator style for the pushed screen (optional)
-      navigatorButtons: {}, // override the nav buttons for the pushed screen (optional)
-      // enable peek and pop - commited screen will have `isPreview` prop set as true.
-      previewView: undefined, // react ref or node id (optional)
-      previewHeight: undefined, // set preview height, defaults to full height (optional)
-      previewCommit: true, // commit to push preview controller to the navigation stack (optional)
-      previewActions: [
-        {
-          // action presses can be detected with the `PreviewActionPress` event on the commited screen.
-          id: "", // action id (required)
-          title: "", // action title (required)
-          style: undefined, // 'selected' or 'destructive' (optional)
-          actions: [] // list of sub-actions
-        }
-      ]
+      screen: "example.propertyitemdetails",
+      title: this.props.catname,
+      passProps: { catname: this.props.catname },
+      animated: true,
+      animationType: "slide-horizontal",
+      backButtonHidden: false,
+      navigatorButtons: {
+        rightButtons: [
+          {
+            id: "addTo",
+            title: "Add To"
+          }
+        ],
+        animated: true
+      },
+      previewCommit: true
     });
   };
 
   render() {
-    // console.log(this.props.catname);
     return (
       <TouchableOpacity onPress={this.itemsOnPressed.bind(this)}>
-        <View style={styles.homeList}>
+        <View style={styles.homeListItem}>
           <View
-            style={
-              this.props.avWinloss > 100
-                ? { flex: 1, backgroundColor: "red" }
-                : { flex: 1, backgroundColor: "#FF9212" }
-            }
-          >
-            {/* <Image
-              style={{
-                flex: 1,
-                alignSelf: "stretch",
-                width: undefined,
-                height: undefined
-              }}
-              source={{
-                uri:
-                  "https://www.28hse.com/en/utf8/developer/d298/selfcapture/7zRjsPPexx_large.jpg"
-              }}
-            /> */}
-          </View>
+          // style={
+          //   this.props.avWinloss > 100
+          //     ? { flex: 1, backgroundColor: "red" }
+          //     : { flex: 1, backgroundColor: "#FF9212" }
+          // }
+          />
           <View style={styles.homeListContent}>
             <Text style={{ color: "black", fontWeight: "bold" }}>
               {this.props.catname}
@@ -98,24 +76,23 @@ export default class PropertyItem extends React.Component<IPropertyProps> {
 }
 
 const styles = StyleSheet.create({
-  homeList: {
+  homeListItem: {
     flex: 1,
     flexDirection: "row",
-    width: Dimensions.get("window").width,
+    width: Dimensions.get("window").width - 20,
     height: 90,
     backgroundColor: "white",
-    marginBottom: 6,
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
     shadowColor: "#000000",
     shadowOffset: {
       width: 0,
       height: 2
     },
-    shadowOpacity: 0.25
+    shadowOpacity: 0.25,
+    borderRadius: 12
   },
-  // homeListThumbnail: {
-  //   flex: 1,
-  //   backgroundColor: "#FF9212"
-  // },
   homeListContent: {
     flex: 23,
     justifyContent: "space-around",

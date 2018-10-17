@@ -1,35 +1,56 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
-// import React, { Component } from "react";
 import * as React from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
 import { connect } from "react-redux";
 import { IRootState } from "../redux/store";
 import { ListWatchItems } from "../redux/actions/WatchListAction";
 import { IAuthUser, IWatchList } from "../models/models";
-import { WatchListList } from "../components/watchlist/WatchListList";
+import WatchListList from "../components/watchlist/WatchListList";
 import AuthRequest from "../components/auth/AuthRequest";
+import ProgressBar from "../components/_global/ProgressBar";
 
 interface IWatchListProps {
+  navigator: any;
   user: IAuthUser;
   watchList: IWatchList[];
   ListItems: () => void;
-  navigator: any;
 }
 
-class WatchList extends React.Component<IWatchListProps> {
+interface IWatchListStates {
+  // isLoading: boolean;
+}
+
+class WatchList extends React.Component<IWatchListProps, IWatchListStates> {
   constructor(props: IWatchListProps) {
     super(props);
+
+    // this.state = {
+    //   isLoading: true
+    // };
+  }
+
+  componentWillMount() {
+    this._retrieveWatchList();
+    console.log("WatchTab Will Mounting...");
+  }
+
+  // componentWillReceiveProps(watchList: any) {
+  //   if (watchList) {
+  //     this.setState({ isLoading: false });
+  //     console.log("WatchTab Will Receiving Props...");
+  //   }
+  // }
+
+  // componentWillUnmount() {
+  //   this.props.watchList === null;
+  // }
+
+  _retrieveWatchList() {
+    this.props.ListItems();
   }
 
   public render() {
     console.log(this.props.watchList, String(new Date()));
+
     if (!this.props.user.isAuthenticated) {
       return (
         <View style={styles.container}>
@@ -45,6 +66,18 @@ class WatchList extends React.Component<IWatchListProps> {
           />
         </View>
       );
+      // return this.state.isLoading ? (
+      //   <View style={styles.progressBar}>
+      //     <ProgressBar />
+      //   </View>
+      // ) : (
+      //   <View style={styles.container}>
+      //     <WatchListList
+      //       navigator={this.props.navigator}
+      //       watchList={this.props.watchList}
+      //     />
+      //   </View>
+      // );
     }
   }
 }
@@ -75,7 +108,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "white"
+    backgroundColor: "rgba(0, 0, 0, 0.6)",
+    width: Dimensions.get("window").width
   },
   welcome: {
     fontSize: 20,
@@ -109,5 +143,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     textAlign: "right",
     color: "dimgray"
+  },
+  progressBar: {
+    backgroundColor: "white",
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 });

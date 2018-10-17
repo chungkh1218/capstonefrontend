@@ -19,10 +19,7 @@ const WatchListItem: React.StatelessComponent<IWatchListItemProps> = ({
     <View>
       <Text style={styles.homeListHeader}>{catname}</Text>
       <View style={styles.homeListItem}>
-        <Text>{catname}</Text>
         <Text>{catfathername}</Text>
-        <Text>Winloss: {avWinloss}%</Text>
-        <Text>Price: ${avPrice_sq}</Text>
       </View>
     </View>
   );

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Component } from "react";
-import { FlatList } from "react-native";
+import { FlatList, ScrollView, SectionList, Text } from "react-native";
 
 import HistoryItem from "./historyitem";
 import { IHistory } from "../../models/models";

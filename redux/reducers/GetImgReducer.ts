@@ -5,8 +5,8 @@ export interface IListHistImgState {
 }
 
 const initialState = {
-  imgurl:
-    "https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg?cs=srgb&dl=ask-blackboard-356079.jpg&fm=jpg"
+  imgurl: "https://via.placeholder.com/350x150"
+  // "https://images.pexels.com/photos/356079/pexels-photo-356079.jpeg?cs=srgb&dl=ask-blackboard-356079.jpg&fm=jpg"
 };
 
 export function GetImgReducer(

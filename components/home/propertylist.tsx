@@ -41,6 +41,7 @@ export default class PropertyList extends Component<IPropertyListProp> {
             catname={item.catname}
             avPrice_sq={item.avPrice_sq}
             imageUrl={this.photoSearch(item.catname)}
+            re_id={item.re_id}
           />
         )}
         keyExtractor={item => item.catname}

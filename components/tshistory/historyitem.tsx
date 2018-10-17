@@ -8,8 +8,8 @@ export default class HistoryItem extends Component<IHistory> {
   render() {
     // console.log(this.props.transactions[0]);
     return (
-      <View style={styles.container}>
-        <View style={styles.item}>
+      <View style={styles.item}>
+        <View style={styles.itemContent}>
           <Text style={{ fontSize: 16, fontWeight: "bold" }}>
             {this.props.addr}
           </Text>
@@ -50,25 +50,25 @@ export default class HistoryItem extends Component<IHistory> {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  item: {
     flex: 1,
     width: Dimensions.get("window").width,
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "white"
+    marginTop: 12
   },
-  item: {
+  itemContent: {
     backgroundColor: "white",
     fontSize: 16,
     textAlign: "center",
     padding: 20,
-    margin: 4,
     width: Dimensions.get("window").width * 0.95,
     shadowColor: "#000000",
     shadowOffset: {
       width: 0,
       height: 2
     },
-    shadowOpacity: 0.25
+    shadowOpacity: 0.25,
+    borderRadius: 16
   }
 });

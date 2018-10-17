@@ -26,17 +26,37 @@ import { createReduxStore } from "./redux/store";
 import HistoryList from "./components/tshistory/historylist";
 import BankValution from "./components/valuation/bankvaluation";
 import MortgageCalculator from "./components/mortgage/mortgagecalculator";
+import WebViewExample from "./components/valuation/WebViewExample";
 
 const store = createReduxStore();
-
+const navigatorStyle = {
+  navBarTranslucent: true,
+  // drawUnderNavBar: true,
+  navBarTextColor: "white",
+  navBarButtonColor: "white",
+  statusBarTextColorScheme: "light",
+  drawUnderTabBar: true
+};
+// Navigation.registerComponent("example.app", () => App, store, Provider);
+// Navigation.registerComponent(
+//   "example.watchlistitem",
+//   () => WatchListItem,
+//   store,
+//   Provider
+// );
 Navigation.registerComponent(
   "example.mortgagecalculator",
   () => MortgageCalculator,
   store,
   Provider
 );
+Navigation.registerComponent(
+  "example.WebViewExample",
+  () => WebViewExample,
+  store,
+  Provider
+);
 Navigation.registerComponent("example.bankvaluation", () => BankValution);
-// Navigation.registerComponent("example.app", () => App, store, Provider);
 Navigation.registerComponent(
   "example.landingpage",
   () => LandingPage,
@@ -50,12 +70,6 @@ Navigation.registerComponent(
   store,
   Provider
 );
-// Navigation.registerComponent(
-//   "example.watchlistitem",
-//   () => WatchListItem,
-//   store,
-//   Provider
-// );
 Navigation.registerComponent(
   "example.watchlistitemdetail",
   () => WatchListItemDetail,
@@ -107,28 +121,29 @@ Navigation.startTabBasedApp({
       screen: "example.home",
       icon: require("./src/icons/IC-Home-24px.png"),
       title: "Home",
-      titleImage: require("./src/icons/IC-Home-24px.png"),
-      navigatorStyle: {
-        screenBackgroundColor: "#97A9D4"
+      navigatorStyle,
+      navigatorButtons: {
+        // rightButtons: [
+        //   {
+        //     id: "search",
+        //     title: "Search"
+        //   }
+        // ]
       }
     },
     {
       label: "WatchList",
       screen: "example.watchlist",
       icon: require("./src/icons/IC-Remove-Red-Eye-24px.png"),
-      title: "WatchList",
-      navigatorStyle: {
-        screenBackgroundColor: "#97A9D4"
-      }
+      title: "Watch List",
+      navigatorStyle
     },
     {
       label: "User",
       screen: "example.user",
       icon: require("./src/icons/IC-Verified-User-24px.png"),
       title: "User",
-      navigatorStyle: {
-        screenBackgroundColor: "#97A9D4"
-      }
+      navigatorStyle
     }
   ],
   tabsStyle: {

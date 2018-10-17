@@ -10,36 +10,33 @@ export interface WatchListState {
   watchList: IWatchList[];
 }
 
+// Reducer's State
 const initialState = {
   watchList: []
 };
 
+// Change Reducer's State Based on Action
 export function WatchListReducer(
   state: WatchListState = initialState,
   action: watchListAction
 ) {
   switch (action.type) {
-    // Add a watch item
     case ADD_WATCH_ITEM:
       console.log("Add Watch Item!");
       return {
         ...state,
         watchList: action.watchList
-        // watchList: state.watchList.concat(action.watchList)
       };
-    // Update the watch list
     case LIST_WATCH_ITEM:
       console.log("List Watch Item!");
       return {
         watchList: action.watchList
       };
-    // Remove a watch item
     case REMOVE_WATCH_ITEM:
       console.log("Remove Watch Item!");
       return {
         ...state,
         watchList: action.watchList
-        // watchList: state.watchList.concat(action.watchList)
       };
 
     default:

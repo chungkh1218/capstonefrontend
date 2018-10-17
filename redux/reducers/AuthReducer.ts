@@ -10,6 +10,7 @@ export interface IAuthState {
   user: IAuthUser;
 }
 
+// Initial State of AuthState
 const initialState = {
   user: {
     username: "username is null",
@@ -19,6 +20,7 @@ const initialState = {
   }
 };
 
+// Manage State's Changes Based On Different Actions
 export function authReducer(
   state: IAuthState = initialState,
   action: authAction

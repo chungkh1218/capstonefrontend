@@ -1,7 +1,13 @@
 import * as React from "react";
 import { Component } from "react";
-import { View, TextInput, Button, ActivityIndicator } from "react-native";
-import homeStyles from "../../src/styles/style";
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Button,
+  ActivityIndicator,
+  Dimensions
+} from "react-native";
 
 interface ISearchProp {
   onSearchChange: (search: string, condition: string) => void;
@@ -32,12 +38,9 @@ export default class SearchBar extends Component<ISearchProp, ISearchState> {
   onSearchTextChange = (event: any) => {
     const searchValue = event.nativeEvent.text;
     this.setState({ value: searchValue });
-
-    // this.props.onSearchChange(event.currentTarget.value);
   };
 
   onSearchPressed = () => {
-    //const query = urlForQueryAndPage('place_name', this.state.searchString, 1);
     console.log("button pressed");
     const search = this.state.search;
     this.setState({ isLoading: true });
@@ -51,7 +54,7 @@ export default class SearchBar extends Component<ISearchProp, ISearchState> {
     ) : null;
     return (
       <View
-        style={homeStyles.searchbar}
+        style={styles.searchbar}
         onLayout={event => {
           this.setState({
             width: event.nativeEvent.layout.width
@@ -59,7 +62,7 @@ export default class SearchBar extends Component<ISearchProp, ISearchState> {
         }}
       >
         <TextInput
-          style={homeStyles.searchinput}
+          style={styles.searchinput}
           value={this.state.value}
           placeholder={this.state.search}
           onChange={this.onSearchTextChange}
@@ -74,3 +77,18 @@ export default class SearchBar extends Component<ISearchProp, ISearchState> {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  searchinput: {
+    height: 40,
+    flexGrow: 1,
+    padding: 12,
+    fontSize: 18,
+    color: "#FF9212"
+  },
+  searchbar: {
+    flexDirection: "row",
+    width: Dimensions.get("window").width,
+    alignItems: "center"
+  }
+});

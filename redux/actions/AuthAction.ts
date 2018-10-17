@@ -58,6 +58,7 @@ function logOutAction(): LogOutAction {
   };
 }
 
+// Functions' Definition
 export function signUpUser(
   name: string,
   email: string,

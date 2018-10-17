@@ -1,16 +1,6 @@
 import * as React from "react";
 import { Component } from "react";
-import {
-  Text,
-  View,
-  TouchableOpacity,
-  TouchableHighlight,
-  StyleSheet,
-  Picker,
-  Modal,
-  ScrollView,
-  Dimensions
-} from "react-native";
+import { View, TouchableHighlight, StyleSheet, Dimensions } from "react-native";
 
 import ModalDropdown from "react-native-modal-dropdown";
 
@@ -139,9 +129,9 @@ export default class ModalExample extends Component<
   public render() {
     return (
       <View>
-        <Text style={styles.narrative}>
+        {/* <Text style={styles.narrative}>
           You are currently searching for :{this.state.value}{" "}
-        </Text>
+        </Text> */}
         <View style={styles.buttonContainer}>
           <TouchableHighlight style={{ backgroundColor: "#FFC08A" }}>
             <ModalDropdown
